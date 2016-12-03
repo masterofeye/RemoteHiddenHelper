@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Form Dateien">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Dateien">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generierte Dateien">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generierte Dateien\Debug">
+      <UniqueIdentifier>{968f44be-43c9-4151-aa24-51b83264f87e}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generierte Dateien\Release">
+      <UniqueIdentifier>{992e30bc-4a2b-47f5-af0d-0e8e30681cea}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Communication">
+      <UniqueIdentifier>{1066e039-1ca5-4576-8bfd-0f149bf8a5ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{e0ac63e7-455e-4810-afcf-569791ec621b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Adminstration">
+      <UniqueIdentifier>{67979129-4c3f-4330-833f-3bbe16906c6f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_remotehiddenhelper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_remotehiddenhelper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationManager.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationServer.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationServer.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationServer.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="CanEasyWrapper.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="MKSWrapper.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BasicWrapper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CanEasyWrapper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BasicWrapper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CanEasyWrapper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MKSWrapper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MKSWrapper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ProcessManager.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ProcessManager.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_remotehiddenhelper.cpp">
+      <Filter>Generierte Dateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FHostSpWrapper.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_FHostSpWrapper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_FHostSpWrapper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="PortalInfo.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ErrorHandler.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ErrorHandler.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Constants.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Constants.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_PortalInfo.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PortalInfo.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="UsbFlasher.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogWindow.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DialogWindow.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DialogWindow.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="remotehiddenhelper.cpp">
+      <Filter>Adminstration</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorHandler.cpp">
+      <Filter>Adminstration</Filter>
+    </ClCompile>
+    <ClCompile Include="ProcessManager.cpp">
+      <Filter>Adminstration</Filter>
+    </ClCompile>
+    <ClCompile Include="FlashInformations.cpp">
+      <Filter>Adminstration</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="remotehiddenhelper.ui">
+      <Filter>Form Dateien</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CommunicationManager.h">
+      <Filter>Communication</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CommunicationServer.h">
+      <Filter>Communication</Filter>
+    </CustomBuild>
+    <CustomBuild Include="BasicWrapper.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CanEasyWrapper.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MKSWrapper.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="remotehiddenhelper.qrc">
+      <Filter>Resource Dateien</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FHostSpWrapper.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="PortalInfo.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DialogWindow.h">
+      <Filter>GUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="remotehiddenhelper.h">
+      <Filter>Adminstration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ErrorHandler.h">
+      <Filter>Adminstration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ProcessManager.h">
+      <Filter>Adminstration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Constants.h">
+      <Filter>Adminstration</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UsbFlasher.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>Adminstration</Filter>
+    </ClInclude>
+    <ClInclude Include="FlashInformations.h">
+      <Filter>Adminstration</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

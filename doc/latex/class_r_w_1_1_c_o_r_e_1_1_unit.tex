@@ -1,0 +1,166 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit}{}\section{RW\+:\+:C\+O\+RE\+:\+:Unit Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_unit}\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+
+
+{\ttfamily \#include $<$Unit.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Unit\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_w_1_1_c_o_r_e_1_1_unit}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_ac614ffc786f0c88a3397563414f8914a}{On\+Process\+Message} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_a28b0dc765cd31094c074dbad370055bb}{Unit} (Q\+Local\+Socket $\ast$Socket)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_ae898e2ef0f245ceb1cae8cae17b8a6f9}{$\sim$\+Unit} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_af2a571d5629b2742b603ab88f6c2485c}{Start\+Test} (Util\+::\+Functions Start\+Point)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Byte\+Array \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_af72c1a6126550786eac95439262b9718}{Create\+Message} (Util\+::\+Functions Func, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message}, Util\+::\+Error\+ID Id)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_afe8b61eae2147c5ed409f16f801947a8}{Print\+Debug\+Informations} (\hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message} \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\item 
+\hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message} \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_a0bd62b49be93e3e162ba08ac1c02c027}{Get\+Message} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_a5d5854e3dde478770720f302289dbddd}{Send\+Message} (Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Local\+Socket $\ast$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_a66126526b69f4c9f9559613e921bf724}{m\+\_\+\+Socket}
+\item 
+Q\+String\+List \hyperlink{class_r_w_1_1_c_o_r_e_1_1_unit_a7e19e658c1f9cac1db592ac5d29151a2}{m\+\_\+\+Flash\+Files}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Unit.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_a28b0dc765cd31094c074dbad370055bb}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_a28b0dc765cd31094c074dbad370055bb} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Unit@{Unit}}
+\index{Unit@{Unit}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Unit()}{Unit()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Unit (\begin{DoxyParamCaption}\item[{Q\+Local\+Socket $\ast$}]{Socket }\end{DoxyParamCaption})}
+
+
+
+Definition at line 11 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_ae898e2ef0f245ceb1cae8cae17b8a6f9}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_ae898e2ef0f245ceb1cae8cae17b8a6f9} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!````~Unit@{$\sim$\+Unit}}
+\index{````~Unit@{$\sim$\+Unit}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{$\sim$\+Unit()}{~Unit()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::$\sim$\+Unit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file Unit.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_af72c1a6126550786eac95439262b9718}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_af72c1a6126550786eac95439262b9718} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Create\+Message@{Create\+Message}}
+\index{Create\+Message@{Create\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Create\+Message()}{CreateMessage()}}
+{\footnotesize\ttfamily Q\+Byte\+Array R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Create\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Message,  }\item[{Util\+::\+Error\+ID}]{Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 27 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_a0bd62b49be93e3e162ba08ac1c02c027}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_a0bd62b49be93e3e162ba08ac1c02c027} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Get\+Message@{Get\+Message}}
+\index{Get\+Message@{Get\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Get\+Message()}{GetMessage()}}
+{\footnotesize\ttfamily \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message} R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Get\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 46 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_ac614ffc786f0c88a3397563414f8914a}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_ac614ffc786f0c88a3397563414f8914a} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+On\+Process\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Definition at line 60 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_afe8b61eae2147c5ed409f16f801947a8}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_afe8b61eae2147c5ed409f16f801947a8} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Print\+Debug\+Informations@{Print\+Debug\+Informations}}
+\index{Print\+Debug\+Informations@{Print\+Debug\+Informations}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Print\+Debug\+Informations()}{PrintDebugInformations()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Print\+Debug\+Informations (\begin{DoxyParamCaption}\item[{\hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message}}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_a5d5854e3dde478770720f302289dbddd}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_a5d5854e3dde478770720f302289dbddd} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Send\+Message@{Send\+Message}}
+\index{Send\+Message@{Send\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Send\+Message()}{SendMessage()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Send\+Message (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 54 of file Unit.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_af2a571d5629b2742b603ab88f6c2485c}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_af2a571d5629b2742b603ab88f6c2485c} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!Start\+Test@{Start\+Test}}
+\index{Start\+Test@{Start\+Test}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{Start\+Test()}{StartTest()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::\+Start\+Test (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Start\+Point }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Unit.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_a7e19e658c1f9cac1db592ac5d29151a2}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_a7e19e658c1f9cac1db592ac5d29151a2} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!m\+\_\+\+Flash\+Files@{m\+\_\+\+Flash\+Files}}
+\index{m\+\_\+\+Flash\+Files@{m\+\_\+\+Flash\+Files}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Flash\+Files}{m\_FlashFiles}}
+{\footnotesize\ttfamily Q\+String\+List R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::m\+\_\+\+Flash\+Files\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file Unit.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_unit_a66126526b69f4c9f9559613e921bf724}{}\label{class_r_w_1_1_c_o_r_e_1_1_unit_a66126526b69f4c9f9559613e921bf724} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}!m\+\_\+\+Socket@{m\+\_\+\+Socket}}
+\index{m\+\_\+\+Socket@{m\+\_\+\+Socket}!R\+W\+::\+C\+O\+R\+E\+::\+Unit@{R\+W\+::\+C\+O\+R\+E\+::\+Unit}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Socket}{m\_Socket}}
+{\footnotesize\ttfamily Q\+Local\+Socket$\ast$ R\+W\+::\+C\+O\+R\+E\+::\+Unit\+::m\+\_\+\+Socket\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Unit.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Unit\+Test/\hyperlink{_unit_8h}{Unit.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Unit\+Test/\hyperlink{_unit_8cpp}{Unit.\+cpp}\end{DoxyCompactItemize}

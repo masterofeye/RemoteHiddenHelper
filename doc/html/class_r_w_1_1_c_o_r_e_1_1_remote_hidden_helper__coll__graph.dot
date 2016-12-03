@@ -1,0 +1,45 @@
+digraph "RW::CORE::RemoteHiddenHelper"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node2 [label="RW::CORE::RemoteHiddenHelper",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="QSystemTrayIcon",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ProcessManager" ,fontname="Helvetica"];
+  Node4 [label="RW::CORE::ProcessManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_process_manager.html"];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="QObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ErrorHandler" ,fontname="Helvetica"];
+  Node6 [label="RW::CORE::ErrorHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_error_handler.html"];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_MKS" ,fontname="Helvetica"];
+  Node7 [label="RW::CORE::MKSWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper.html"];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="RW::CORE::BasicWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html"];
+  Node5 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_FHostSP" ,fontname="Helvetica"];
+  Node9 [label="RW::CORE::FHostSpWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper.html"];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_CommManager" ,fontname="Helvetica"];
+  Node10 [label="RW::CORE::CommunicationManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_communication_manager.html"];
+  Node5 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ErrorHandler" ,fontname="Helvetica"];
+  Node11 -> Node10 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_Server" ,fontname="Helvetica"];
+  Node11 [label="RW::CORE::CommunicationServer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_communication_server.html"];
+  Node12 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="QLocalServer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node13 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_CanEasy" ,fontname="Helvetica"];
+  Node13 [label="RW::CORE::CanEasyWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper.html"];
+  Node8 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_PortalInfo" ,fontname="Helvetica"];
+  Node14 [label="RW::CORE::PortalInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_portal_info.html"];
+  Node8 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node14 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ui" ,fontname="Helvetica"];
+  Node15 [label="Ui::RemoteHiddenHelperClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ui_1_1_remote_hidden_helper_class.html"];
+  Node16 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="Ui_RemoteHiddenHelperClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ui___remote_hidden_helper_class.html"];
+  Node17 -> Node14 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_FlashInformationen" ,fontname="Helvetica"];
+  Node17 [label="RW::CORE::FlashInformations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_flash_informations.html"];
+  Node5 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

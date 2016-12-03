@@ -1,0 +1,191 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper}{}\section{RW\+:\+:C\+O\+RE\+:\+:Can\+Easy\+Wrapper Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper}\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+
+
+{\ttfamily \#include $<$Can\+Easy\+Wrapper.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Can\+Easy\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a1de1ab208ac14badbf4b1483e7821801}{On\+Process\+Message} (Util\+::\+Message\+Receiver Type, Util\+::\+Functions Func, Q\+Byte\+Array Report)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2f8ebb5aeeca7a378a50b354cdb993fd}{Can\+Easy\+Wrapper} (Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_af4170177b064c01efb78253f7ee78d86}{$\sim$\+Can\+Easy\+Wrapper} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a3dd585f435f8249429a1cd6c60f52037}{Start\+Can\+Easy} (const Q\+File \&Can\+Easy\+Installion\+Dir)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ad0bab30da2a3b67c624b82c0696d0d22}{Start\+Simulation} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a05dfab9becd44083a684df4e5f263b3d}{Stop\+Simulation} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_aad31305e358aaaa21bfb93aeab5a3b33}{Load\+Workspace} (const Q\+File \&Workspace)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2cdc4ca7e44bb4305455460743cf2496}{Stop\+Can\+Easy} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ab70adb2dc78f160412ec155c4ead3f15}{Close\+Explicit} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+C\+Com\+Ptr$<$ I\+Can\+Easy\+Process $>$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ac2ed85324d592c81e797426cef3d600e}{m\+\_\+\+Process}
+\item 
+C\+Com\+Ptr$<$ I\+Can\+Easy\+Application $>$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a263279df123f2f05d2752ccf6c62da18}{m\+\_\+\+App}
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a6bc2ad0752071fe7495bc971946a5a58}{m\+\_\+\+Is\+Running}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Can\+Easy\+Wrapper.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2f8ebb5aeeca7a378a50b354cdb993fd}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2f8ebb5aeeca7a378a50b354cdb993fd} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Can\+Easy\+Wrapper@{Can\+Easy\+Wrapper}}
+\index{Can\+Easy\+Wrapper@{Can\+Easy\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Can\+Easy\+Wrapper()}{CanEasyWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Can\+Easy\+Wrapper (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_af4170177b064c01efb78253f7ee78d86}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_af4170177b064c01efb78253f7ee78d86} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!````~Can\+Easy\+Wrapper@{$\sim$\+Can\+Easy\+Wrapper}}
+\index{````~Can\+Easy\+Wrapper@{$\sim$\+Can\+Easy\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{$\sim$\+Can\+Easy\+Wrapper()}{~CanEasyWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::$\sim$\+Can\+Easy\+Wrapper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file Can\+Easy\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ab70adb2dc78f160412ec155c4ead3f15}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ab70adb2dc78f160412ec155c4ead3f15} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Close\+Explicit@{Close\+Explicit}}
+\index{Close\+Explicit@{Close\+Explicit}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Close\+Explicit()}{CloseExplicit()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Close\+Explicit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 161 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_aad31305e358aaaa21bfb93aeab5a3b33}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_aad31305e358aaaa21bfb93aeab5a3b33} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Load\+Workspace@{Load\+Workspace}}
+\index{Load\+Workspace@{Load\+Workspace}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Load\+Workspace()}{LoadWorkspace()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Load\+Workspace (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{Workspace }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 90 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a1de1ab208ac14badbf4b1483e7821801}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a1de1ab208ac14badbf4b1483e7821801} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+On\+Process\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Type,  }\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Report }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}
+
+
+
+Definition at line 18 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a3dd585f435f8249429a1cd6c60f52037}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a3dd585f435f8249429a1cd6c60f52037} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Start\+Can\+Easy@{Start\+Can\+Easy}}
+\index{Start\+Can\+Easy@{Start\+Can\+Easy}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Start\+Can\+Easy()}{StartCanEasy()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Start\+Can\+Easy (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{Can\+Easy\+Installion\+Dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 45 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ad0bab30da2a3b67c624b82c0696d0d22}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ad0bab30da2a3b67c624b82c0696d0d22} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Start\+Simulation@{Start\+Simulation}}
+\index{Start\+Simulation@{Start\+Simulation}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Start\+Simulation()}{StartSimulation()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Start\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 124 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2cdc4ca7e44bb4305455460743cf2496}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a2cdc4ca7e44bb4305455460743cf2496} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Stop\+Can\+Easy@{Stop\+Can\+Easy}}
+\index{Stop\+Can\+Easy@{Stop\+Can\+Easy}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Stop\+Can\+Easy()}{StopCanEasy()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Stop\+Can\+Easy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 109 of file Can\+Easy\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a05dfab9becd44083a684df4e5f263b3d}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a05dfab9becd44083a684df4e5f263b3d} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!Stop\+Simulation@{Stop\+Simulation}}
+\index{Stop\+Simulation@{Stop\+Simulation}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{Stop\+Simulation()}{StopSimulation()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::\+Stop\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 143 of file Can\+Easy\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a263279df123f2f05d2752ccf6c62da18}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a263279df123f2f05d2752ccf6c62da18} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!m\+\_\+\+App@{m\+\_\+\+App}}
+\index{m\+\_\+\+App@{m\+\_\+\+App}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+App}{m\_App}}
+{\footnotesize\ttfamily C\+Com\+Ptr$<$I\+Can\+Easy\+Application$>$ R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::m\+\_\+\+App\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Can\+Easy\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a6bc2ad0752071fe7495bc971946a5a58}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_a6bc2ad0752071fe7495bc971946a5a58} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!m\+\_\+\+Is\+Running@{m\+\_\+\+Is\+Running}}
+\index{m\+\_\+\+Is\+Running@{m\+\_\+\+Is\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Is\+Running}{m\_IsRunning}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::m\+\_\+\+Is\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file Can\+Easy\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ac2ed85324d592c81e797426cef3d600e}{}\label{class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper_ac2ed85324d592c81e797426cef3d600e} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}!m\+\_\+\+Process@{m\+\_\+\+Process}}
+\index{m\+\_\+\+Process@{m\+\_\+\+Process}!R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Process}{m\_Process}}
+{\footnotesize\ttfamily C\+Com\+Ptr$<$I\+Can\+Easy\+Process$>$ R\+W\+::\+C\+O\+R\+E\+::\+Can\+Easy\+Wrapper\+::m\+\_\+\+Process\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file Can\+Easy\+Wrapper.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_can_easy_wrapper_8h}{Can\+Easy\+Wrapper.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_can_easy_wrapper_8cpp}{Can\+Easy\+Wrapper.\+cpp}\end{DoxyCompactItemize}

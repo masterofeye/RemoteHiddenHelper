@@ -1,0 +1,14 @@
+digraph "C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/GeneratedFiles" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_1804a18be0c17af36b21e98eb4016dfa {
+    graph [ bgcolor="#ddddee", pencolor="black", label="RemoteHiddenHelper" fontname="Helvetica", fontsize="10", URL="dir_1804a18be0c17af36b21e98eb4016dfa.html"]
+  subgraph clusterdir_727fae4df33867bdb9b0ced9592f10ed {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_727fae4df33867bdb9b0ced9592f10ed.html"];
+    dir_727fae4df33867bdb9b0ced9592f10ed [shape=plaintext label="GeneratedFiles"];
+    dir_77bd47f01a72a8a8a652f7e2b704fe9c [shape=box label="Debug" color="black" fillcolor="white" style="filled" URL="dir_77bd47f01a72a8a8a652f7e2b704fe9c.html"];
+    dir_b10ee061269c133733cafbe1b8d75be5 [shape=box label="Release" color="black" fillcolor="white" style="filled" URL="dir_b10ee061269c133733cafbe1b8d75be5.html"];
+  }
+  }
+}

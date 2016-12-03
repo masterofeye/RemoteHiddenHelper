@@ -1,0 +1,588 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.12"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RemoteHiddenhelper: RW::CORE::PortalInfo Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RemoteHiddenhelper
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>RW</b></li><li class="navelem"><b>CORE</b></li><li class="navelem"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html">PortalInfo</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-slots">Öffentliche Slots</a> &#124;
+<a href="#pub-methods">Öffentliche Methoden</a> &#124;
+<a href="#pri-slots">Private Slots</a> &#124;
+<a href="#pri-methods">Private Methoden</a> &#124;
+<a href="#pri-attribs">Private Attribute</a> &#124;
+<a href="class_r_w_1_1_c_o_r_e_1_1_portal_info-members.html">Aufstellung aller Elemente</a>  </div>
+  <div class="headertitle">
+<div class="title">RW::CORE::PortalInfo Klassenreferenz</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Sammelt die Informationen zum flasen einen Standes. Ist an sich kein wirkliche Wrapperklassse aber verarbeitet Anfragen, wie eine solche.  
+ <a href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#details">Mehr ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_portal_info_8h_source.html">PortalInfo.h</a>&gt;</code></p>
+<div class="dynheader">
+Klassendiagramm für RW::CORE::PortalInfo:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_r_w_1_1_c_o_r_e_1_1_portal_info.png" usemap="#RW::CORE::PortalInfo_map" alt=""/>
+  <map id="RW::CORE::PortalInfo_map" name="RW::CORE::PortalInfo_map">
+<area href="class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html" alt="RW::CORE::BasicWrapper" shape="rect" coords="0,56,158,80"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
+Öffentliche Slots</h2></td></tr>
+<tr class="memitem:aa564efcfe704d21d9504e57ea76f59b9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#aa564efcfe704d21d9504e57ea76f59b9">OnProcessMessage</a> (Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)</td></tr>
+<tr class="memdesc:aa564efcfe704d21d9504e57ea76f59b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message Verarbeitungsroutine, Alle Nachrichten die vom CommunikationsManager empfangen werden, weden zunächst an diesen Slot geleitet und werden im Anschluss gefiltert. Nachrichten die nicht dem Filter entsprechen werden verworfen.  <a href="#aa564efcfe704d21d9504e57ea76f59b9">Mehr ...</a><br /></td></tr>
+<tr class="separator:aa564efcfe704d21d9504e57ea76f59b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_slots_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper')"><img src="closed.png" alt="-"/>&#160;Öffentliche Slots geerbt von <a class="el" href="class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html">RW::CORE::BasicWrapper</a></td></tr>
+<tr class="memitem:a8541942f3b9c66acbc86c2d4310c622b inherit pub_slots_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memItemLeft" align="right" valign="top"><a id="a8541942f3b9c66acbc86c2d4310c622b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>OnProcessMessage</b> (Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)=0</td></tr>
+<tr class="separator:a8541942f3b9c66acbc86c2d4310c622b inherit pub_slots_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:a9f2c368244ee835c72aae72c40b4dc7f"><td class="memItemLeft" align="right" valign="top"><a id="a9f2c368244ee835c72aae72c40b4dc7f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PortalInfo</b> (QObject *Parent=nullptr)</td></tr>
+<tr class="separator:a9f2c368244ee835c72aae72c40b4dc7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper')"><img src="closed.png" alt="-"/>&#160;Öffentliche Methoden geerbt von <a class="el" href="class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html">RW::CORE::BasicWrapper</a></td></tr>
+<tr class="memitem:a637f4211c459a11dfc5e2564e3e706f8 inherit pub_methods_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memItemLeft" align="right" valign="top"><a id="a637f4211c459a11dfc5e2564e3e706f8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>BasicWrapper</b> (QObject *Parent=nullptr)</td></tr>
+<tr class="separator:a637f4211c459a11dfc5e2564e3e706f8 inherit pub_methods_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-slots"></a>
+Private Slots</h2></td></tr>
+<tr class="memitem:af67bdf39beece4b3fb27c9f1a14ecbd7"><td class="memItemLeft" align="right" valign="top">Util::ErrorID&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#af67bdf39beece4b3fb27c9f1a14ecbd7">FillProjectCombobox</a> ()</td></tr>
+<tr class="memdesc:af67bdf39beece4b3fb27c9f1a14ecbd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Füllt die ComboBox, die die Auswahlmöglichkeit für die Projekte liefer. Dabei wird der Name entsprechend der MR-DB zusammengesetzt.  <a href="#af67bdf39beece4b3fb27c9f1a14ecbd7">Mehr ...</a><br /></td></tr>
+<tr class="separator:af67bdf39beece4b3fb27c9f1a14ecbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f22e04d628d3907cff56e3617dda192"><td class="memItemLeft" align="right" valign="top">Util::ErrorID&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a3f22e04d628d3907cff56e3617dda192">FillSamplePhaseCombobox</a> (const QString &amp;SelectedProject)</td></tr>
+<tr class="memdesc:a3f22e04d628d3907cff56e3617dda192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Füllt die Combobox, die die Auswahlmöglichkeit für die Sample Phase liefert.  <a href="#a3f22e04d628d3907cff56e3617dda192">Mehr ...</a><br /></td></tr>
+<tr class="separator:a3f22e04d628d3907cff56e3617dda192"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f44cdba6c3c3aa901e45d8a503c13f"><td class="memItemLeft" align="right" valign="top">Util::ErrorID&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#ad9f44cdba6c3c3aa901e45d8a503c13f">FillReleaseCombobox</a> (const QString &amp;SelectedSamplePhase)</td></tr>
+<tr class="memdesc:ad9f44cdba6c3c3aa901e45d8a503c13f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Füllt die Combobox, die die Auswahlmöglichkeit für die Release Version liefert.  <a href="#ad9f44cdba6c3c3aa901e45d8a503c13f">Mehr ...</a><br /></td></tr>
+<tr class="separator:ad9f44cdba6c3c3aa901e45d8a503c13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Methoden</h2></td></tr>
+<tr class="memitem:aeb0d50467997e59088be9f5b952916f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#aeb0d50467997e59088be9f5b952916f7">HighlighCheckBoxes</a> ()</td></tr>
+<tr class="memdesc:aeb0d50467997e59088be9f5b952916f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Färbt die Schriftfarbe der Checkbox ein um den User darauf aufmerksam zu machen, das er min. eine Checkboxen makieren sollte.  <a href="#aeb0d50467997e59088be9f5b952916f7">Mehr ...</a><br /></td></tr>
+<tr class="separator:aeb0d50467997e59088be9f5b952916f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f104d772b07f236cb0f8e0c0c46461c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a9f104d772b07f236cb0f8e0c0c46461c">HighlightComboBoxes</a> (QLabel *Highlight)</td></tr>
+<tr class="memdesc:a9f104d772b07f236cb0f8e0c0c46461c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Färbt die Schriftfarbe der Combobox ein um den User darauf aufmerksam zu machen, das er min. eine Checkboxen makieren sollte.  <a href="#a9f104d772b07f236cb0f8e0c0c46461c">Mehr ...</a><br /></td></tr>
+<tr class="separator:a9f104d772b07f236cb0f8e0c0c46461c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76776e5e5e56da7ff882748881a89b65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a76776e5e5e56da7ff882748881a89b65">NormalizeCheckBoxes</a> ()</td></tr>
+<tr class="memdesc:a76776e5e5e56da7ff882748881a89b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setzt die urspürnglichen Eigenschaften der Checkbox, nach einem Highlight Aufruf, wieder zurück.  <a href="#a76776e5e5e56da7ff882748881a89b65">Mehr ...</a><br /></td></tr>
+<tr class="separator:a76776e5e5e56da7ff882748881a89b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d1f3e606e52aa278cadeb7ae8846887"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a6d1f3e606e52aa278cadeb7ae8846887">NormalizeComboBoxes</a> ()</td></tr>
+<tr class="memdesc:a6d1f3e606e52aa278cadeb7ae8846887"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setzt die urspürnglichen Eigenschaften der Combobox, nach einem Highlight Aufruf, wieder zurück.  <a href="#a6d1f3e606e52aa278cadeb7ae8846887">Mehr ...</a><br /></td></tr>
+<tr class="separator:a6d1f3e606e52aa278cadeb7ae8846887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b87b8289b8d980540c3121e2e82b405"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a8b87b8289b8d980540c3121e2e82b405">ShowDialog</a> ()</td></tr>
+<tr class="memdesc:a8b87b8289b8d980540c3121e2e82b405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeigt den Dialog für die Auswahl des Projektes an.  <a href="#a8b87b8289b8d980540c3121e2e82b405">Mehr ...</a><br /></td></tr>
+<tr class="separator:a8b87b8289b8d980540c3121e2e82b405"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ecfa598aff3ba559d65dcb8a78f3715"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a4ecfa598aff3ba559d65dcb8a78f3715">CloseDialog</a> ()</td></tr>
+<tr class="memdesc:a4ecfa598aff3ba559d65dcb8a78f3715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Schließt den Dialog für die Auswahl des Projektes an.  <a href="#a4ecfa598aff3ba559d65dcb8a78f3715">Mehr ...</a><br /></td></tr>
+<tr class="separator:a4ecfa598aff3ba559d65dcb8a78f3715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72c1360fe61113175d39791b18312e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#af72c1360fe61113175d39791b18312e1">Flash</a> ()</td></tr>
+<tr class="memdesc:af72c1360fe61113175d39791b18312e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ließt alle notwendigen Daten aus Steuerelemten aus und emited das Signal für den Abschluss des Arbeitsschrittes.  <a href="#af72c1360fe61113175d39791b18312e1">Mehr ...</a><br /></td></tr>
+<tr class="separator:af72c1360fe61113175d39791b18312e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attribute</h2></td></tr>
+<tr class="memitem:ab377e834cdc7264c3d7f0d7c35c2bc6f"><td class="memItemLeft" align="right" valign="top"><a id="ab377e834cdc7264c3d7f0d7c35c2bc6f"></a>
+QMainWindow *&#160;</td><td class="memItemRight" valign="bottom"><b>m_Dialog</b></td></tr>
+<tr class="separator:ab377e834cdc7264c3d7f0d7c35c2bc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c82ce1d24c210b2e24f6844be8172ff"><td class="memItemLeft" align="right" valign="top"><a id="a8c82ce1d24c210b2e24f6844be8172ff"></a>
+<a class="el" href="class_ui_1_1_remote_hidden_helper_class.html">Ui::RemoteHiddenHelperClass</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_ui</b></td></tr>
+<tr class="separator:a8c82ce1d24c210b2e24f6844be8172ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cf39162f662b4cc27ee32edbe360907"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">FlashInformations</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_portal_info.html#a2cf39162f662b4cc27ee32edbe360907">m_FlashInformationen</a></td></tr>
+<tr class="memdesc:a2cf39162f662b4cc27ee32edbe360907"><td class="mdescLeft">&#160;</td><td class="mdescRight">Datenobjekt welches für die Aufbereitung der Flashinformationen dient. Beinhaltet die Methoden um über das Portal die Informationen zum flashen abzurufen.  <a href="#a2cf39162f662b4cc27ee32edbe360907">Mehr ...</a><br /></td></tr>
+<tr class="separator:a2cf39162f662b4cc27ee32edbe360907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+Weitere Geerbte Elemente</h2></td></tr>
+<tr class="inherit_header signals_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td colspan="2" onclick="javascript:toggleInherit('signals_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper')"><img src="closed.png" alt="-"/>&#160;Signale geerbt von <a class="el" href="class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html">RW::CORE::BasicWrapper</a></td></tr>
+<tr class="memitem:a9c59f7978bd65b16bff623f414fab06f inherit signals_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memItemLeft" align="right" valign="top"><a id="a9c59f7978bd65b16bff623f414fab06f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>NewMessage</b> (Util::Functions Func, Util::ErrorID MessageType, QByteArray <a class="el" href="struct_r_w_1_1_c_o_r_e_1_1___message.html">Message</a>)</td></tr>
+<tr class="separator:a9c59f7978bd65b16bff623f414fab06f inherit signals_class_r_w_1_1_c_o_r_e_1_1_basic_wrapper"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Sammelt die Informationen zum flasen einen Standes. Ist an sich kein wirkliche Wrapperklassse aber verarbeitet Anfragen, wie eine solche. </p>
+<p>Ivo Kunadt </p>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8h_source.html#l00024">24</a> der Datei <a class="el" href="_portal_info_8h_source.html">PortalInfo.h</a>.</p>
+</div><h2 class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a id="a4ecfa598aff3ba559d65dcb8a78f3715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ecfa598aff3ba559d65dcb8a78f3715">&sect;&nbsp;</a></span>CloseDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::CloseDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Schließt den Dialog für die Auswahl des Projektes an. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00092">92</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af67bdf39beece4b3fb27c9f1a14ecbd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af67bdf39beece4b3fb27c9f1a14ecbd7">&sect;&nbsp;</a></span>FillProjectCombobox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Util::ErrorID RW::CORE::PortalInfo::FillProjectCombobox </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Füllt die ComboBox, die die Auswahlmöglichkeit für die Projekte liefer. Dabei wird der Name entsprechend der MR-DB zusammengesetzt. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>Util::ErrorID Status des Ausführungschrittes </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00099">99</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad9f44cdba6c3c3aa901e45d8a503c13f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9f44cdba6c3c3aa901e45d8a503c13f">&sect;&nbsp;</a></span>FillReleaseCombobox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Util::ErrorID RW::CORE::PortalInfo::FillReleaseCombobox </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>SelectedSamplePhase</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Füllt die Combobox, die die Auswahlmöglichkeit für die Release Version liefert. </p>
+<p>Ivo Kunadt </p><dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">SelectedSamplePhase</td><td>Die zuvor aus der SamplePhase Combobox ausgewählte Samplephase. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Util::ErrorID Status des Ausführungschrittes </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00135">135</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a3f22e04d628d3907cff56e3617dda192"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f22e04d628d3907cff56e3617dda192">&sect;&nbsp;</a></span>FillSamplePhaseCombobox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Util::ErrorID RW::CORE::PortalInfo::FillSamplePhaseCombobox </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>SelectedProject</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Füllt die Combobox, die die Auswahlmöglichkeit für die Sample Phase liefert. </p>
+<p>Ivo Kunadt </p><dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">SelectedProject</td><td>Das zuvor aus der Projekt Combobox ausgewählte Projekt. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Util::ErrorID Status des Ausführungschrittes </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00117">117</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af72c1360fe61113175d39791b18312e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72c1360fe61113175d39791b18312e1">&sect;&nbsp;</a></span>Flash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::Flash </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ließt alle notwendigen Daten aus Steuerelemten aus und emited das Signal für den Abschluss des Arbeitsschrittes. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00149">149</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aeb0d50467997e59088be9f5b952916f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb0d50467997e59088be9f5b952916f7">&sect;&nbsp;</a></span>HighlighCheckBoxes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::HighlighCheckBoxes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Färbt die Schriftfarbe der Checkbox ein um den User darauf aufmerksam zu machen, das er min. eine Checkboxen makieren sollte. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00255">255</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a9f104d772b07f236cb0f8e0c0c46461c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f104d772b07f236cb0f8e0c0c46461c">&sect;&nbsp;</a></span>HighlightComboBoxes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::HighlightComboBoxes </td>
+          <td>(</td>
+          <td class="paramtype">QLabel *&#160;</td>
+          <td class="paramname"><em>Highlight</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Färbt die Schriftfarbe der Combobox ein um den User darauf aufmerksam zu machen, das er min. eine Checkboxen makieren sollte. </p>
+<p>Ivo Kunadt </p><dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Highlight</td><td>Das Label welches manipuliert werden soll. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00267">267</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a76776e5e5e56da7ff882748881a89b65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76776e5e5e56da7ff882748881a89b65">&sect;&nbsp;</a></span>NormalizeCheckBoxes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::NormalizeCheckBoxes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Setzt die urspürnglichen Eigenschaften der Checkbox, nach einem Highlight Aufruf, wieder zurück. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00272">272</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6d1f3e606e52aa278cadeb7ae8846887"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d1f3e606e52aa278cadeb7ae8846887">&sect;&nbsp;</a></span>NormalizeComboBoxes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::NormalizeComboBoxes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Setzt die urspürnglichen Eigenschaften der Combobox, nach einem Highlight Aufruf, wieder zurück. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00284">284</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa564efcfe704d21d9504e57ea76f59b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa564efcfe704d21d9504e57ea76f59b9">&sect;&nbsp;</a></span>OnProcessMessage</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::OnProcessMessage </td>
+          <td>(</td>
+          <td class="paramtype">Util::MessageReceiver&#160;</td>
+          <td class="paramname"><em>Type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Util::Functions&#160;</td>
+          <td class="paramname"><em>Func</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"><em>Report</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Message Verarbeitungsroutine, Alle Nachrichten die vom CommunikationsManager empfangen werden, weden zunächst an diesen Slot geleitet und werden im Anschluss gefiltert. Nachrichten die nicht dem Filter entsprechen werden verworfen. </p>
+<p>Ivo Kunadt </p><dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">Type</td><td>Basistype der Nachricht </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Func</td><td>Arbeitsschritt der durchgeführt werden soll </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Report</td><td>Userdaten, die eine oder mehrere Informationen enthalten können. Die Daten werden dabei mit einem QDataStream in die Nachricht geschrieben. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00036">36</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8b87b8289b8d980540c3121e2e82b405"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b87b8289b8d980540c3121e2e82b405">&sect;&nbsp;</a></span>ShowDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RW::CORE::PortalInfo::ShowDialog </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Zeigt den Dialog für die Auswahl des Projektes an. </p>
+<p>Ivo Kunadt </p><dl class="section return"><dt>Rückgabe</dt><dd>void </dd></dl>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8cpp_source.html#l00070">70</a> der Datei <a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="a2cf39162f662b4cc27ee32edbe360907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cf39162f662b4cc27ee32edbe360907">&sect;&nbsp;</a></span>m_FlashInformationen</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">FlashInformations</a>* RW::CORE::PortalInfo::m_FlashInformationen</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Datenobjekt welches für die Aufbereitung der Flashinformationen dient. Beinhaltet die Methoden um über das Portal die Informationen zum flashen abzurufen. </p>
+<p>Ivo Kunadt </p>
+
+<p>Definiert in Zeile <a class="el" href="_portal_info_8h_source.html#l00036">36</a> der Datei <a class="el" href="_portal_info_8h_source.html">PortalInfo.h</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien:<ul>
+<li>C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/<a class="el" href="_portal_info_8h_source.html">PortalInfo.h</a></li>
+<li>C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/<a class="el" href="_portal_info_8cpp_source.html">PortalInfo.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>

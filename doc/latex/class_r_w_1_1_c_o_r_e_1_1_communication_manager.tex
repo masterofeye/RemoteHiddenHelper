@@ -1,0 +1,149 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager}{}\section{RW\+:\+:C\+O\+RE\+:\+:Communication\+Manager Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager}\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+
+
+{\ttfamily \#include $<$Communication\+Manager.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Communication\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_w_1_1_c_o_r_e_1_1_communication_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a7c890fda317487cb2892d728e0b7e131}{On\+Process\+Message\+Answer} (Util\+::\+Functions Func, Util\+::\+Error\+ID Id, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_aae001b1bddaf9c74f20795f6954432b9}{New\+Message} (Util\+::\+Message\+Receiver Type, Util\+::\+Functions Func, Q\+Byte\+Array Report)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a8afb1aacf5b5d582256afdda0d191d91}{Communication\+Manager} (\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler} $\ast$\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler}, Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a4fc7eed7b4e58d01100820e21eb19f57}{$\sim$\+Communication\+Manager} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a3f3cff8fe51bc3eeb7d93d22e5061c06}{On\+Process\+Message} (Util\+::\+Functions Message\+Type, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Byte\+Array \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a496af2c201ed48e14033b640cf78ed3f}{Create\+Message} (Util\+::\+Functions Func, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message}, Util\+::\+Error\+ID Id)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server}{Communication\+Server} $\ast$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ae16c353628da4af164f91c9dd38cefac}{m\+\_\+\+Server}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler} $\ast$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ab4035d32b76f3856ba059bed7261ae85}{m\+\_\+\+Error\+Handler}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file Communication\+Manager.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a8afb1aacf5b5d582256afdda0d191d91}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a8afb1aacf5b5d582256afdda0d191d91} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!Communication\+Manager@{Communication\+Manager}}
+\index{Communication\+Manager@{Communication\+Manager}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{Communication\+Manager()}{CommunicationManager()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::\+Communication\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler} $\ast$}]{Error\+Handler,  }\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 9 of file Communication\+Manager.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a4fc7eed7b4e58d01100820e21eb19f57}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a4fc7eed7b4e58d01100820e21eb19f57} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!````~Communication\+Manager@{$\sim$\+Communication\+Manager}}
+\index{````~Communication\+Manager@{$\sim$\+Communication\+Manager}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{$\sim$\+Communication\+Manager()}{~CommunicationManager()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::$\sim$\+Communication\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file Communication\+Manager.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a496af2c201ed48e14033b640cf78ed3f}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a496af2c201ed48e14033b640cf78ed3f} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!Create\+Message@{Create\+Message}}
+\index{Create\+Message@{Create\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{Create\+Message()}{CreateMessage()}}
+{\footnotesize\ttfamily Q\+Byte\+Array R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::\+Create\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Message,  }\item[{Util\+::\+Error\+ID}]{Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 146 of file Communication\+Manager.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_aae001b1bddaf9c74f20795f6954432b9}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_aae001b1bddaf9c74f20795f6954432b9} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!New\+Message@{New\+Message}}
+\index{New\+Message@{New\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{New\+Message}{NewMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::\+New\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Type,  }\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Report }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Definition at line 148 of file moc\+\_\+\+Communication\+Manager.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a3f3cff8fe51bc3eeb7d93d22e5061c06}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a3f3cff8fe51bc3eeb7d93d22e5061c06} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::\+On\+Process\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Message\+Type,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Definition at line 23 of file Communication\+Manager.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a7c890fda317487cb2892d728e0b7e131}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_a7c890fda317487cb2892d728e0b7e131} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!On\+Process\+Message\+Answer@{On\+Process\+Message\+Answer}}
+\index{On\+Process\+Message\+Answer@{On\+Process\+Message\+Answer}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{On\+Process\+Message\+Answer}{OnProcessMessageAnswer}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::\+On\+Process\+Message\+Answer (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Func,  }\item[{Util\+::\+Error\+ID}]{Id,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Definition at line 132 of file Communication\+Manager.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ab4035d32b76f3856ba059bed7261ae85}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ab4035d32b76f3856ba059bed7261ae85} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!m\+\_\+\+Error\+Handler@{m\+\_\+\+Error\+Handler}}
+\index{m\+\_\+\+Error\+Handler@{m\+\_\+\+Error\+Handler}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Error\+Handler}{m\_ErrorHandler}}
+{\footnotesize\ttfamily \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler}$\ast$ R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::m\+\_\+\+Error\+Handler\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Communication\+Manager.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ae16c353628da4af164f91c9dd38cefac}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_manager_ae16c353628da4af164f91c9dd38cefac} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}!m\+\_\+\+Server@{m\+\_\+\+Server}}
+\index{m\+\_\+\+Server@{m\+\_\+\+Server}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Server}{m\_Server}}
+{\footnotesize\ttfamily \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server}{Communication\+Server}$\ast$ R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Manager\+::m\+\_\+\+Server\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Communication\+Manager.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_communication_manager_8h}{Communication\+Manager.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_communication_manager_8cpp}{Communication\+Manager.\+cpp}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\+Generated\+Files/\+Debug/\hyperlink{_debug_2moc___communication_manager_8cpp}{moc\+\_\+\+Communication\+Manager.\+cpp}\end{DoxyCompactItemize}

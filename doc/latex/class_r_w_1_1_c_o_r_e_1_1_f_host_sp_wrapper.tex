@@ -1,0 +1,200 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper}{}\section{RW\+:\+:C\+O\+RE\+:\+:F\+Host\+Sp\+Wrapper Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper}\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+
+
+{\ttfamily \#include $<$F\+Host\+Sp\+Wrapper.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:F\+Host\+Sp\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a60128d89802ee6ded357d3bfee856625}{On\+Process\+Message} (Util\+::\+Message\+Receiver Type, Util\+::\+Functions Func, Q\+Byte\+Array Report)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ae333b04fe313284ac0a4a7b872e31b83}{F\+Host\+Sp\+Wrapper} (Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d596866de0091d77fbcab7fb557faae}{$\sim$\+F\+Host\+Sp\+Wrapper} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad2daebbd1b0140480d03b31916cd6c35}{Start\+F\+Host\+SP} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_abfbe1c65f2383e10da83dfd1ab5825f0}{Close\+Sequence} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad586b9e7711a788688322ee7d54b0320}{Get\+Progress} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a00ff512e1699742a7908540c11be1e40}{Close\+Application} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad173aae317d00608bc92d826e5befe64}{Get\+State} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad95d9017361d78c466afaf3c2bd391ee}{Abort\+Sequence} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d384a433b333b1f5f7b7465ad138d4c}{Load\+Sequence} (const Q\+File \&Flashfile)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a718318bc9b98f97ff311f8174adfb172}{Start\+Sequence} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+C\+Com\+Ptr$<$ I\+F\+Host\+S\+P\+\_\+\+Remote\+Interface $>$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a85c312c5d8288140d1d2a31fd15946a9}{m\+\_\+\+Process}
+\item 
+std\+::string \hyperlink{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a3760e496eac5633321be3f2345b86b88}{m\+\_\+\+Workspace\+Path}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file F\+Host\+Sp\+Wrapper.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ae333b04fe313284ac0a4a7b872e31b83}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ae333b04fe313284ac0a4a7b872e31b83} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!F\+Host\+Sp\+Wrapper@{F\+Host\+Sp\+Wrapper}}
+\index{F\+Host\+Sp\+Wrapper@{F\+Host\+Sp\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{F\+Host\+Sp\+Wrapper()}{FHostSpWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+F\+Host\+Sp\+Wrapper (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d596866de0091d77fbcab7fb557faae}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d596866de0091d77fbcab7fb557faae} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!````~F\+Host\+Sp\+Wrapper@{$\sim$\+F\+Host\+Sp\+Wrapper}}
+\index{````~F\+Host\+Sp\+Wrapper@{$\sim$\+F\+Host\+Sp\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{$\sim$\+F\+Host\+Sp\+Wrapper()}{~FHostSpWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::$\sim$\+F\+Host\+Sp\+Wrapper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad95d9017361d78c466afaf3c2bd391ee}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad95d9017361d78c466afaf3c2bd391ee} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Abort\+Sequence@{Abort\+Sequence}}
+\index{Abort\+Sequence@{Abort\+Sequence}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Abort\+Sequence()}{AbortSequence()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Abort\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 129 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a00ff512e1699742a7908540c11be1e40}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a00ff512e1699742a7908540c11be1e40} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Close\+Application@{Close\+Application}}
+\index{Close\+Application@{Close\+Application}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Close\+Application()}{CloseApplication()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Close\+Application (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 100 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_abfbe1c65f2383e10da83dfd1ab5825f0}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_abfbe1c65f2383e10da83dfd1ab5825f0} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Close\+Sequence@{Close\+Sequence}}
+\index{Close\+Sequence@{Close\+Sequence}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Close\+Sequence()}{CloseSequence()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Close\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 75 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad586b9e7711a788688322ee7d54b0320}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad586b9e7711a788688322ee7d54b0320} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Get\+Progress@{Get\+Progress}}
+\index{Get\+Progress@{Get\+Progress}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Get\+Progress()}{GetProgress()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Get\+Progress (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad173aae317d00608bc92d826e5befe64}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad173aae317d00608bc92d826e5befe64} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Get\+State@{Get\+State}}
+\index{Get\+State@{Get\+State}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Get\+State()}{GetState()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 111 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d384a433b333b1f5f7b7465ad138d4c}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a5d384a433b333b1f5f7b7465ad138d4c} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Load\+Sequence@{Load\+Sequence}}
+\index{Load\+Sequence@{Load\+Sequence}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Load\+Sequence()}{LoadSequence()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Load\+Sequence (\begin{DoxyParamCaption}\item[{const Q\+File \&}]{Flashfile }\end{DoxyParamCaption})}
+
+
+
+Definition at line 142 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a60128d89802ee6ded357d3bfee856625}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a60128d89802ee6ded357d3bfee856625} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+On\+Process\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Type,  }\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Report }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Definition at line 22 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad2daebbd1b0140480d03b31916cd6c35}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_ad2daebbd1b0140480d03b31916cd6c35} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Start\+F\+Host\+SP@{Start\+F\+Host\+SP}}
+\index{Start\+F\+Host\+SP@{Start\+F\+Host\+SP}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Start\+F\+Host\+S\+P()}{StartFHostSP()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Start\+F\+Host\+SP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a718318bc9b98f97ff311f8174adfb172}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a718318bc9b98f97ff311f8174adfb172} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!Start\+Sequence@{Start\+Sequence}}
+\index{Start\+Sequence@{Start\+Sequence}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{Start\+Sequence()}{StartSequence()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::\+Start\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 188 of file F\+Host\+Sp\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a85c312c5d8288140d1d2a31fd15946a9}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a85c312c5d8288140d1d2a31fd15946a9} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!m\+\_\+\+Process@{m\+\_\+\+Process}}
+\index{m\+\_\+\+Process@{m\+\_\+\+Process}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Process}{m\_Process}}
+{\footnotesize\ttfamily C\+Com\+Ptr$<$I\+F\+Host\+S\+P\+\_\+\+Remote\+Interface$>$ R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::m\+\_\+\+Process\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file F\+Host\+Sp\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a3760e496eac5633321be3f2345b86b88}{}\label{class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper_a3760e496eac5633321be3f2345b86b88} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}!m\+\_\+\+Workspace\+Path@{m\+\_\+\+Workspace\+Path}}
+\index{m\+\_\+\+Workspace\+Path@{m\+\_\+\+Workspace\+Path}!R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Workspace\+Path}{m\_WorkspacePath}}
+{\footnotesize\ttfamily std\+::string R\+W\+::\+C\+O\+R\+E\+::\+F\+Host\+Sp\+Wrapper\+::m\+\_\+\+Workspace\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file F\+Host\+Sp\+Wrapper.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_f_host_sp_wrapper_8h}{F\+Host\+Sp\+Wrapper.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_f_host_sp_wrapper_8cpp}{F\+Host\+Sp\+Wrapper.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.12"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>RemoteHiddenhelper: C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/FlashInformations.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RemoteHiddenhelper
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.8.12 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Suchen');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_1804a18be0c17af36b21e98eb4016dfa.html">RemoteHiddenHelper</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">FlashInformations.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;qobject.h&quot;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Constants.h&quot;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;QT_BEGIN_NAMESPACE</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">class </span>QNetworkRequest;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;QT_END_NAMESPACE</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_r_w.html">RW</a>{</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">namespace </span>CORE</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">   12</a></span>&#160;        <span class="keyword">class </span><a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">FlashInformations</a> :</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;            <span class="keyword">public</span> QObject</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">private</span>:</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            QMultiMap&lt;QString, QString&gt;* m_ReleaseMap;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            QStringList m_ReleaseBuffer;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">FlashInformations</a>(QObject* Parent = <span class="keyword">nullptr</span>);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            ~<a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">FlashInformations</a>();</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">private</span>:</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            QString GetFittingAcByGitHash(QString hash);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            QString GetAcByIcom(uint checksum);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            QString GetReleases();</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            QString WebRequest(QNetworkRequest &amp;Request);</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="comment">/*******************************************************************/</span></div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            Util::ErrorID <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#a80c0651369e180838543d0f125aa56ef">FillReleaseMap</a>();</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">void</span> PrepareProjectInformation();</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">/*******************************************************************/</span></div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            Util::ErrorID <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#acfe7f2e69b85b4a62b7dff2bd2131049">PrepareSamplePhaseInformation</a>(QString SelectedProject, QList&lt;QString&gt; &amp;UniqueSamplePhase);</div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            Util::ErrorID PrepareReleaseInformation(QString SelectedSamplePhase, QString SelectedProject, QList&lt;QString&gt; &amp;UniqueReleaseList);</div><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">public</span>:</div><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            QStringList GetSoftwareById(<span class="keywordtype">int</span> systemId, <span class="keywordtype">bool</span> AC, <span class="keywordtype">bool</span> GC);</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">/*******************************************************************/</span></div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            Util::ErrorID <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#aa811fbcf9e0267f0d211d92a0b359c32">GetUniqueKeys</a>(QList&lt;QString&gt; &amp;UniqueProjects);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="comment">/*******************************************************************/</span></div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            Util::ErrorID <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#a0be370348f9ae51c37d7af7d4a6a660d">GetSamplePhaseList</a>(QString SelectedProject, QList&lt;QString&gt; &amp;UniqueSamplePhase);</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="comment">/*******************************************************************/</span></div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            Util::ErrorID <a class="code" href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#affbc5dd5c41a1417a33ec5490d2b1875">GetReleaseList</a>(QString SelectedSamplePhase, QString SelectedProjec, QList&lt;QString&gt; &amp;UniqueReleaseList);</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            quint16 GetSoftwareID(QString ProjectMain, QString Samplephase, QString Release, QString ProjectConttroller, QString ProjectVariant, QString ProjectModellYear);</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        };</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}   </div><div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html_aa811fbcf9e0267f0d211d92a0b359c32"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#aa811fbcf9e0267f0d211d92a0b359c32">RW::CORE::FlashInformations::GetUniqueKeys</a></div><div class="ttdeci">Util::ErrorID GetUniqueKeys(QList&lt; QString &gt; &amp;UniqueProjects)</div><div class="ttdoc">Gibt eine Liste an Projekten zurück, die aus dem Portal gelesen wurden. </div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8cpp_source.html#l00155">FlashInformations.cpp:155</a></div></div>
+<div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html_affbc5dd5c41a1417a33ec5490d2b1875"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#affbc5dd5c41a1417a33ec5490d2b1875">RW::CORE::FlashInformations::GetReleaseList</a></div><div class="ttdeci">Util::ErrorID GetReleaseList(QString SelectedSamplePhase, QString SelectedProjec, QList&lt; QString &gt; &amp;UniqueReleaseList)</div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8cpp_source.html#l00219">FlashInformations.cpp:219</a></div></div>
+<div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html_a80c0651369e180838543d0f125aa56ef"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#a80c0651369e180838543d0f125aa56ef">RW::CORE::FlashInformations::FillReleaseMap</a></div><div class="ttdeci">Util::ErrorID FillReleaseMap()</div><div class="ttdoc">Übertragt die Releasedaten in eine interne Verwaltungsstruktur. </div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8cpp_source.html#l00116">FlashInformations.cpp:116</a></div></div>
+<div class="ttc" id="namespace_r_w_html"><div class="ttname"><a href="namespace_r_w.html">RW</a></div><div class="ttdef"><b>Definition:</b> <a href="_basic_wrapper_8h_source.html#l00005">BasicWrapper.h:5</a></div></div>
+<div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html_acfe7f2e69b85b4a62b7dff2bd2131049"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#acfe7f2e69b85b4a62b7dff2bd2131049">RW::CORE::FlashInformations::PrepareSamplePhaseInformation</a></div><div class="ttdeci">Util::ErrorID PrepareSamplePhaseInformation(QString SelectedProject, QList&lt; QString &gt; &amp;UniqueSamplePhase)</div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8cpp_source.html#l00169">FlashInformations.cpp:169</a></div></div>
+<div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html">RW::CORE::FlashInformations</a></div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8h_source.html#l00012">FlashInformations.h:12</a></div></div>
+<div class="ttc" id="class_r_w_1_1_c_o_r_e_1_1_flash_informations_html_a0be370348f9ae51c37d7af7d4a6a660d"><div class="ttname"><a href="class_r_w_1_1_c_o_r_e_1_1_flash_informations.html#a0be370348f9ae51c37d7af7d4a6a660d">RW::CORE::FlashInformations::GetSamplePhaseList</a></div><div class="ttdeci">Util::ErrorID GetSamplePhaseList(QString SelectedProject, QList&lt; QString &gt; &amp;UniqueSamplePhase)</div><div class="ttdef"><b>Definition:</b> <a href="_flash_informations_8cpp_source.html#l00193">FlashInformations.cpp:193</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Erzeugt von &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.12
+</small></address>
+</body>
+</html>

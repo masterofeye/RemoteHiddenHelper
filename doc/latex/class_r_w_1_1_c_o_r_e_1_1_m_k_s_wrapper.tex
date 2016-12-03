@@ -1,0 +1,203 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper}{}\section{RW\+:\+:C\+O\+RE\+:\+:M\+K\+S\+Wrapper Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper}\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+
+
+{\ttfamily \#include $<$M\+K\+S\+Wrapper.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:M\+K\+S\+Wrapper\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ad3fa59666812d348b35467c1aa8d02d6}{On\+Process\+Message} (Util\+::\+Message\+Receiver Type, Util\+::\+Functions Func, Q\+Byte\+Array Report)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a003d8db211e3b1f38613b6a886540efb}{M\+K\+S\+Wrapper} (Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a3e40623126c1ac27fa48d0065ed1afab}{$\sim$\+M\+K\+S\+Wrapper} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae6f651398e83b56aca4b9f0da3e417de}{Start\+M\+KS} (Q\+String M\+K\+S\+Location, Q\+String Username, Q\+String Password, Q\+String Server=\char`\"{}ims-\/id\char`\"{}, quint16 Port=7001, Q\+String Proxy=\char`\"{}M\+KS-\/P\+R\+O\+XY\char`\"{}, quint16 Proxy\+Port=7023)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a75d87604a9244ce6e3a41934dd60b28f}{Create\+Sand\+Box} (Q\+String Mks\+Url, Q\+String Destination)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a1f4bcd6096a326fc1329f1d63e207ec3}{Drop\+Sand\+Box} ()
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_af8af87ae9a71d99e47e90b880091a604}{Get\+M\+K\+S\+Link} (Q\+String Mks\+Link)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a29a3be9d63ce87c3c4eaa17ac058c358}{m\+\_\+\+M\+K\+S\+Location}
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae692d4f39fa2ff103a409afd2400bd50}{m\+\_\+\+Server}
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a61772018c0b8e4a38b4576dd93c00949}{m\+\_\+\+Proxy\+Server}
+\item 
+quint16 \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a9f64eb7e96f76b3af19530374954de92}{m\+\_\+\+Proxy\+Port}
+\item 
+quint16 \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a926dfddf01bc5e1815d4172b10733470}{m\+\_\+\+Port}
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a04dc61f3e323398af1c199e2ff044462}{m\+\_\+\+Destination}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file M\+K\+S\+Wrapper.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a003d8db211e3b1f38613b6a886540efb}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a003d8db211e3b1f38613b6a886540efb} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!M\+K\+S\+Wrapper@{M\+K\+S\+Wrapper}}
+\index{M\+K\+S\+Wrapper@{M\+K\+S\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{M\+K\+S\+Wrapper()}{MKSWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+M\+K\+S\+Wrapper (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file M\+K\+S\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a3e40623126c1ac27fa48d0065ed1afab}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a3e40623126c1ac27fa48d0065ed1afab} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!````~M\+K\+S\+Wrapper@{$\sim$\+M\+K\+S\+Wrapper}}
+\index{````~M\+K\+S\+Wrapper@{$\sim$\+M\+K\+S\+Wrapper}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{$\sim$\+M\+K\+S\+Wrapper()}{~MKSWrapper()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::$\sim$\+M\+K\+S\+Wrapper (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file M\+K\+S\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a75d87604a9244ce6e3a41934dd60b28f}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a75d87604a9244ce6e3a41934dd60b28f} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!Create\+Sand\+Box@{Create\+Sand\+Box}}
+\index{Create\+Sand\+Box@{Create\+Sand\+Box}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{Create\+Sand\+Box()}{CreateSandBox()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+Create\+Sand\+Box (\begin{DoxyParamCaption}\item[{Q\+String}]{Mks\+Url,  }\item[{Q\+String}]{Destination }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 231 of file M\+K\+S\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a1f4bcd6096a326fc1329f1d63e207ec3}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a1f4bcd6096a326fc1329f1d63e207ec3} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!Drop\+Sand\+Box@{Drop\+Sand\+Box}}
+\index{Drop\+Sand\+Box@{Drop\+Sand\+Box}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{Drop\+Sand\+Box()}{DropSandBox()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+Drop\+Sand\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 277 of file M\+K\+S\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_af8af87ae9a71d99e47e90b880091a604}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_af8af87ae9a71d99e47e90b880091a604} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!Get\+M\+K\+S\+Link@{Get\+M\+K\+S\+Link}}
+\index{Get\+M\+K\+S\+Link@{Get\+M\+K\+S\+Link}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{Get\+M\+K\+S\+Link()}{GetMKSLink()}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+Get\+M\+K\+S\+Link (\begin{DoxyParamCaption}\item[{Q\+String}]{Mks\+Link }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 293 of file M\+K\+S\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ad3fa59666812d348b35467c1aa8d02d6}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ad3fa59666812d348b35467c1aa8d02d6} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+On\+Process\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Type,  }\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Report }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [slot]}}
+
+
+
+Definition at line 85 of file M\+K\+S\+Wrapper.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae6f651398e83b56aca4b9f0da3e417de}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae6f651398e83b56aca4b9f0da3e417de} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!Start\+M\+KS@{Start\+M\+KS}}
+\index{Start\+M\+KS@{Start\+M\+KS}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{Start\+M\+K\+S()}{StartMKS()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::\+Start\+M\+KS (\begin{DoxyParamCaption}\item[{Q\+String}]{M\+K\+S\+Location,  }\item[{Q\+String}]{Username,  }\item[{Q\+String}]{Password,  }\item[{Q\+String}]{Server = {\ttfamily \char`\"{}ims-\/id\char`\"{}},  }\item[{quint16}]{Port = {\ttfamily 7001},  }\item[{Q\+String}]{Proxy = {\ttfamily \char`\"{}MKS-\/PROXY\char`\"{}},  }\item[{quint16}]{Proxy\+Port = {\ttfamily 7023} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 131 of file M\+K\+S\+Wrapper.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a04dc61f3e323398af1c199e2ff044462}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a04dc61f3e323398af1c199e2ff044462} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+Destination@{m\+\_\+\+Destination}}
+\index{m\+\_\+\+Destination@{m\+\_\+\+Destination}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Destination}{m\_Destination}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+Destination\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 20 of file M\+K\+S\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a29a3be9d63ce87c3c4eaa17ac058c358}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a29a3be9d63ce87c3c4eaa17ac058c358} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+M\+K\+S\+Location@{m\+\_\+\+M\+K\+S\+Location}}
+\index{m\+\_\+\+M\+K\+S\+Location@{m\+\_\+\+M\+K\+S\+Location}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+M\+K\+S\+Location}{m\_MKSLocation}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+M\+K\+S\+Location\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file M\+K\+S\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a926dfddf01bc5e1815d4172b10733470}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a926dfddf01bc5e1815d4172b10733470} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+Port@{m\+\_\+\+Port}}
+\index{m\+\_\+\+Port@{m\+\_\+\+Port}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Port}{m\_Port}}
+{\footnotesize\ttfamily quint16 R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+Port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file M\+K\+S\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a9f64eb7e96f76b3af19530374954de92}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a9f64eb7e96f76b3af19530374954de92} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+Proxy\+Port@{m\+\_\+\+Proxy\+Port}}
+\index{m\+\_\+\+Proxy\+Port@{m\+\_\+\+Proxy\+Port}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Proxy\+Port}{m\_ProxyPort}}
+{\footnotesize\ttfamily quint16 R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+Proxy\+Port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 18 of file M\+K\+S\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a61772018c0b8e4a38b4576dd93c00949}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_a61772018c0b8e4a38b4576dd93c00949} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+Proxy\+Server@{m\+\_\+\+Proxy\+Server}}
+\index{m\+\_\+\+Proxy\+Server@{m\+\_\+\+Proxy\+Server}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Proxy\+Server}{m\_ProxyServer}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+Proxy\+Server\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file M\+K\+S\+Wrapper.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae692d4f39fa2ff103a409afd2400bd50}{}\label{class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper_ae692d4f39fa2ff103a409afd2400bd50} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}!m\+\_\+\+Server@{m\+\_\+\+Server}}
+\index{m\+\_\+\+Server@{m\+\_\+\+Server}!R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper@{R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Server}{m\_Server}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+M\+K\+S\+Wrapper\+::m\+\_\+\+Server\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file M\+K\+S\+Wrapper.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_m_k_s_wrapper_8h}{M\+K\+S\+Wrapper.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_m_k_s_wrapper_8cpp}{M\+K\+S\+Wrapper.\+cpp}\end{DoxyCompactItemize}

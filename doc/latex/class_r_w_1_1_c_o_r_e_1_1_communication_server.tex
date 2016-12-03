@@ -1,0 +1,194 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server}{}\section{RW\+:\+:C\+O\+RE\+:\+:Communication\+Server Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_communication_server}\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+
+
+{\ttfamily \#include $<$Communication\+Server.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Communication\+Server\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_w_1_1_c_o_r_e_1_1_communication_server}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a623ab8380a69de4f849c284e808b30c0}{On\+Process\+Message} (Util\+::\+Message\+Receiver Type, Util\+::\+Functions Func, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a44354b19e6c0aad3f462904978b671a3}{New\+Message} (Util\+::\+Functions Message\+Type, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a8b4be098b0e453dd10e717788dfd12b6}{Communication\+Server} (Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a924f4957db6e0ae05d20520cdbc7e775}{$\sim$\+Communication\+Server} ()
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a202a8635256a2ce503019a664917b095}{Init} ()
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_ac7b0fd62b6071c494f132e1a9e312604}{De\+Init} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_ad26258ff2481b68cec6d80e78e0a5c7d}{On\+New\+Connection} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_ae204445cecf0ff7a01409bd34a127f61}{On\+Client\+Disconnected} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a1d852ba8f1b04e0e2e49b369c0f1d32d}{On\+Client\+Socket\+Error} (Q\+Local\+Socket\+::\+Local\+Socket\+Error socket\+Error)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_abdbb4f3eeced8215b50e75fdd93d62af}{On\+Data\+Available} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a731de143323e7949781411506ed57891}{Send\+Message} (Q\+Byte\+Array Report)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Local\+Socket $\ast$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_communication_server_a00d7ca97061231176a915058cf71d794}{m\+\_\+\+Client}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Communication\+Server.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a8b4be098b0e453dd10e717788dfd12b6}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a8b4be098b0e453dd10e717788dfd12b6} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!Communication\+Server@{Communication\+Server}}
+\index{Communication\+Server@{Communication\+Server}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{Communication\+Server()}{CommunicationServer()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+Communication\+Server (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a924f4957db6e0ae05d20520cdbc7e775}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a924f4957db6e0ae05d20520cdbc7e775} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!````~Communication\+Server@{$\sim$\+Communication\+Server}}
+\index{````~Communication\+Server@{$\sim$\+Communication\+Server}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{$\sim$\+Communication\+Server()}{~CommunicationServer()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::$\sim$\+Communication\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Communication\+Server.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_ac7b0fd62b6071c494f132e1a9e312604}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_ac7b0fd62b6071c494f132e1a9e312604} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!De\+Init@{De\+Init}}
+\index{De\+Init@{De\+Init}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{De\+Init()}{DeInit()}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+De\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a202a8635256a2ce503019a664917b095}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a202a8635256a2ce503019a664917b095} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!Init@{Init}}
+\index{Init@{Init}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a44354b19e6c0aad3f462904978b671a3}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a44354b19e6c0aad3f462904978b671a3} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!New\+Message@{New\+Message}}
+\index{New\+Message@{New\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{New\+Message}{NewMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+New\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Message\+Type,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Definition at line 139 of file moc\+\_\+\+Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_ae204445cecf0ff7a01409bd34a127f61}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_ae204445cecf0ff7a01409bd34a127f61} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!On\+Client\+Disconnected@{On\+Client\+Disconnected}}
+\index{On\+Client\+Disconnected@{On\+Client\+Disconnected}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{On\+Client\+Disconnected()}{OnClientDisconnected()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+On\+Client\+Disconnected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 58 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a1d852ba8f1b04e0e2e49b369c0f1d32d}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a1d852ba8f1b04e0e2e49b369c0f1d32d} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!On\+Client\+Socket\+Error@{On\+Client\+Socket\+Error}}
+\index{On\+Client\+Socket\+Error@{On\+Client\+Socket\+Error}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{On\+Client\+Socket\+Error()}{OnClientSocketError()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+On\+Client\+Socket\+Error (\begin{DoxyParamCaption}\item[{Q\+Local\+Socket\+::\+Local\+Socket\+Error}]{socket\+Error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 55 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_abdbb4f3eeced8215b50e75fdd93d62af}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_abdbb4f3eeced8215b50e75fdd93d62af} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!On\+Data\+Available@{On\+Data\+Available}}
+\index{On\+Data\+Available@{On\+Data\+Available}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{On\+Data\+Available()}{OnDataAvailable()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+On\+Data\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 63 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_ad26258ff2481b68cec6d80e78e0a5c7d}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_ad26258ff2481b68cec6d80e78e0a5c7d} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!On\+New\+Connection@{On\+New\+Connection}}
+\index{On\+New\+Connection@{On\+New\+Connection}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{On\+New\+Connection()}{OnNewConnection()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+On\+New\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 46 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a623ab8380a69de4f849c284e808b30c0}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a623ab8380a69de4f849c284e808b30c0} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!On\+Process\+Message@{On\+Process\+Message}}
+\index{On\+Process\+Message@{On\+Process\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{On\+Process\+Message}{OnProcessMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+On\+Process\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Type,  }\item[{Util\+::\+Functions}]{Func,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Definition at line 76 of file Communication\+Server.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a731de143323e7949781411506ed57891}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a731de143323e7949781411506ed57891} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!Send\+Message@{Send\+Message}}
+\index{Send\+Message@{Send\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{Send\+Message()}{SendMessage()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::\+Send\+Message (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{Report }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 85 of file Communication\+Server.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_communication_server_a00d7ca97061231176a915058cf71d794}{}\label{class_r_w_1_1_c_o_r_e_1_1_communication_server_a00d7ca97061231176a915058cf71d794} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}!m\+\_\+\+Client@{m\+\_\+\+Client}}
+\index{m\+\_\+\+Client@{m\+\_\+\+Client}!R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server@{R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Client}{m\_Client}}
+{\footnotesize\ttfamily Q\+Local\+Socket$\ast$ R\+W\+::\+C\+O\+R\+E\+::\+Communication\+Server\+::m\+\_\+\+Client\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Communication\+Server.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_communication_server_8h}{Communication\+Server.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_communication_server_8cpp}{Communication\+Server.\+cpp}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\+Generated\+Files/\+Debug/\hyperlink{_debug_2moc___communication_server_8cpp}{moc\+\_\+\+Communication\+Server.\+cpp}\end{DoxyCompactItemize}

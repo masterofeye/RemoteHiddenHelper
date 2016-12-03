@@ -1,0 +1,210 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler}{}\section{RW\+:\+:C\+O\+RE\+:\+:Error\+Handler Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_error_handler}\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+
+
+{\ttfamily \#include $<$Error\+Handler.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Error\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_w_1_1_c_o_r_e_1_1_error_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7e93cff1de31d52deb41eb509730b2f0}{On\+Process\+Message\+Answer} (Util\+::\+Functions Func, Util\+::\+Error\+ID Id, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_ad85d6dc6e06eec5d8709969600fbf059}{New\+Message} (Util\+::\+Message\+Receiver Receiver, Util\+::\+Functions Message\+Type, Q\+Byte\+Array \hyperlink{namespace_r_w_1_1_c_o_r_e_a571834b44d0e3fab58aa6abfe5a02988}{Message})
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a094d83179b751152eb56cecb5548ff47}{Error\+Handler} (Q\+Object $\ast$Parent)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a600852f08871a018da65f523ace50bc2}{$\sim$\+Error\+Handler} ()
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a63b57c30d5d7b4b2ce7c0b65ee64e627}{Is\+Busy} ()
+\begin{DoxyCompactList}\small\item\em Is\+Busy zeigt an ob der \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler} noch dabei ist, vorangegange Prozesse zu beenden. \end{DoxyCompactList}\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a43a98f148cdb6b07775e2e44a631b411}{Is\+Busy} (Util\+::\+Message\+Receiver Receiver)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a1045b5b8cfce6f8476c4c61b6c797509}{Set\+Mks\+Running} (bool Running)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_ae068accee78e011ae187df1e05b7c9e6}{Set\+Can\+Easy\+Running} (bool Running)
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a838abbf533ba65c7f51266507e9d256a}{Set\+F\+Host\+Sp\+Running} (bool Running)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7356ddc63cc1accf1e81c7a8ebb62187}{Print\+Debug\+Information} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_acd15489cf612e45395d48c6054579380}{m\+\_\+\+Is\+M\+K\+S\+Running}
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_a430b5c523f3b9fc33d49ff3c0c440db4}{m\+\_\+\+Is\+Can\+Easy\+Running}
+\item 
+bool \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler_afbf39dd927a052468bbf9792981e73c1}{m\+\_\+\+Is\+F\+Host\+S\+P\+Running}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file Error\+Handler.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a094d83179b751152eb56cecb5548ff47}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a094d83179b751152eb56cecb5548ff47} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Error\+Handler@{Error\+Handler}}
+\index{Error\+Handler@{Error\+Handler}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Error\+Handler()}{ErrorHandler()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Error\+Handler (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent }\end{DoxyParamCaption})}
+
+
+
+Definition at line 8 of file Error\+Handler.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a600852f08871a018da65f523ace50bc2}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a600852f08871a018da65f523ace50bc2} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!````~Error\+Handler@{$\sim$\+Error\+Handler}}
+\index{````~Error\+Handler@{$\sim$\+Error\+Handler}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{$\sim$\+Error\+Handler()}{~ErrorHandler()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::$\sim$\+Error\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Error\+Handler.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a63b57c30d5d7b4b2ce7c0b65ee64e627}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a63b57c30d5d7b4b2ce7c0b65ee64e627} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Is\+Busy@{Is\+Busy}}
+\index{Is\+Busy@{Is\+Busy}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Is\+Busy()}{IsBusy()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Is\+Busy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Is\+Busy zeigt an ob der \hyperlink{class_r_w_1_1_c_o_r_e_1_1_error_handler}{Error\+Handler} noch dabei ist, vorangegange Prozesse zu beenden. 
+
+
+
+Definition at line 28 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a43a98f148cdb6b07775e2e44a631b411}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a43a98f148cdb6b07775e2e44a631b411} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Is\+Busy@{Is\+Busy}}
+\index{Is\+Busy@{Is\+Busy}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Is\+Busy()}{IsBusy()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Is\+Busy (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Receiver }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 34 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_ad85d6dc6e06eec5d8709969600fbf059}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_ad85d6dc6e06eec5d8709969600fbf059} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!New\+Message@{New\+Message}}
+\index{New\+Message@{New\+Message}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{New\+Message}{NewMessage}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+New\+Message (\begin{DoxyParamCaption}\item[{Util\+::\+Message\+Receiver}]{Receiver,  }\item[{Util\+::\+Functions}]{Message\+Type,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [signal]}}
+
+
+
+Definition at line 142 of file moc\+\_\+\+Error\+Handler.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7e93cff1de31d52deb41eb509730b2f0}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7e93cff1de31d52deb41eb509730b2f0} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!On\+Process\+Message\+Answer@{On\+Process\+Message\+Answer}}
+\index{On\+Process\+Message\+Answer@{On\+Process\+Message\+Answer}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{On\+Process\+Message\+Answer}{OnProcessMessageAnswer}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+On\+Process\+Message\+Answer (\begin{DoxyParamCaption}\item[{Util\+::\+Functions}]{Func,  }\item[{Util\+::\+Error\+ID}]{Id,  }\item[{Q\+Byte\+Array}]{Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Definition at line 29 of file Error\+Handler.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7356ddc63cc1accf1e81c7a8ebb62187}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a7356ddc63cc1accf1e81c7a8ebb62187} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Print\+Debug\+Information@{Print\+Debug\+Information}}
+\index{Print\+Debug\+Information@{Print\+Debug\+Information}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Print\+Debug\+Information()}{PrintDebugInformation()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Print\+Debug\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file Error\+Handler.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_ae068accee78e011ae187df1e05b7c9e6}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_ae068accee78e011ae187df1e05b7c9e6} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Set\+Can\+Easy\+Running@{Set\+Can\+Easy\+Running}}
+\index{Set\+Can\+Easy\+Running@{Set\+Can\+Easy\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Set\+Can\+Easy\+Running()}{SetCanEasyRunning()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Set\+Can\+Easy\+Running (\begin{DoxyParamCaption}\item[{bool}]{Running }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 53 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a838abbf533ba65c7f51266507e9d256a}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a838abbf533ba65c7f51266507e9d256a} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Set\+F\+Host\+Sp\+Running@{Set\+F\+Host\+Sp\+Running}}
+\index{Set\+F\+Host\+Sp\+Running@{Set\+F\+Host\+Sp\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Set\+F\+Host\+Sp\+Running()}{SetFHostSpRunning()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Set\+F\+Host\+Sp\+Running (\begin{DoxyParamCaption}\item[{bool}]{Running }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 54 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a1045b5b8cfce6f8476c4c61b6c797509}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a1045b5b8cfce6f8476c4c61b6c797509} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!Set\+Mks\+Running@{Set\+Mks\+Running}}
+\index{Set\+Mks\+Running@{Set\+Mks\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{Set\+Mks\+Running()}{SetMksRunning()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::\+Set\+Mks\+Running (\begin{DoxyParamCaption}\item[{bool}]{Running }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 52 of file Error\+Handler.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_a430b5c523f3b9fc33d49ff3c0c440db4}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_a430b5c523f3b9fc33d49ff3c0c440db4} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!m\+\_\+\+Is\+Can\+Easy\+Running@{m\+\_\+\+Is\+Can\+Easy\+Running}}
+\index{m\+\_\+\+Is\+Can\+Easy\+Running@{m\+\_\+\+Is\+Can\+Easy\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Is\+Can\+Easy\+Running}{m\_IsCanEasyRunning}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::m\+\_\+\+Is\+Can\+Easy\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 15 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_afbf39dd927a052468bbf9792981e73c1}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_afbf39dd927a052468bbf9792981e73c1} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!m\+\_\+\+Is\+F\+Host\+S\+P\+Running@{m\+\_\+\+Is\+F\+Host\+S\+P\+Running}}
+\index{m\+\_\+\+Is\+F\+Host\+S\+P\+Running@{m\+\_\+\+Is\+F\+Host\+S\+P\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Is\+F\+Host\+S\+P\+Running}{m\_IsFHostSPRunning}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::m\+\_\+\+Is\+F\+Host\+S\+P\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Error\+Handler.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_error_handler_acd15489cf612e45395d48c6054579380}{}\label{class_r_w_1_1_c_o_r_e_1_1_error_handler_acd15489cf612e45395d48c6054579380} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}!m\+\_\+\+Is\+M\+K\+S\+Running@{m\+\_\+\+Is\+M\+K\+S\+Running}}
+\index{m\+\_\+\+Is\+M\+K\+S\+Running@{m\+\_\+\+Is\+M\+K\+S\+Running}!R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler@{R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Is\+M\+K\+S\+Running}{m\_IsMKSRunning}}
+{\footnotesize\ttfamily bool R\+W\+::\+C\+O\+R\+E\+::\+Error\+Handler\+::m\+\_\+\+Is\+M\+K\+S\+Running\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 14 of file Error\+Handler.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_error_handler_8h}{Error\+Handler.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_error_handler_8cpp}{Error\+Handler.\+cpp}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\+Generated\+Files/\+Debug/\hyperlink{moc___error_handler_8cpp}{moc\+\_\+\+Error\+Handler.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,247 @@
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations}{}\section{RW\+:\+:C\+O\+RE\+:\+:Flash\+Informations Class Reference}
+\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations}\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+
+
+{\ttfamily \#include $<$Flash\+Informations.\+h$>$}
+
+Inheritance diagram for RW\+:\+:C\+O\+RE\+:\+:Flash\+Informations\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_r_w_1_1_c_o_r_e_1_1_flash_informations}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a4633cccd76bbe9dd83d59b364c5d05f8}{Flash\+Informations} (Q\+Object $\ast$Parent=nullptr)
+\item 
+\hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_ac734d4d58ff3dea7dcdc5c7be4a9f7b6}{$\sim$\+Flash\+Informations} ()
+\item 
+Q\+String\+List \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54957a74376f4d9481b6e4a72ebd5aa9}{Get\+Software\+By\+Id} (int system\+Id, bool AC, bool GC)
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa811fbcf9e0267f0d211d92a0b359c32}{Get\+Unique\+Keys} (Q\+List$<$ Q\+String $>$ \&Unique\+Projects)
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a0be370348f9ae51c37d7af7d4a6a660d}{Get\+Sample\+Phase\+List} (Q\+String Selected\+Project, Q\+List$<$ Q\+String $>$ \&Unique\+Sample\+Phase)
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_affbc5dd5c41a1417a33ec5490d2b1875}{Get\+Release\+List} (Q\+String Selected\+Sample\+Phase, Q\+String Selected\+Projec, Q\+List$<$ Q\+String $>$ \&Unique\+Release\+List)
+\item 
+quint16 \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a033177c5ea7b1b56ca7eac10f781c80b}{Get\+Software\+ID} (Q\+String Project\+Main, Q\+String Samplephase, Q\+String Release, Q\+String Project\+Conttroller, Q\+String Project\+Variant, Q\+String Project\+Modell\+Year)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54a1ad5f711dd80d570e1d93ae205bd3}{Get\+Fitting\+Ac\+By\+Git\+Hash} (Q\+String hash)
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a55b9f9803354a19f3f43e21590389a64}{Get\+Ac\+By\+Icom} (uint checksum)
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a3821e59e8bab2cbef251fc05fa070811}{Get\+Releases} ()
+\item 
+Q\+String \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a1584d6557b93628bc86db88af13d0d4b}{Web\+Request} (Q\+Network\+Request \&Request)
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a80c0651369e180838543d0f125aa56ef}{Fill\+Release\+Map} ()
+\item 
+void \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa637abd5665ab3253c28b2f56552df4a}{Prepare\+Project\+Information} ()
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_acfe7f2e69b85b4a62b7dff2bd2131049}{Prepare\+Sample\+Phase\+Information} (Q\+String Selected\+Project, Q\+List$<$ Q\+String $>$ \&Unique\+Sample\+Phase)
+\item 
+Util\+::\+Error\+ID \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a02e53be6cd2fddc476129dde406ca241}{Prepare\+Release\+Information} (Q\+String Selected\+Sample\+Phase, Q\+String Selected\+Project, Q\+List$<$ Q\+String $>$ \&Unique\+Release\+List)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Multi\+Map$<$ Q\+String, Q\+String $>$ $\ast$ \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a710529bd946b8189fae80e14c1c74599}{m\+\_\+\+Release\+Map}
+\item 
+Q\+String\+List \hyperlink{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a03b8c748a630e47e5310ba4bbd8bd3fa}{m\+\_\+\+Release\+Buffer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Flash\+Informations.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a4633cccd76bbe9dd83d59b364c5d05f8}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a4633cccd76bbe9dd83d59b364c5d05f8} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Flash\+Informations@{Flash\+Informations}}
+\index{Flash\+Informations@{Flash\+Informations}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Flash\+Informations()}{FlashInformations()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Flash\+Informations (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{Parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_ac734d4d58ff3dea7dcdc5c7be4a9f7b6}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_ac734d4d58ff3dea7dcdc5c7be4a9f7b6} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!````~Flash\+Informations@{$\sim$\+Flash\+Informations}}
+\index{````~Flash\+Informations@{$\sim$\+Flash\+Informations}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{$\sim$\+Flash\+Informations()}{~FlashInformations()}}
+{\footnotesize\ttfamily R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::$\sim$\+Flash\+Informations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Flash\+Informations.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a80c0651369e180838543d0f125aa56ef}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a80c0651369e180838543d0f125aa56ef} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Fill\+Release\+Map@{Fill\+Release\+Map}}
+\index{Fill\+Release\+Map@{Fill\+Release\+Map}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Fill\+Release\+Map()}{FillReleaseMap()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Fill\+Release\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 116 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a55b9f9803354a19f3f43e21590389a64}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a55b9f9803354a19f3f43e21590389a64} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Ac\+By\+Icom@{Get\+Ac\+By\+Icom}}
+\index{Get\+Ac\+By\+Icom@{Get\+Ac\+By\+Icom}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Ac\+By\+Icom()}{GetAcByIcom()}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Ac\+By\+Icom (\begin{DoxyParamCaption}\item[{uint}]{checksum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 80 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54a1ad5f711dd80d570e1d93ae205bd3}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54a1ad5f711dd80d570e1d93ae205bd3} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Fitting\+Ac\+By\+Git\+Hash@{Get\+Fitting\+Ac\+By\+Git\+Hash}}
+\index{Get\+Fitting\+Ac\+By\+Git\+Hash@{Get\+Fitting\+Ac\+By\+Git\+Hash}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Fitting\+Ac\+By\+Git\+Hash()}{GetFittingAcByGitHash()}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Fitting\+Ac\+By\+Git\+Hash (\begin{DoxyParamCaption}\item[{Q\+String}]{hash }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 73 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_affbc5dd5c41a1417a33ec5490d2b1875}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_affbc5dd5c41a1417a33ec5490d2b1875} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Release\+List@{Get\+Release\+List}}
+\index{Get\+Release\+List@{Get\+Release\+List}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Release\+List()}{GetReleaseList()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Release\+List (\begin{DoxyParamCaption}\item[{Q\+String}]{Selected\+Sample\+Phase,  }\item[{Q\+String}]{Selected\+Projec,  }\item[{Q\+List$<$ Q\+String $>$ \&}]{Unique\+Release\+List }\end{DoxyParamCaption})}
+
+
+
+Definition at line 219 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a3821e59e8bab2cbef251fc05fa070811}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a3821e59e8bab2cbef251fc05fa070811} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Releases@{Get\+Releases}}
+\index{Get\+Releases@{Get\+Releases}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Releases()}{GetReleases()}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Releases (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 87 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a0be370348f9ae51c37d7af7d4a6a660d}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a0be370348f9ae51c37d7af7d4a6a660d} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Sample\+Phase\+List@{Get\+Sample\+Phase\+List}}
+\index{Get\+Sample\+Phase\+List@{Get\+Sample\+Phase\+List}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Sample\+Phase\+List()}{GetSamplePhaseList()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Sample\+Phase\+List (\begin{DoxyParamCaption}\item[{Q\+String}]{Selected\+Project,  }\item[{Q\+List$<$ Q\+String $>$ \&}]{Unique\+Sample\+Phase }\end{DoxyParamCaption})}
+
+
+
+Definition at line 193 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54957a74376f4d9481b6e4a72ebd5aa9}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a54957a74376f4d9481b6e4a72ebd5aa9} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Software\+By\+Id@{Get\+Software\+By\+Id}}
+\index{Get\+Software\+By\+Id@{Get\+Software\+By\+Id}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Software\+By\+Id()}{GetSoftwareById()}}
+{\footnotesize\ttfamily Q\+String\+List R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Software\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{system\+Id,  }\item[{bool}]{AC,  }\item[{bool}]{GC }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a033177c5ea7b1b56ca7eac10f781c80b}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a033177c5ea7b1b56ca7eac10f781c80b} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Software\+ID@{Get\+Software\+ID}}
+\index{Get\+Software\+ID@{Get\+Software\+ID}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Software\+I\+D()}{GetSoftwareID()}}
+{\footnotesize\ttfamily quint16 R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Software\+ID (\begin{DoxyParamCaption}\item[{Q\+String}]{Project\+Main,  }\item[{Q\+String}]{Samplephase,  }\item[{Q\+String}]{Release,  }\item[{Q\+String}]{Project\+Conttroller,  }\item[{Q\+String}]{Project\+Variant,  }\item[{Q\+String}]{Project\+Modell\+Year }\end{DoxyParamCaption})}
+
+
+
+Definition at line 230 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa811fbcf9e0267f0d211d92a0b359c32}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa811fbcf9e0267f0d211d92a0b359c32} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Get\+Unique\+Keys@{Get\+Unique\+Keys}}
+\index{Get\+Unique\+Keys@{Get\+Unique\+Keys}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Get\+Unique\+Keys()}{GetUniqueKeys()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Get\+Unique\+Keys (\begin{DoxyParamCaption}\item[{Q\+List$<$ Q\+String $>$ \&}]{Unique\+Projects }\end{DoxyParamCaption})}
+
+
+
+Definition at line 155 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa637abd5665ab3253c28b2f56552df4a}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_aa637abd5665ab3253c28b2f56552df4a} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Prepare\+Project\+Information@{Prepare\+Project\+Information}}
+\index{Prepare\+Project\+Information@{Prepare\+Project\+Information}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Prepare\+Project\+Information()}{PrepareProjectInformation()}}
+{\footnotesize\ttfamily void R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Prepare\+Project\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 105 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a02e53be6cd2fddc476129dde406ca241}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a02e53be6cd2fddc476129dde406ca241} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Prepare\+Release\+Information@{Prepare\+Release\+Information}}
+\index{Prepare\+Release\+Information@{Prepare\+Release\+Information}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Prepare\+Release\+Information()}{PrepareReleaseInformation()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Prepare\+Release\+Information (\begin{DoxyParamCaption}\item[{Q\+String}]{Selected\+Sample\+Phase,  }\item[{Q\+String}]{Selected\+Project,  }\item[{Q\+List$<$ Q\+String $>$ \&}]{Unique\+Release\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 198 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_acfe7f2e69b85b4a62b7dff2bd2131049}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_acfe7f2e69b85b4a62b7dff2bd2131049} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Prepare\+Sample\+Phase\+Information@{Prepare\+Sample\+Phase\+Information}}
+\index{Prepare\+Sample\+Phase\+Information@{Prepare\+Sample\+Phase\+Information}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Prepare\+Sample\+Phase\+Information()}{PrepareSamplePhaseInformation()}}
+{\footnotesize\ttfamily Util\+::\+Error\+ID R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Prepare\+Sample\+Phase\+Information (\begin{DoxyParamCaption}\item[{Q\+String}]{Selected\+Project,  }\item[{Q\+List$<$ Q\+String $>$ \&}]{Unique\+Sample\+Phase }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 169 of file Flash\+Informations.\+cpp.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a1584d6557b93628bc86db88af13d0d4b}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a1584d6557b93628bc86db88af13d0d4b} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!Web\+Request@{Web\+Request}}
+\index{Web\+Request@{Web\+Request}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{Web\+Request()}{WebRequest()}}
+{\footnotesize\ttfamily Q\+String R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::\+Web\+Request (\begin{DoxyParamCaption}\item[{Q\+Network\+Request \&}]{Request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 47 of file Flash\+Informations.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a03b8c748a630e47e5310ba4bbd8bd3fa}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a03b8c748a630e47e5310ba4bbd8bd3fa} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!m\+\_\+\+Release\+Buffer@{m\+\_\+\+Release\+Buffer}}
+\index{m\+\_\+\+Release\+Buffer@{m\+\_\+\+Release\+Buffer}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Release\+Buffer}{m\_ReleaseBuffer}}
+{\footnotesize\ttfamily Q\+String\+List R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::m\+\_\+\+Release\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 17 of file Flash\+Informations.\+h.
+
+\hypertarget{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a710529bd946b8189fae80e14c1c74599}{}\label{class_r_w_1_1_c_o_r_e_1_1_flash_informations_a710529bd946b8189fae80e14c1c74599} 
+\index{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}!m\+\_\+\+Release\+Map@{m\+\_\+\+Release\+Map}}
+\index{m\+\_\+\+Release\+Map@{m\+\_\+\+Release\+Map}!R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations@{R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations}}
+\subsubsection{\texorpdfstring{m\+\_\+\+Release\+Map}{m\_ReleaseMap}}
+{\footnotesize\ttfamily Q\+Multi\+Map$<$Q\+String, Q\+String$>$$\ast$ R\+W\+::\+C\+O\+R\+E\+::\+Flash\+Informations\+::m\+\_\+\+Release\+Map\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 16 of file Flash\+Informations.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_flash_informations_8h}{Flash\+Informations.\+h}\item 
+C\+:/\+Projekte/\+Remote\+Repros/\+Remote\+Hidden\+Helper/\+Remote\+Hidden\+Helper/\hyperlink{_flash_informations_8cpp}{Flash\+Informations.\+cpp}\end{DoxyCompactItemize}

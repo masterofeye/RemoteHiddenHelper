@@ -1,0 +1,33 @@
+digraph "C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/MKSWrapper.cpp"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="C:/Projekte/RemoteRepros\l/RemoteHiddenHelper/RemoteHidden\lHelper/MKSWrapper.cpp",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="MKSWrapper.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_m_k_s_wrapper_8h.html"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="BasicWrapper.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_basic_wrapper_8h.html"];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="qobject.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="Constants.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_constants_8h.html"];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node0 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="qfile.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="qprocess.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="QDatastream",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="qapplication.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="qcursor.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="QMouseEvent",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="qthread.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node12 [color="midnightblue",fontsize="10",style="solid"];
+  Node12 [label="windows.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node0 -> Node13 [color="midnightblue",fontsize="10",style="solid"];
+  Node13 [label="tchar.h",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+}

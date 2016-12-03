@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="RemoteHiddenHelper">
+      <file alias="helper.png">Resources/helper.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,41 @@
+digraph "RW::CORE::ProcessManager"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node2 [label="RW::CORE::ProcessManager",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="QObject",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node4 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ErrorHandler" ];
+  Node4 [label="RW::CORE::ErrorHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_error_handler.html"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_MKS" ];
+  Node5 [label="RW::CORE::MKSWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_m_k_s_wrapper.html"];
+  Node6 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="RW::CORE::BasicWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_basic_wrapper.html"];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_FHostSP" ];
+  Node7 [label="RW::CORE::FHostSpWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_f_host_sp_wrapper.html"];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_CommManager" ];
+  Node8 [label="RW::CORE::CommunicationManager",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_communication_manager.html"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ErrorHandler" ];
+  Node9 -> Node8 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_Server" ];
+  Node9 [label="RW::CORE::CommunicationServer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_communication_server.html"];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="QLocalServer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
+  Node11 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_CanEasy" ];
+  Node11 [label="RW::CORE::CanEasyWrapper",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_can_easy_wrapper.html"];
+  Node6 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node12 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_PortalInfo" ];
+  Node12 [label="RW::CORE::PortalInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_portal_info.html"];
+  Node6 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node13 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_ui" ];
+  Node13 [label="Ui::RemoteHiddenHelperClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ui_1_1_remote_hidden_helper_class.html"];
+  Node14 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node14 [label="Ui_RemoteHiddenHelperClass",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_ui___remote_hidden_helper_class.html"];
+  Node15 -> Node12 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_FlashInformationen" ];
+  Node15 [label="RW::CORE::FlashInformations",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_r_w_1_1_c_o_r_e_1_1_flash_informations.html"];
+  Node3 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+}
