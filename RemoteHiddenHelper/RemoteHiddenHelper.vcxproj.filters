@@ -154,6 +154,15 @@
     <ClCompile Include="main.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DragWidget.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="DragWidget.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DragWidget.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
@@ -197,6 +206,9 @@
     </CustomBuild>
     <CustomBuild Include="Constants.h">
       <Filter>Adminstration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="DragWidget.h">
+      <Filter>GUI</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,8 @@ namespace RW{
         ErrorHandler::ErrorHandler(QObject* Parent) : QObject(Parent), 
             m_IsCanEasyRunning(false),
             m_IsFHostSPRunning(false),
-            m_IsMKSRunning(false)
+            m_IsMKSRunning(false),
+			m_IsPortalInfoRunning(false)
         {
         }
 

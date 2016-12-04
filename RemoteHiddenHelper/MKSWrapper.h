@@ -35,10 +35,38 @@ namespace RW{
 			********************************************************************************************************************/
 			virtual void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
 		private: 
+			/*****************************************************************************************************************//*
+			@autor Ivo Kunadt
+			@brief Löscht die Sandbox aus dem MKS Client. Die Dateien bleiben weiterhin bestehen.
+			@return void
+			********************************************************************************************************************/
 			void StartMKS(QString MKSLocation, QString Username, QString Password, QString Server = "ims-id", quint16 Port = 7001, QString Proxy = "MKS-PROXY", quint16 ProxyPort = 7023);
+
+			/*****************************************************************************************************************//*
+			@autor Ivo Kunadt
+			@brief Erzeugt eine Sandbox im MKS Client und lädt alle Dateien in der Sandbox am Zielort ab.
+			@param[in] MksUrl Pfad zur Datei auf dem MKS Server.
+			@param[in] Destination Ziel an dem die Datei auf den lokalen Rechner abgelegt werden soll.
+			@return void
+			********************************************************************************************************************/
 			void CreateSandBox(QString MksUrl, QString Destination);
-			//void DownloadFlashFiles(QString MksUrl, QString Destination);
-			void DropSandBox();
+
+			/*****************************************************************************************************************//*
+			@autor Ivo Kunadt
+			@brief Löscht die Sandbox aus dem MKS Client. Die Dateien bleiben weiterhin bestehen.
+			@return void
+			********************************************************************************************************************/
+			void DropSandBox(); 
+			
+			/*****************************************************************************************************************//*
+			@autor Ivo Kunadt
+			@brief Schließt den MKS Client und baut somit die Verbindung zum MKS-Server ab.
+			@return void
+			********************************************************************************************************************/
+			void MKSWrapper::CloseMKS();
+
+			void PrepareMKSLoginForm();
+
 
 		};
 

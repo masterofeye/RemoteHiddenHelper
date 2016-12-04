@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
-#include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -59,9 +58,9 @@ public:
     QComboBox *cbRelease;
     QVBoxLayout *verticalLayout_2;
     QListView *listView;
-    QWidget *tab_2;
+    QWidget *tabDragAndDrop;
     QHBoxLayout *horizontalLayout_4;
-    QFrame *frame;
+    QHBoxLayout *hbDragLayout;
     QWidget *tab;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -190,20 +189,19 @@ public:
         verticalLayout_4->setStretch(0, 2);
         verticalLayout_4->setStretch(1, 1);
         tabWidget->addTab(Integration, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
-        horizontalLayout_4 = new QHBoxLayout(tab_2);
+        tabDragAndDrop = new QWidget();
+        tabDragAndDrop->setObjectName(QStringLiteral("tabDragAndDrop"));
+        horizontalLayout_4 = new QHBoxLayout(tabDragAndDrop);
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        frame = new QFrame(tab_2);
-        frame->setObjectName(QStringLiteral("frame"));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
+        hbDragLayout = new QHBoxLayout();
+        hbDragLayout->setSpacing(6);
+        hbDragLayout->setObjectName(QStringLiteral("hbDragLayout"));
 
-        horizontalLayout_4->addWidget(frame);
+        horizontalLayout_4->addLayout(hbDragLayout);
 
-        tabWidget->addTab(tab_2, QString());
+        tabWidget->addTab(tabDragAndDrop, QString());
         tab = new QWidget();
         tab->setObjectName(QStringLiteral("tab"));
         tabWidget->addTab(tab, QString());
@@ -227,7 +225,7 @@ public:
 
         retranslateUi(RemoteHiddenHelperClass);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(RemoteHiddenHelperClass);
@@ -245,7 +243,7 @@ public:
         lSamplePhase->setText(QApplication::translate("RemoteHiddenHelperClass", "SamplePhase", 0));
         lRelease->setText(QApplication::translate("RemoteHiddenHelperClass", "Release", 0));
         tabWidget->setTabText(tabWidget->indexOf(Integration), QApplication::translate("RemoteHiddenHelperClass", "Integration Portal", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("RemoteHiddenHelperClass", "Drag and Drop", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tabDragAndDrop), QApplication::translate("RemoteHiddenHelperClass", "Drag and Drop", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("RemoteHiddenHelperClass", "File", 0));
     } // retranslateUi
 

@@ -104,10 +104,21 @@ namespace RW{
                     break;
                 }
 				case RW::CORE::Util::Functions::MKSCreateSandBox:
-                    CreateSandBox(Report, "C:\\Temp\\test2\\");
+				{
+					QString MKSUrl = "";
+					QString Destination = "";
+					QDataStream data(Report);
+					data >> MKSUrl;
+					data >> Destination;
+
+					CreateSandBox(MKSUrl, Destination);
 					break;
+				}
 				case RW::CORE::Util::Functions::MKSDropSandbox:
 					DropSandBox();
+					break;
+				case RW::CORE::Util::Functions::MKSClose:
+					CloseMKS();
 					break;
 				default:
 					break;
@@ -118,7 +129,7 @@ namespace RW{
 
 
 
-		/*******************************************************************//**
+		/***************************************************************************************************************//**
 		@autor Ivo Kunadt
 		@brief 
 		@param MKSLocation
@@ -157,7 +168,6 @@ namespace RW{
 
 			QStringList arguments;
             arguments << "diag" << "--diag=""setproxy""" << "--param=" + Server + ":" + QString::number(Port) + "" << "--param=" + Proxy + ":" + QString::number(ProxyPort) + "" << "--target=""client""";
-            //arguments << "diag" << "--diag=""setproxy""" << "--param=""ims-id:7001""" << "--param=""MKS-PROXY:7023""" << "--target=""client""";
 			proc.start(MKSLocation + MKSCLIENT, arguments);
 			if (!proc.waitForFinished(2000))
 			{
@@ -167,69 +177,24 @@ namespace RW{
 
 			arguments.clear();
             arguments << "connect" << "--gui" << "--hostname=""ims-id""" << "--port=" + QString::number(Port) + "" << "--user=" + Username + "" << "--password=" + Password + "";
-            //arguments << "connect" << "--gui" << "--hostname=""ims-id""" << "--port=""7001""" << "--user=""uidw5301""" << "--password=""Windows2001""";
 
             QProcess procLogin;
             procLogin.start(MKSLocation + MKSCLIENT, arguments);
 
-            do{
-                HWND handle = GetForegroundWindow();
-                char wnd_title[256];
-                HWND hwnd = GetForegroundWindow(); // get handle of currently active window
-                GetWindowTextA(hwnd, wnd_title, sizeof(wnd_title));
-                if (strcmp(wnd_title, "Error") == 0)
-                    break;
-                QThread::msleep(100);
-            } while (true);
-
-            QCursor* c = QApplication::overrideCursor();
-
-            c->setPos(1024, 574);
-            QThread::msleep(10);
-            LeftClick(1024, 574);
-            QThread::msleep(500);
-
-            c->setPos(880, 600);
-            QThread::msleep(10);
-            LeftClick(880, 600);
-            QThread::msleep(500);
-            c->setPos(922, 546);
-            QThread::msleep(10);
-            LeftClick(922, 546);
-            QThread::msleep(500);
-
-            
-            Press(0x45);
-            Press(0x58);
-            Press(0x54);
-            Press(0x54);
-            Press(0x32);
-            Press(0x36);
-            Press(0x39);
-            Press(0x39);
-
-            Press(VK_TAB);
-            
-            Press(0x33);
-            PressShift(0x34);
-            Press(0x53);
-            PressShift(0x47);
-            Press(0x5A);
-            Press(0x36);
-            Press(0x53);
-            PressShift(0x53);
-
-            c->setPos(880, 600);
-            LeftClick(880, 600);
-            QThread::msleep(100);
-
             procLogin.waitForFinished(60000);
 
-
-			
 			emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::Success, nullptr);
 		}
 
+
+		/***************************************************************************************************************//**
+		@autor Ivo Kunadt
+		@brief Erzeugt eine Sandbox für den übergebeben MKS Link. Dabei wird zunächst etwaige ältere Sandboxen mit dem gleichen Link
+		gelöscht. Sobald die Daten durch erzeugen der Sandbox herunter geladen sind, wird die erzeugte Sandbox wieder zerstört.
+		@param MksUrl MKSLink für den der MKS Client die SandBox erzeugen soll.
+		@param Destination Ziel der Ablage, der Downloadfiles
+		@return void
+		********************************************************************************************************************/
 		void MKSWrapper::CreateSandBox(QString MksUrl, QString Destination)
 		{
 			QProcess proc;
@@ -247,8 +212,6 @@ namespace RW{
             QProcess procStart;
             procStart.start(m_MKSLocation + MKSCLIENT, arguments);
 
-            
-
             if (!procStart.waitForFinished(180000))
 			{
 				emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::ErrorMKSSandBoxCreation, nullptr);
@@ -263,18 +226,6 @@ namespace RW{
 				emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::Success, nullptr);
 			}
 		}
-
-		//void MKSWrapper::DownloadFlashFiles(QString MksUrl, QString Destination)
-		//{
-		//	QProcess proc;
-		//	QStringList arguments;
-
-		//	arguments << "createsandbox" << "--yes" << "--status=""default""" << "--hostname=" + m_Server + "" << "--port=" + QString(m_Port) + "" << "--project=" + MksUrl + "";
-
-		//	proc.start(m_MKSLocation + MKSCLIENT, arguments);
-
-		//	emit NewMessage((quint16)States::Success, nullptr);
-		//}
 
 		void MKSWrapper::DropSandBox()
 		{
@@ -292,6 +243,82 @@ namespace RW{
 			emit NewMessage(Util::Functions::MKSDropSandbox, Util::ErrorID::Success, nullptr);
 		}
 
+		void MKSWrapper::CloseMKS()
+		{
+			QProcess proc;
+			QStringList arguments;
 
+			arguments << "close";
+
+			proc.start(m_MKSLocation + MKSCLIENT, arguments);
+			if (proc.waitForFinished(30000))
+			{
+				emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::ErrorMKSCloseFailed, nullptr);
+			}
+
+			emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::Success, nullptr);
+		}
+
+		void MKSWrapper::PrepareMKSLoginForm()
+		{
+			do{
+				HWND handle = GetForegroundWindow();
+				char wnd_title[256];
+				HWND hwnd = GetForegroundWindow(); // get handle of currently active window
+				GetWindowTextA(hwnd, wnd_title, sizeof(wnd_title));
+				if (strcmp(wnd_title, "Error") == 0)
+					break;
+				QThread::msleep(100);
+			} while (true);
+
+			QCursor* c = QApplication::overrideCursor();
+
+			//Error Dialog bestätigen
+			c->setPos(1024, 574);
+			QThread::msleep(10);
+			LeftClick(1024, 574);
+			QThread::msleep(200);
+
+			//Vorausgefüllter Loginform bestätigen
+			c->setPos(880, 600);
+			QThread::msleep(10);
+			LeftClick(880, 600);
+			QThread::msleep(200);
+
+			//Zum Usernamenfeld navigieren
+			c->setPos(922, 546);
+			QThread::msleep(10);
+			LeftClick(922, 546);
+			QThread::msleep(200);
+
+			//Username
+			Press(0x45);
+			Press(0x58);
+			Press(0x54);
+			Press(0x54);
+			Press(0x32);
+			Press(0x36);
+			Press(0x39);
+			Press(0x39);
+
+			//Zum Password navigieren
+			Press(VK_TAB);
+
+			//Password
+			Press(0x33);
+			PressShift(0x34);
+			Press(0x53);
+			PressShift(0x47);
+			Press(0x5A);
+			Press(0x36);
+			Press(0x53);
+			PressShift(0x53);
+
+			//Loginform bestätigen
+			c->setPos(880, 600);
+			LeftClick(880, 600);
+			QThread::msleep(100);
+
+		}
 	}
 }
