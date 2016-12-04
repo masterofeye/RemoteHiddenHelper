@@ -6,6 +6,29 @@
 #define PRG_POSTFIX "prg"
 #define CFX_POSTFIX "cfx"
 
+BOOL CALLBACK enumWindowsProc(
+	__in  HWND hWnd,
+	__in  LPARAM lParam
+	) {
+
+	int length = ::GetWindowTextLengthA(hWnd);
+	if (0 == length) return TRUE;
+
+	char* buffer = new char[length];
+
+	GetWindowTextA(hWnd, buffer, length);
+	QString s = QString(buffer);
+	if (s.contains("FHostSP"))
+	{
+		HWND* lumpi = reinterpret_cast<HWND*>(lParam);
+		*lumpi = hWnd;
+		false;
+	}
+
+	delete buffer;
+	return TRUE;
+}
+
 
 namespace RW{
 	namespace CORE{
@@ -118,10 +141,14 @@ namespace RW{
                 return;
             }
             Sleep(100);
+
+			QString status = ReadStatusText();
+
             quint64 qu64sequencestate = sequencestate;
             QByteArray arr;
             QDataStream data(&arr,QIODevice::WriteOnly);
             data << qu64sequencestate;
+			data << status;
 
 			emit NewMessage(Util::Functions::FHostSPGetState, Util::ErrorID::Success, arr);
 		}
@@ -183,6 +210,20 @@ namespace RW{
 			}
             Sleep(100);
 			emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPLoadFlashfileStatusFailed, "");
+		}
+
+		QString FHostSpWrapper::ReadStatusText()
+		{
+			const int statusEditId = 2;
+			HWND hwnd[1];
+			EnumWindows(enumWindowsProc, reinterpret_cast<LPARAM>(hwnd));
+			
+			HWND edit = GetDlgItem(hwnd[0], statusEditId);
+			quint8 editlength = GetWindowTextLengthA(edit);
+			QByteArray arr;
+			arr.resize(editlength);
+			GetWindowTextA(edit, arr.data(), editlength);
+			return QString(arr);
 		}
 
 		void FHostSpWrapper::StartSequence()

@@ -6,6 +6,7 @@
 #include "Constans.h"
 #include <qregexp.h>
 
+
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
@@ -18,3 +19,5 @@ int main(int argc, char *argv[])
     u.StartTest(RW::CORE::Util::Functions::PortalInfoShowDialog);
 	return a.exec();
 }
+
+

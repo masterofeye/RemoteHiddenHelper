@@ -80,6 +80,7 @@ namespace RW{
 			ErrorMKSError,
 			ErrorMKSSandBoxCreation,
 			ErrorMKSSanbBoxDrop,
+			ErrorMKSCloseFailed,
 			ErrorMKSMissingParameter,
             ErrorFHostSPStartApplication,
             ErrorFHostSPSequenceStop,

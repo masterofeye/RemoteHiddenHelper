@@ -168,8 +168,13 @@ namespace RW{
             case Util::Functions::FHostSPGetState:
             {
                 quint64 state = 0;
+				QString status = "";
                 QDataStream d(m.Message);
                 d >> state;
+				d >> status;
+
+				if (!status.isEmpty())
+					qDebug() << "Fehlermeldung von FHostSP ist : "<< status;
                 if (state == 7)
                 {
                     QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
@@ -277,8 +282,13 @@ namespace RW{
 					m_FlashFiles.append(FlashInfo(bootloaderFile, Util::FlashType::Bootloader, Path));
                 if (!acFile.isEmpty())
 					m_FlashFiles.append(FlashInfo(acFile, Util::FlashType::Bootloader, Path));
-                if (!gcFile.isEmpty())
+				if (!gcFile.isEmpty())
+				{
+					//Wir nutzen aktuell nur die USB Variante für die GC Files, deswegen suchen wir hier nach den HL
+					if (gcFile.endsWith("#flashfiles_FHOST") && gcFile.contains("HL"))
+						gcFile = gcFile.replace("#flashfiles_FHOST", "#flashfiles_USB");
 					m_FlashFiles.append(FlashInfo(gcFile, Util::FlashType::Bootloader, Path));
+				}
 
                 qDebug() << "Es wird das Projekt " << project << " mit der Samplehase " << samplephase << " und dem Release " << release << " geflasht.";
                 qDebug() << "--------------------------------------------------------------------------------------------------------------------------------";

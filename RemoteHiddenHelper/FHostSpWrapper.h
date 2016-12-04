@@ -7,6 +7,10 @@
 
 namespace RW{
 	namespace CORE{
+
+		const QString ClassNameFHostSP = "Afx:00400000:8:00010005:00000000:CEF10A4F";
+		const QString WindowNameFHostSP = "";
+
 		class FHostSpWrapper :
 			public BasicWrapper
 		{
@@ -39,6 +43,8 @@ namespace RW{
 			void AbortSequence();
             void LoadSequence(const QFile &Flashfile);
 			void StartSequence();
+		private: 
+			QString FHostSpWrapper::ReadStatusText();
 		};
 
 	}
