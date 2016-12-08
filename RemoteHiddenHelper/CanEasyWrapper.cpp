@@ -1,6 +1,7 @@
 #include "CanEasyWrapper.h"
 #include <qfile.h>
 #include <qfileinfo.h>
+#include <qthread.h>
 
 namespace RW{
 	namespace CORE{
@@ -45,6 +46,8 @@ namespace RW{
 		void CanEasyWrapper::StartCanEasy(const QFile &File)
 		{
 			CoInitialize(nullptr);
+
+
 			HRESULT hr = CoCreateInstance(__uuidof(CanEasyProcess), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(ICanEasyProcess), (void**)&m_Process);
 			if (FAILED(hr))
 			{
@@ -60,7 +63,8 @@ namespace RW{
 				emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyApplicationError, "Can't create CanEasy Instance");
 			    return;
 			}
-			
+
+
 			appDisp->QueryInterface(__uuidof(ICanEasyApplication), (void**)&m_App);
 			
 			CComPtr<IAppWindow> appWindow;
@@ -82,6 +86,9 @@ namespace RW{
 			//{
 			//	//nicht so schlimm
 			//}
+
+            appWindow.Detach();
+            appWindow.Release();
 
             m_IsRunning = true;
 			emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::Success, nullptr);
@@ -108,15 +115,24 @@ namespace RW{
 
 		void CanEasyWrapper::StopCanEasy()
 		{
-			HRESULT hr = m_App->StopSimulation();
+ 			HRESULT hr = m_App->StopSimulation();
             if (FAILED(hr))
 				emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::ErrorCanEasyStopSimulation, nullptr);
 
             hr = m_App->DeInit();
             if (FAILED(hr))
 				emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::ErrorCanEasyDeInitError, nullptr);
-
+            //Warten bis CanEasy wirklich beendet ist
+            QThread::msleep(2000);
+            //! \todo hier könnte man nochmal abfragen ob CanEasy wirklich tot ist 
             m_IsRunning = false;
+
+            m_App.Detach();
+            m_App.Release();
+
+            m_Process.Detach();
+            m_Process.Release();
+
 			CoUninitialize();
 			emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::Success, nullptr);
 		}

@@ -2,6 +2,9 @@
 #include <qfileinfo.h>
 #include <qdir.h>
 #include <qdatastream.h>
+#include <qthread.h>
+#include "Util.h"
+
 
 #define PRG_POSTFIX "prg"
 #define CFX_POSTFIX "cfx"
@@ -85,6 +88,13 @@ namespace RW{
 		{
 			CoInitialize(NULL);
 
+            //! \todo MagicNumber und implementierung
+            //if (GetProcessByName("FHostSp.exe"))
+            //{
+
+            //}
+
+
 			HRESULT hr = CoCreateInstance(__uuidof(FHostSP_RemoteInterface), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(IFHostSP_RemoteInterface), (void**)&m_Process);
             if (FAILED(hr))
             {
@@ -92,6 +102,7 @@ namespace RW{
                 return;
             }
             Sleep(100);
+
 			emit NewMessage(Util::Functions::FHostSPStartFHost, Util::ErrorID::Success, "");
 		}
 
@@ -128,6 +139,16 @@ namespace RW{
 				emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::ErrorFHostSPCloseApplication, "");
                 return;
             }
+            m_Process.Detach();
+            m_Process.Release();
+
+            CoUninitialize();
+
+            if (GetProcessByName("FHostSp.exe", true))
+            {
+                emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::ErrorFHostSPCloseApplication, "");
+            }
+
             Sleep(100);
 			emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::Success, "");
 		}
@@ -140,7 +161,7 @@ namespace RW{
 				emit NewMessage(Util::Functions::FHostSPGetState, Util::ErrorID::ErrorFHostSPGetStateFailed, "");
                 return;
             }
-            Sleep(100);
+            Sleep(500);
 
 			QString status = ReadStatusText();
 
@@ -212,22 +233,58 @@ namespace RW{
 			emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPLoadFlashfileStatusFailed, "");
 		}
 
-		QString FHostSpWrapper::ReadStatusText()
-		{
-			const int statusEditId = 2;
-			HWND hwnd[1];
-			EnumWindows(enumWindowsProc, reinterpret_cast<LPARAM>(hwnd));
-			
-			HWND edit = GetDlgItem(hwnd[0], statusEditId);
-			quint8 editlength = GetWindowTextLengthA(edit);
-			QByteArray arr;
-			arr.resize(editlength);
-			GetWindowTextA(edit, arr.data(), editlength);
-			return QString(arr);
-		}
+        QString FHostSpWrapper::ReadStatusText()
+        {
+            const int statusEditId = 1012;
+            HWND hwnd[1];
+            EnumWindows(enumWindowsProc, reinterpret_cast<LPARAM>(hwnd));
+
+            //Durch die Kinderelemente suchen
+            HWND handleMDIClient = FindWindowExA(hwnd[0], nullptr, "MDIClient", NULL);
+            DWORD error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+
+            HWND handleAFX = GetWindow(handleMDIClient, GW_CHILD);
+            error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+
+            HWND last = GetWindow(handleAFX, GW_CHILD);
+            error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+            //Nun sollte es möglich das Edit Control abzufragen
+            HWND edit = GetDlgItem(last, statusEditId);
+            error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+
+            //Textlänge des Inhaltes abfragen
+            int textLen = (int)SendMessageA(edit, WM_GETTEXTLENGTH, 0, 0) + 1;
+            error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+
+            if (textLen == 0)
+            {
+                return "";
+            }
+
+            QByteArray arr;
+            arr.resize(textLen);
+            SendMessageA(edit, WM_GETTEXT, textLen, (LPARAM)arr.data());
+            error = GetLastError();
+            if (error != ERROR_SUCCESS)
+                return "";
+
+            return QString(arr);
+        }
 
 		void FHostSpWrapper::StartSequence()
 		{
+            //Safty Sleep
+            QThread::msleep(5000);
 			//! \todo  Hier sollte der Pfad aus der Konfiguration gelesen werden
 			HRESULT  hr = m_Process->StartSequence(_bstr_t(m_WorkspacePath.c_str()), _bstr_t("C:\\Program Files (x86)\\FHostSP\\FHostSP.cfx"));
             if (FAILED(hr))
