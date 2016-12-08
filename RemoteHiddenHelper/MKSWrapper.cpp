@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <tchar.h>
 
+
 #include "Util.h"
 
 #define MKSCLIENT "si.exe"
@@ -111,7 +112,7 @@ namespace RW{
 					data >> MKSUrl;
 					data >> Destination;
 
-					CreateSandBox(MKSUrl, Destination);
+                    CreateSandBox(MKSUrl, Destination);
 					break;
 				}
 				case RW::CORE::Util::Functions::MKSDropSandbox:
@@ -153,6 +154,9 @@ namespace RW{
 				emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSMissingParameter, nullptr);
 			}
 
+
+
+
 			m_MKSLocation = MKSLocation;
 			m_Port = Port;
 			m_ProxyPort = ProxyPort;
@@ -166,10 +170,16 @@ namespace RW{
                 return;
 			}
 
+            //Sofern MKS noch offen ist muss es hier geschlossen werden
+            if (GetProcessByName("IntegrityClient.exe"))
+            {
+                CloseMKS();
+            }
+
 			QStringList arguments;
             arguments << "diag" << "--diag=""setproxy""" << "--param=" + Server + ":" + QString::number(Port) + "" << "--param=" + Proxy + ":" + QString::number(ProxyPort) + "" << "--target=""client""";
 			proc.start(MKSLocation + MKSCLIENT, arguments);
-			if (!proc.waitForFinished(2000))
+			if (!proc.waitForFinished(5000))
 			{
 				emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSError, nullptr);
                 return;
@@ -181,8 +191,10 @@ namespace RW{
             QProcess procLogin;
             procLogin.start(MKSLocation + MKSCLIENT, arguments);
 
-            procLogin.waitForFinished(60000);
+            PrepareMKSLoginForm();
 
+            if(!procLogin.waitForFinished(60000))
+                emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSLogin, nullptr);
 			emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::Success, nullptr);
 		}
 
@@ -200,14 +212,22 @@ namespace RW{
 			QProcess proc;
 			QStringList arguments;
 
-            QString dest = GetMKSLink(m_Destination, MksUrl);
+            //! \todobrauchen wir das noch hier
+            //QString dest = GetMKSLink(m_Destination, MksUrl);
+            QString dest = Destination;
             
+            if (QFile(m_Destination + dest).exists())
+            {
+                emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::Success, nullptr);
+                return;
+            }
+
             arguments << "dropsandbox" << "--yes" << "--delete=""none""" << "--status=""none""" << dest + "/project.pj";
             proc.start(m_MKSLocation + MKSCLIENT, arguments);
             proc.waitForFinished(10000);
 
             arguments.clear();
-            arguments << "createsandbox" << "--yes" << "--status=""default""" << "--hostname=" + m_Server + "" << "--port=" + QString::number(m_Port) + "" << "--project=" + MksUrl << dest;
+            arguments << "createsandbox" << "--yes" << "--status=""default""" << "--hostname=" + m_Server + "" << "--port=" + QString::number(m_Port) + "" << "--project=" + MksUrl << m_Destination + dest;
             
             QProcess procStart;
             procStart.start(m_MKSLocation + MKSCLIENT, arguments);
@@ -248,13 +268,15 @@ namespace RW{
 			QProcess proc;
 			QStringList arguments;
 
-			arguments << "close";
+			arguments << "exit";
 
 			proc.start(m_MKSLocation + MKSCLIENT, arguments);
-			if (proc.waitForFinished(30000))
+			if (!proc.waitForFinished(30000))
 			{
 				emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::ErrorMKSCloseFailed, nullptr);
 			}
+            //Warten bis MKS wirklich weg ist
+            QThread::msleep(1000);
 
 			emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::Success, nullptr);
 		}
@@ -320,5 +342,7 @@ namespace RW{
 			QThread::msleep(100);
 
 		}
+
+     
 	}
 }
