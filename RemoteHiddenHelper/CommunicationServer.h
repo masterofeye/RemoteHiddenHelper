@@ -29,7 +29,7 @@ namespace RW{
 			void OnClientSocketError(QLocalSocket::LocalSocketError socketError);
 			void OnDataAvailable();
 
-			void SendMessage(QByteArray Report);
+            void SendMessageToServer(QByteArray Report);
 		 signals:
 			void NewMessage(Util::Functions MessageType, QByteArray Message);
 		};

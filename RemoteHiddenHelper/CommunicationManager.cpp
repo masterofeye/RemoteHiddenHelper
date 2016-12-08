@@ -124,6 +124,15 @@ namespace RW{
             case Util::Functions::PortalInfoSoftwareById:
                 emit NewMessage(Util::MessageReceiver::PortalInfo, MessageType, Message);
                 break;
+            case Util::Functions::FileUtilUnZip :
+                emit NewMessage(Util::MessageReceiver::FileUtil, MessageType, Message);
+                break;
+            case Util::Functions::FileUtilDelete:
+                emit NewMessage(Util::MessageReceiver::FileUtil, MessageType, Message);
+                break;
+            case Util::Functions::UsbHidLoaderFlashFile:
+                emit NewMessage(Util::MessageReceiver::UsbHidLoader, MessageType, Message);
+                break;
 			default:
 				break;
 			}

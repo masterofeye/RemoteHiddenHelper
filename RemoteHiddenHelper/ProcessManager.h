@@ -9,6 +9,8 @@ namespace RW{
 		class FHostSpWrapper;
 		class PortalInfo;
         class ErrorHandler;
+        class FileUtils;
+        class UsbHidLoader;
 		
 
 		class ProcessManager :
@@ -22,6 +24,8 @@ namespace RW{
 			FHostSpWrapper* m_FHostSP;
 			PortalInfo* m_PortalInfo;
             ErrorHandler* m_ErrorHandler;
+            FileUtils* m_FileUtils;
+            UsbHidLoader* m_UsbHidLoader;
 		public:
 			ProcessManager(QObject* Parent = nullptr);
 			~ProcessManager();

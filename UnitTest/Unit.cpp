@@ -11,52 +11,66 @@ namespace RW{
     namespace CORE{
         Unit::Unit(QLocalSocket* Socket) : m_Socket(Socket)
         {
-			QObject::connect(m_Socket, &QLocalSocket::readyRead, this, &RW::CORE::Unit::OnProcessMessage);
+            QObject::connect(m_Socket, &QLocalSocket::readyRead, this, &RW::CORE::Unit::OnProcessMessage);
         }
 
         Unit::~Unit()
         {
         }
 
-		void Unit::StartTest(Util::Functions StartPoint)
-		{
-			QByteArray block = CreateMessage(StartPoint,"",Util::ErrorID::Success);
-			m_Socket->write(block);
-			m_Socket->flush();
-		}
-		
-		QByteArray Unit::CreateMessage(Util::Functions Func, QByteArray Message, Util::ErrorID Id )
-		{
-			QByteArray arr;
-			RW::CORE::Message m(Func, Message.size(), Message, Id);
+        void Unit::StartTest(Util::Functions StartPoint)
+        {
+            QByteArray block = CreateMessage(StartPoint, "", Util::ErrorID::Success);
+            m_Socket->write(block);
+            m_Socket->flush();
+        }
+
+        QByteArray Unit::CreateMessage(Util::Functions Func, QByteArray Message, Util::ErrorID Id)
+        {
+            QByteArray arr;
+            RW::CORE::Message m(Func, Message.size(), Message, Id);
             QDataStream in(&arr, QIODevice::WriteOnly);
             in.setVersion(QDataStream::Qt_5_7);
-			in << m;
-			return arr;
-		}
+            in << m;
+            return arr;
+        }
 
-		void Unit::PrintDebugInformations(Message Message)
-		{            
-			//Aktuelle Werte ausgeben
+        void Unit::PrintDebugInformations(Message Message)
+        {
+            //Aktuelle Werte ausgeben
             qDebug() << "Aktuell wurde der Schritt: " << QVariant::fromValue(Message.MessageType).toString() << " ausgeführt.";
-			//qDebug() << "Message: " << Message.Message;
-			qDebug() << "Der Arbeitsschritt wurde mit " << QVariant::fromValue(Message.Error).toString() << " abgeschlossen.";
+            //qDebug() << "Message: " << Message.Message;
+            qDebug() << "Der Arbeitsschritt wurde mit " << QVariant::fromValue(Message.Error).toString() << " abgeschlossen.";
             qDebug() << "#################################################################################";
-		}
+        }
 
-		Message Unit::GetMessage()
-		{
+        Message Unit::GetMessage()
+        {
             Message m;
-			QDataStream in((QIODevice*)m_Socket);
-			in >> m;
-			return m;
-		}
+            QDataStream in((QIODevice*)m_Socket);
+            in >> m;
+            return m;
+        }
 
-		void Unit::SendMessage(QByteArray Message)
-		{
-			m_Socket->write(Message);
-			m_Socket->flush();
-		}
+        void Unit::SendMessage(QByteArray Message)
+        {
+            m_Socket->write(Message);
+            m_Socket->flush();
+        }
+
+        void Unit::ToogleCL30Slow()
+        {
+             qDebug() << "ToogleSlow";
+            QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
+            SendMessage(arr);
+        }
+        void Unit::ToogleCL30Fast()
+        {
+            qDebug() << "ToogleFast";
+            QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
+            SendMessage(arr);
+        }
+
 
         void Unit::OnProcessMessage()
         {
@@ -70,6 +84,7 @@ namespace RW{
                 QMessageBox msgBox;
 				msgBox.setText("Hat einen Fehler festgestellt. " + QVariant::fromValue(m.Error).toString());
                 msgBox.exec();
+                return;
 
             }
 
@@ -79,22 +94,23 @@ namespace RW{
                 QMessageBox msgBox;
                 msgBox.setText("Hiddenhelper is Busy.");
                 msgBox.exec();
+                return;
             }
 
             switch (m.MessageType)
             {
             case Util::Functions::CanEasyStartApplication:
             {
-				QByteArray arr;
-				if (m_CurrentFlashFile.FlashType == Util::FlashType::GC)
-				{
-					arr = CreateMessage(Util::Functions::CanEasyLoadWorkspace, QString("C:\\Arbeitsbereiche_PF3\\Flashen.csm").toUtf8(), Util::ErrorID::Success);
-				}
-				else if (m_CurrentFlashFile.FlashType == Util::FlashType::AC || m_CurrentFlashFile.FlashType == Util::FlashType::Bootloader)
-				{
-					arr = CreateMessage(Util::Functions::CanEasyLoadWorkspace, QString("C:\\Arbeitsbereiche_PF3\\Flashen.csm").toUtf8(), Util::ErrorID::Success);
-				}
-                
+                QByteArray arr;
+                if (m_CurrentFlashFile.FlashType == Util::FlashType::GC)
+                {
+                    arr = CreateMessage(Util::Functions::CanEasyLoadWorkspace, QString("C:\\Arbeitsbereiche_PF3\\Arbeitsbereich_BR213_V4.50\\W213\\CanEasyBR213_V4.50.csm").toUtf8(), Util::ErrorID::Success);
+                }
+                else if (m_CurrentFlashFile.FlashType == Util::FlashType::AC || m_CurrentFlashFile.FlashType == Util::FlashType::Bootloader)
+                {
+                    arr = CreateMessage(Util::Functions::CanEasyLoadWorkspace, QString("C:\\Arbeitsbereiche_PF3\\Flashen.csm").toUtf8(), Util::ErrorID::Success);
+                }
+
                 SendMessage(arr);
                 break;
             }
@@ -106,8 +122,20 @@ namespace RW{
             }
             case Util::Functions::CanEasyStartSimulation:
             {
-                QByteArray arr = CreateMessage(Util::Functions::FHostSPStartFHost, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                if (m_CurrentFlashFile.IsUsb)
+                {
+                    QByteArray message;
+                    QDataStream data(&message, QIODevice::WriteOnly);
+                    data << DESTINATION + m_CurrentFlashFile.TargetDir;
+
+                    QByteArray arr = CreateMessage(Util::Functions::UsbHidLoaderFlashFile, message, Util::ErrorID::Success);
+                    SendMessage(arr);
+                }
+                else
+                {
+                    QByteArray arr = CreateMessage(Util::Functions::FHostSPStartFHost, "", Util::ErrorID::Success);
+                    SendMessage(arr);
+                }
                 break;
             }
             case Util::Functions::CanEasyStopSimulation:
@@ -116,40 +144,62 @@ namespace RW{
                 SendMessage(arr);
                 break;
             }
-			case Util::Functions::CanEasyCloseApplication:
-			{
-				QByteArray arr = CreateMessage(Util::Functions::MKSCreateSandBox, "", Util::ErrorID::Success);
-				SendMessage(arr);
-				break;
-			}
+            case Util::Functions::CanEasyCloseApplication:
+            {
+                QByteArray arr;
+                QByteArray message;
+                QDataStream data(&message, QIODevice::WriteOnly);
+
+
+                if (m_FlashFiles.count() != 0)
+                    m_CurrentFlashFile = m_FlashFiles.first();
+
+                data << m_CurrentFlashFile.FlashFile;
+                data << m_CurrentFlashFile.TargetDir;
+
+                arr = CreateMessage(Util::Functions::MKSCreateSandBox, message, Util::ErrorID::Success);
+                SendMessage(arr);
+                if (!m_FlashFiles.isEmpty())
+                    m_FlashFiles.removeFirst();
+
+                break;
+            }
             case Util::Functions::FHostSPStartFHost:
             {
-				QString flashFileLocation = GetMKSLink(DESTINATION,m_CurrentFlashFile.FlashFile);
-				QDir dir = QDir(flashFileLocation);
-				QString FileName = "";
-				QStringList files;
+                QString flashFileLocation = DESTINATION + m_CurrentFlashFile.TargetDir;
+                QDir dir = QDir(flashFileLocation);
+                QString FileName = "";
+                QStringList files;
 
-				QString fileName = "*.prg";
-				files = dir.entryList(QStringList(fileName), QDir::Files);
-
-				if (m_CurrentFlashFile.FlashFile.contains("bootloader"))
-				{
-					for each (auto var in files)
-					{
-						if (var.contains("_CB_") && !var.contains("IPL"))
-						{
-							FileName = var;
-						}
-					}
-				}
-				else
-				{
-					FileName = files.first();
-				}
+                if (m_CurrentFlashFile.IsUsb)
+                {
 
 
+                }
+                else
+                {
+                    QString fileName = "*.prg";
+                    files = dir.entryList(QStringList(fileName), QDir::Files);
 
-				QByteArray arr = CreateMessage(Util::Functions::FHostSPLoadFlashFile, (flashFileLocation + FileName).toUtf8(), Util::ErrorID::Success);
+                    if (m_CurrentFlashFile.FlashFile.contains("bootloader"))
+                    {
+                        for each (auto var in files)
+                        {
+                            if (var.contains("CB_") && !var.contains("IPL"))
+                            {
+                                FileName = var;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        FileName = files.first();
+                    }
+                }
+
+
+
+                QByteArray arr = CreateMessage(Util::Functions::FHostSPLoadFlashFile, (flashFileLocation + "/" + FileName).toUtf8(), Util::ErrorID::Success);
                 SendMessage(arr);
                 break;
             }
@@ -161,31 +211,33 @@ namespace RW{
             }
             case Util::Functions::FHostSPStartFlash:
             {
-                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                ToogleCL30Fast();
                 break;
             }
             case Util::Functions::FHostSPGetState:
             {
                 quint64 state = 0;
-				QString status = "";
+                QString status = "";
                 QDataStream d(m.Message);
                 d >> state;
-				d >> status;
+                d >> status;
 
-				if (!status.isEmpty())
-					qDebug() << "Fehlermeldung von FHostSP ist : "<< status;
-                if (state == 7)
+
+                if (Util::FHostSPState(state) == Util::FHostSPState::JOB_EXECUTING)
                 {
                     QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
                     SendMessage(arr);
                 }
-                else if (state == 1)
+                else if (Util::FHostSPState(state) == Util::FHostSPState::JOB_EXECUTE_NOT_OK)
                 {
-                    QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
+                    QMessageBox msgBox;
+                    msgBox.setText("Fehlermeldung von FHostSP ist : " + status);
+                    msgBox.exec();
+
+                    QByteArray arr = CreateMessage(Util::Functions::FHostSPAbortSequence, "", Util::ErrorID::Success);
                     SendMessage(arr);
                 }
-                else
+                else if (Util::FHostSPState(state) == Util::FHostSPState::JOB_EXECUTE_OK)
                 {
                     QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
                     SendMessage(arr);
@@ -212,13 +264,18 @@ namespace RW{
             }
             case Util::Functions::MKSLogin:
             {
-				QByteArray arr;
-				if (m_FlashFiles.count() != 0)
-					m_CurrentFlashFile = m_FlashFiles.first();
-				else
-					arr = CreateMessage(Util::Functions::MKSCreateSandBox, m_CurrentFlashFile.FlashFile.toUtf8(), Util::ErrorID::Success);
+                QByteArray arr;
+                QByteArray message;
+                QDataStream data(&message, QIODevice::WriteOnly);
 
-				arr = CreateMessage(Util::Functions::MKSCreateSandBox, m_CurrentFlashFile.FlashFile.toUtf8(), Util::ErrorID::Success);
+
+                if (m_FlashFiles.count() != 0)
+                    m_CurrentFlashFile = m_FlashFiles.first();
+
+                data << m_CurrentFlashFile.FlashFile;
+                data << m_CurrentFlashFile.TargetDir;
+
+                arr = CreateMessage(Util::Functions::MKSCreateSandBox, message, Util::ErrorID::Success);
                 SendMessage(arr);
                 if (!m_FlashFiles.isEmpty())
                     m_FlashFiles.removeFirst();
@@ -226,8 +283,19 @@ namespace RW{
             }
             case Util::Functions::MKSCreateSandBox:
             {
-                QByteArray arr = CreateMessage(Util::Functions::CanEasyStartApplication, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                if (m_CurrentFlashFile.IsUsb)
+                {
+                    QByteArray message;
+                    QDataStream data(&message, QIODevice::WriteOnly);
+                    data << m_CurrentFlashFile.TargetDir;
+                    QByteArray arr = CreateMessage(Util::Functions::FileUtilUnZip, message, Util::ErrorID::Success);
+                    SendMessage(arr);
+                }
+                else
+                {
+                    QByteArray arr = CreateMessage(Util::Functions::CanEasyStartApplication, "", Util::ErrorID::Success);
+                    SendMessage(arr);
+                }
                 break;
             }
             case Util::Functions::MKSDropSandbox:
@@ -278,17 +346,25 @@ namespace RW{
                     else if (i == 2 && ac == true && gc == true)
                         data >> gcFile;
                 }
-				if (!bootloaderFile.isEmpty())
-					m_FlashFiles.append(FlashInfo(bootloaderFile, Util::FlashType::Bootloader, Path));
+                if (!bootloaderFile.isEmpty())
+                    m_FlashFiles.append(FlashInfo(bootloaderFile, Util::FlashType::Bootloader, Path + "/bootloader", false));
                 if (!acFile.isEmpty())
-					m_FlashFiles.append(FlashInfo(acFile, Util::FlashType::Bootloader, Path));
-				if (!gcFile.isEmpty())
-				{
-					//Wir nutzen aktuell nur die USB Variante für die GC Files, deswegen suchen wir hier nach den HL
-					if (gcFile.endsWith("#flashfiles_FHOST") && gcFile.contains("HL"))
-						gcFile = gcFile.replace("#flashfiles_FHOST", "#flashfiles_USB");
-					m_FlashFiles.append(FlashInfo(gcFile, Util::FlashType::Bootloader, Path));
-				}
+                    m_FlashFiles.append(FlashInfo(acFile, Util::FlashType::AC, Path + "/ac", false));
+                if (!gcFile.isEmpty())
+                {
+                    if (project.contains("HL"))
+                    {
+                        //Wir nutzen aktuell nur die USB Variante für die GC Files, deswegen suchen wir hier nach den HL
+                        if (gcFile.endsWith("#flashfiles_FHOST") && gcFile.contains("HL"))
+                            gcFile = gcFile.replace("#flashfiles_FHOST", "#flashfiles_USB");
+                        m_FlashFiles.append(FlashInfo(gcFile, Util::FlashType::GC, Path + "/gc", true));
+                    }
+                    else if (project.contains("EL"))
+                    {
+                        m_FlashFiles.append(FlashInfo(gcFile, Util::FlashType::GC, Path + "/gc", false));
+                    }
+
+                }
 
                 qDebug() << "Es wird das Projekt " << project << " mit der Samplehase " << samplephase << " und dem Release " << release << " geflasht.";
                 qDebug() << "--------------------------------------------------------------------------------------------------------------------------------";
@@ -320,10 +396,27 @@ namespace RW{
             }
             case Util::Functions::PortalInfoCloseDialog:
             {
-                //QByteArray arr = CreateMessage(Util::Functions::PortalInfoCloseDialog, "", Util::ErrorID::Success);
+                //QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
                 //SendMessage(arr);
                 //break;
             }
+            case Util::Functions::FileUtilUnZip:
+            {
+                 QByteArray arr = CreateMessage(Util::Functions::CanEasyStartApplication, "", Util::ErrorID::Success);
+                SendMessage(arr);
+                break;
+            }
+            case Util::Functions::FileUtilDelete:
+            {
+                break;
+            }
+            case Util::Functions::UsbHidLoaderFlashFile:
+            {
+                QByteArray arr = CreateMessage(Util::Functions::CanEasyCloseApplication, "", Util::ErrorID::Success);
+                SendMessage(arr);
+                break;
+            }
+
             default:
                 break;
             }

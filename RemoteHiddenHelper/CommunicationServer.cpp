@@ -62,7 +62,7 @@ namespace RW{
 
 		void CommunicationServer::OnDataAvailable()
 		{
-			//ToDo ist das wirklich sauber auch wenn mehrere Anfragen kommen?!
+            //! \todoist das wirklich sauber auch wenn mehrere Anfragen kommen?!
             quint64 bytes = m_Client->bytesAvailable();
             if (bytes > 0)
             {
@@ -78,11 +78,11 @@ namespace RW{
 			//Nur Messages verarbeiten die auch wirklich für den CommunicationServer gedacht sind
 			if (RW::CORE::Util::MessageReceiver::CommunicationServer == Type)
             {
-				SendMessage(Message);
+                SendMessageToServer(Message);
             }
 		}
 
-		void CommunicationServer::SendMessage(QByteArray Report)
+		void CommunicationServer::SendMessageToServer(QByteArray Report)
 		{
 			if (m_Client != nullptr)
 			{

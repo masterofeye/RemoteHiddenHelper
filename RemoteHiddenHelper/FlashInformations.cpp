@@ -222,7 +222,7 @@ namespace RW{
 			{
 				return Util::ErrorID::ErrorPortalInfoPrepareReleaseInformation;
 			}
-			if (UniqueReleaseList.count() == 0);
+			if (UniqueReleaseList.count() == 0)
 				return Util::ErrorID::ErrorPortalInfoReleaseCount;
 			return Util::ErrorID::Success;
 		}

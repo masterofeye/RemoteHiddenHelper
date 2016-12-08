@@ -6,6 +6,8 @@
 #include "MKSWrapper.h"
 #include "PortalInfo.h"
 #include "ErrorHandler.h"
+#include "FileUtils.h"
+#include "UsbHidLoader.h"
 
 namespace RW{
 	namespace CORE{
@@ -15,7 +17,9 @@ namespace RW{
 			m_FHostSP(new FHostSpWrapper(this)),
 			m_PortalInfo(new PortalInfo(this)),
 			m_MKS(new MKSWrapper(this)),
-            m_ErrorHandler(new ErrorHandler(this))
+            m_FileUtils(new FileUtils(this)),
+            m_ErrorHandler(new ErrorHandler(this)),
+            m_UsbHidLoader(new UsbHidLoader(this))
             
 		{
             m_CommManager = new CommunicationManager(m_ErrorHandler, this);
@@ -25,22 +29,30 @@ namespace RW{
 			connect(m_CommManager, &CommunicationManager::NewMessage, m_FHostSP, &FHostSpWrapper::OnProcessMessage, Qt::DirectConnection);
 			connect(m_CommManager, &CommunicationManager::NewMessage, m_MKS, &MKSWrapper::OnProcessMessage, Qt::DirectConnection);
 			connect(m_CommManager, &CommunicationManager::NewMessage, m_PortalInfo, &PortalInfo::OnProcessMessage, Qt::DirectConnection);
+            connect(m_CommManager, &CommunicationManager::NewMessage, m_FileUtils, &FileUtils::OnProcessMessage, Qt::DirectConnection);
+            connect(m_CommManager, &CommunicationManager::NewMessage, m_UsbHidLoader, &UsbHidLoader::OnProcessMessage, Qt::DirectConnection);
 
 			//...danach erhält der Errorhandler die Informationen (Reihenfolge der Signal/Slot Verbindung)
 			connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_CanEasy, &CanEasyWrapper::OnProcessMessage, Qt::DirectConnection);
 			connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_FHostSP, &FHostSpWrapper::OnProcessMessage, Qt::DirectConnection);
 			connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_MKS, &MKSWrapper::OnProcessMessage, Qt::DirectConnection);
 			connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_PortalInfo, &PortalInfo::OnProcessMessage, Qt::DirectConnection);
+            connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_FileUtils, &FileUtils::OnProcessMessage, Qt::DirectConnection);
+            connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_UsbHidLoader, &UsbHidLoader::OnProcessMessage, Qt::DirectConnection);
 
 			connect(m_CanEasy, &CanEasyWrapper::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_FHostSP, &FHostSpWrapper::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_MKS, &MKSWrapper::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_PortalInfo, &PortalInfo::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
+            connect(m_FileUtils, &FileUtils::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
+            connect(m_UsbHidLoader, &UsbHidLoader::NewMessage, m_CommManager, &CommunicationManager::OnProcessMessageAnswer, Qt::DirectConnection);
 
 			connect(m_CanEasy, &CanEasyWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_FHostSP, &FHostSpWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_MKS, &MKSWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_PortalInfo, &PortalInfo::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
+            connect(m_FileUtils, &FileUtils::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
+            connect(m_UsbHidLoader, &UsbHidLoader::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 		}
 
 

@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 static const unsigned char qt_resource_data[] = {
-  // C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/Resources/helper.png
+  // C:/Projekte/RemoteRepros/RemoteHiddenHelper/RemoteHiddenHelper/RemoteHiddenHelper/Resources/helper.png
   0x0,0x0,0x3,0x8d,
   0x89,
   0x50,0x4e,0x47,0xd,0xa,0x1a,0xa,0x0,0x0,0x0,0xd,0x49,0x48,0x44,0x52,0x0,

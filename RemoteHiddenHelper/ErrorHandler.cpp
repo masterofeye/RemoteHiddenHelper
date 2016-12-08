@@ -100,7 +100,7 @@ namespace RW{
 						emit NewMessage(Util::MessageReceiver::PortalInfo, Util::Functions::PortalInfoCloseDialog, "");
 					}
 				}
-
+                break;
             case Util::Functions::FHostSPStartFHost:
                 //Wenn CanEasy gestartet wurde dann Flag setzen
 				if (Id == Util::ErrorID::Success)
@@ -167,6 +167,38 @@ namespace RW{
 					//Nur PortalInfo sollte laufen, alles andere ist noch nicht gestartet. Somit müssen wir nur den Dialog beenden, was zeitgleich die gesamte Applikation stoppt
 					emit NewMessage(Util::MessageReceiver::PortalInfo, Util::Functions::PortalInfoCloseDialog, "");
 				}
+                break;
+            case Util::Functions::UsbHidLoaderFlashFile:
+                if (Id == Util::ErrorID::Success)
+                    break;
+            case Util::Functions::FileUtilUnZip:
+                if (Id == Util::ErrorID::Success)
+                    break;
+            case Util::Functions::FileUtilDelete:
+                if (Id == Util::ErrorID::Success)
+                    break;
+                else
+                {
+                    if (m_IsFHostSPRunning)
+                    {
+                        emit NewMessage(Util::MessageReceiver::FHostSPWrapper, Util::Functions::FHostSPCloseFHost, "");
+                    }
+                    if (m_IsMKSRunning)
+                    {
+                        //Als letzes wird der Dialog geschlossen und beendet die Applikation
+                        emit NewMessage(Util::MessageReceiver::MKSWrapper, Util::Functions::MKSClose, "");
+                    }
+                    if (m_IsCanEasyRunning)
+                    {
+                        emit NewMessage(Util::MessageReceiver::CanEasyWrapper, Util::Functions::CanEasyCloseApplication, "");;
+                    }
+                    if (m_IsPortalInfoRunning)
+                    {
+                        //Als letzes wird der Dialog geschlossen und beendet die Applikation
+                        emit NewMessage(Util::MessageReceiver::PortalInfo, Util::Functions::PortalInfoCloseDialog, "");
+                    }
+                }
+
                 break;
             default:
                 break;

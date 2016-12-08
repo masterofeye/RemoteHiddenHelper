@@ -26,6 +26,10 @@ namespace RW{
 			void SendMessage(QByteArray Message);
 			QList<FlashInfo> m_FlashFiles;
 			FlashInfo m_CurrentFlashFile;
+
+            void ToogleCL30Slow();
+            void ToogleCL30Fast();
+
         public:
             Unit(QLocalSocket* Socket);
             ~Unit();
