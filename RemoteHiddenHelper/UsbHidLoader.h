@@ -17,7 +17,14 @@ namespace RW
             @brief Zeigt an, ob der Flashprozess aktuell auf HID aktivierung wartet
             */
             bool m_HIDState;
+            /*
+            @brief Zeigt an, das der UsbHidLoader schon geschlossen wurde. 
+            */
+            bool m_IsTerminated;
             QTimer* m_Timer;
+
+            quint64 m_ProcessID;
+
         public:
             UsbHidLoader(QObject* Parent = nullptr);
             ~UsbHidLoader();
@@ -26,18 +33,20 @@ namespace RW
         virtual void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
 
         private: 
-
-            void SomeMethod();
             void FlashOverUsb(QDir &BatFile);
-
+            void CloseChildProcess(quint64 ProcessId);
         private slots:
-            void PrintDebug();
+            void AnalyseStdOutput();
             void CheckHIDState();
         signals:
+            /**
+            @brief Tötet den Prozess des USBHidLoaders
+            */
             void KillUsbHidLoader();
-
-        protected:
-            void timerEvent(QTimerEvent *event);
+            /**
+            @brief Schließt die Eventloop, die für die Verarbeitung der Timerevents notwendig ist
+            */
+            void CloseEventLoop();
         };
     }
 }

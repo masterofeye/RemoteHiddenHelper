@@ -65,6 +65,7 @@ namespace RW{
                 FileUtilUnZip,
                 FileUtilDelete,
                 UsbHidLoaderFlashFile,
+                PrintDebugInformation,
                 Amount
             };
 #ifdef QT
@@ -114,6 +115,9 @@ namespace RW{
                 ErrorFileUtilDeleteFailed,
                 ErrorFileUsbHidLoaderFileDontExists,
                 ErrorFileUsbHidLoaderFailed,
+                ErrorFileUsbHidLoaderHIDState,
+                ErrorFileUsbHidLoaderTimeOut,
+                ErrorFileUsbHidLoaderChecksum,
             };
 #ifdef QT
             Q_ENUM(ErrorID)

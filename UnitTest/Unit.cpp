@@ -58,17 +58,23 @@ namespace RW{
             m_Socket->flush();
         }
 
-        void Unit::ToogleCL30Slow()
+        void Unit::ToogleCL30Slow(QByteArray Message)
         {
-             qDebug() << "ToogleSlow";
-            QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
-            SendMessage(arr);
+            qDebug() << "ToogleSlow";
+            if (Message.size() > 0)
+            {
+                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
+                SendMessage(arr);
+            }
         }
-        void Unit::ToogleCL30Fast()
+        void Unit::ToogleCL30Fast(QByteArray Message)
         {
             qDebug() << "ToogleFast";
-            QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
-            SendMessage(arr);
+            if (Message.size() > 0)
+            {
+                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
+                SendMessage(arr);
+            }
         }
 
 
@@ -76,6 +82,17 @@ namespace RW{
         {
 			Message m = GetMessage();
             
+            if (m.MessageType == Util::Functions::PrintDebugInformation)
+            {
+                QString informatiom;
+                QDataStream data(m.Message);
+                data >> informatiom;
+
+                qDebug() << informatiom;
+                return;
+            }
+
+
 			PrintDebugInformations(m);
 
             if (m.Error != Util::ErrorID::Success)
@@ -211,7 +228,8 @@ namespace RW{
             }
             case Util::Functions::FHostSPStartFlash:
             {
-                ToogleCL30Fast();
+                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
+                ToogleCL30Fast(arr);
                 break;
             }
             case Util::Functions::FHostSPGetState:
@@ -402,7 +420,7 @@ namespace RW{
             }
             case Util::Functions::FileUtilUnZip:
             {
-                 QByteArray arr = CreateMessage(Util::Functions::CanEasyStartApplication, "", Util::ErrorID::Success);
+                QByteArray arr = CreateMessage(Util::Functions::CanEasyStartApplication, "", Util::ErrorID::Success);
                 SendMessage(arr);
                 break;
             }
@@ -413,10 +431,9 @@ namespace RW{
             case Util::Functions::UsbHidLoaderFlashFile:
             {
                 QByteArray arr = CreateMessage(Util::Functions::CanEasyCloseApplication, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                ToogleCL30Fast(arr);
                 break;
             }
-
             default:
                 break;
             }
