@@ -18,6 +18,11 @@ namespace RW{
 		private:
 			CComPtr<IFHostSP_RemoteInterface> m_Process;
 			std::string m_WorkspacePath;
+            /**
+            @brief Dient zur Überwachung von Statusabfragen, sobald eine bestimmte Anzahl an durchläufen erreicht ist, 
+            wird der Fehler Timeout geworfen.
+            */
+            quint64 m_LifeTimerCounter;
 		public slots:
 			/***************************************************************************************************************//**
 			@autor Ivo Kunadt
