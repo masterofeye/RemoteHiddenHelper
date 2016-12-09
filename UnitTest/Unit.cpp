@@ -63,8 +63,7 @@ namespace RW{
             qDebug() << "ToogleSlow";
             if (Message.size() > 0)
             {
-                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetProgress, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                SendMessage(Message);
             }
         }
         void Unit::ToogleCL30Fast(QByteArray Message)
@@ -72,8 +71,7 @@ namespace RW{
             qDebug() << "ToogleFast";
             if (Message.size() > 0)
             {
-                QByteArray arr = CreateMessage(Util::Functions::FHostSPGetState, "", Util::ErrorID::Success);
-                SendMessage(arr);
+                SendMessage(Message);
             }
         }
 
@@ -146,12 +144,12 @@ namespace RW{
                     data << DESTINATION + m_CurrentFlashFile.TargetDir;
 
                     QByteArray arr = CreateMessage(Util::Functions::UsbHidLoaderFlashFile, message, Util::ErrorID::Success);
-                    SendMessage(arr);
+                    ToogleCL30Fast(arr);
                 }
-                else
+                else 
                 {
                     QByteArray arr = CreateMessage(Util::Functions::FHostSPStartFHost, "", Util::ErrorID::Success);
-                    SendMessage(arr);
+                    ToogleCL30Fast(arr);
                 }
                 break;
             }
@@ -170,12 +168,17 @@ namespace RW{
 
                 if (m_FlashFiles.count() != 0)
                     m_CurrentFlashFile = m_FlashFiles.first();
+                else
+                {
+                    //Keine weitere Bearbeitung 
+                    return;
+                }
 
                 data << m_CurrentFlashFile.FlashFile;
                 data << m_CurrentFlashFile.TargetDir;
 
                 arr = CreateMessage(Util::Functions::MKSCreateSandBox, message, Util::ErrorID::Success);
-                SendMessage(arr);
+                ToogleCL30Slow(arr);
                 if (!m_FlashFiles.isEmpty())
                     m_FlashFiles.removeFirst();
 
@@ -301,6 +304,7 @@ namespace RW{
             }
             case Util::Functions::MKSCreateSandBox:
             {
+
                 if (m_CurrentFlashFile.IsUsb)
                 {
                     QByteArray message;
@@ -431,7 +435,7 @@ namespace RW{
             case Util::Functions::UsbHidLoaderFlashFile:
             {
                 QByteArray arr = CreateMessage(Util::Functions::CanEasyCloseApplication, "", Util::ErrorID::Success);
-                ToogleCL30Fast(arr);
+                SendMessage(arr);
                 break;
             }
             default:

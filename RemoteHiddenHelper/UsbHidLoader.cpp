@@ -83,6 +83,13 @@ namespace RW
             m_ProcessID = proc.processId();
             evtLoop.exec();
 
+            //Aktuell landet hier keiner mehr
+            if (!proc.waitForFinished(1800000))
+            {
+                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderFailed, "");
+                return;
+            }
+
             //Nur wenn USBHidLoader nicht schon getötet wurde darf dieses Signal gesendet werden. 
             //Weil zuvor ja schon ein Fehler erkannt wurde und somit ein falscher Status verbreitet würde.
             if (m_IsTerminated)
@@ -91,12 +98,6 @@ namespace RW
                 return;
             }
 
-            //Aktuell landet hier keiner mehr
-            if (!proc.waitForFinished(1800000))
-            {
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderFailed, "");
-                return;
-            }
             emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::Success, "");
         }
 
@@ -157,13 +158,17 @@ namespace RW
             }
             else if (text.contains(FLASHFINISHED2))
             {
-                m_IsTerminated = true;
-                //Pearl Child Prozess sollte zuerst geschlossen werden
-                CloseChildProcess(m_ProcessID);
-                //als nächstes wird die Konsole geschlossen
-                emit KillUsbHidLoader();
-                //zuletzt wird der Status verschickt
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::Success, "");
+                //Wenn nicht schon durch finished flashing das beeden eingeleitet wurde
+                if (!m_IsTerminated)
+                {
+                    m_IsTerminated = true;
+                    //Pearl Child Prozess sollte zuerst geschlossen werden
+                    CloseChildProcess(m_ProcessID);
+                    //als nächstes wird die Konsole geschlossen
+                    emit KillUsbHidLoader();
+                    //zuletzt wird der Status verschickt
+                    emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLiaderUnknownError, "");
+                }
                 return;
             }
         }    

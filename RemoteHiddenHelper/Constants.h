@@ -118,6 +118,7 @@ namespace RW{
                 ErrorFileUsbHidLoaderHIDState,
                 ErrorFileUsbHidLoaderTimeOut,
                 ErrorFileUsbHidLoaderChecksum,
+                ErrorFileUsbHidLiaderUnknownError,
             };
 #ifdef QT
             Q_ENUM(ErrorID)

@@ -46,15 +46,36 @@ inline QString GetMKSLink(QString Destination, QString MksLink)
 	return Destination + left;
 }
 
+inline BOOL CALLBACK TerminateAppEnum(HWND hwnd, LPARAM lParam)
+{
+    DWORD dwID;
+
+    GetWindowThreadProcessId(hwnd, &dwID);
+
+    if (dwID == (DWORD)lParam)
+    {
+        PostMessage(hwnd, WM_CLOSE, 0, 0);
+    }
+
+    return TRUE;
+}
+
+
+
 inline bool GetProcessByName(QString ProcessName, bool Terminate = false)
 {
-    DWORD aProcesses[1024], cbNeeded, cProcesses;
+    DWORD aProcesses[1024], cbNeeded = 0 , cProcesses = 0;
     unsigned int i;
+
+    //Zunächst versuchen die Applikation über WM_CLOSE zu schließen
+    HANDLE   hProc = 0;
+    DWORD   dwRet = 0;
 
     if (!EnumProcesses(aProcesses, sizeof(aProcesses), &cbNeeded))
     {
-        return false;
+        return true;
     }
+
     cProcesses = cbNeeded / sizeof(DWORD);
 
     for (i = 0; i < cProcesses; i++)
@@ -87,29 +108,37 @@ inline bool GetProcessByName(QString ProcessName, bool Terminate = false)
             // Compare process name with your string        
             bool matchFound = !strcmp(szProcessName, ProcessName.toStdString().c_str());
 
+
             if (matchFound)
             {
                 if (Terminate)
                 {
-                    DWORD error;
-                    GetExitCodeProcess(hProcess, &error);
-                    if (TerminateProcess(hProcess, error))
+                    DWORD   dwPID = 0;
+                    EnumWindows((WNDENUMPROC)TerminateAppEnum, (LPARAM)dwPID);
+
+                    //Prüfen ob Applikation nun geschlossen ist, wenn nicht wenden wir Terminate Process an.
+                    if (WaitForSingleObject(hProc, 5000) != WAIT_OBJECT_0)
                     {
-                        DWORD error = GetLastError();
-                        return false;
-                    }
-                    else
-                    {
-                        DWORD error = GetLastError();
-                        return true;
+                        DWORD error;
+                        GetExitCodeProcess(hProcess, &error);
+                        if (TerminateProcess(hProcess, error))
+                        {
+                            DWORD error = GetLastError();
+                            return false;
+                        }
+                        else
+                        {
+                            DWORD error = GetLastError();
+                            return true;
+                        }
                     }
                 }
+                // Release the handle to the process.    
+                CloseHandle(hProcess);
                 return matchFound;
             }
-
-            // Release the handle to the process.    
+            // Release the handle to the process.   
             CloseHandle(hProcess);
-
         }
     }
     return false;

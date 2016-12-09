@@ -3,6 +3,8 @@
 #include <qfileinfo.h>
 #include <qthread.h>
 
+#include "Util.h"
+
 namespace RW{
 	namespace CORE{
 
@@ -45,8 +47,14 @@ namespace RW{
 
 		void CanEasyWrapper::StartCanEasy(const QFile &File)
 		{
-			CoInitialize(nullptr);
+            //Wenn ein CanEasy noch offen ist, wird es zunächst geschlossen
+            if (GetProcessByName("CanEasy.exe", true))
+            {
+                emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyApplicationError, "Can't create CanEasy Instance");
+                return;
+            }
 
+			CoInitialize(nullptr);
 
 			HRESULT hr = CoCreateInstance(__uuidof(CanEasyProcess), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(ICanEasyProcess), (void**)&m_Process);
 			if (FAILED(hr))
