@@ -66,6 +66,8 @@ namespace RW{
                 FileUtilDelete,
                 UsbHidLoaderFlashFile,
                 PrintDebugInformation,
+				ToggleCl30Fast,
+				ToggleCl30Slow,
                 Amount
             };
 #ifdef QT

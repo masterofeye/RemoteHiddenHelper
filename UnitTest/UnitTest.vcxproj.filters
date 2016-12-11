@@ -29,6 +29,15 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="SQL">
+      <UniqueIdentifier>{9c01d43a-3d84-4162-bb9f-bfc4dfecc7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQL\Entities">
+      <UniqueIdentifier>{4d06d16a-ce33-4536-9949-9b1a89005426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Administration">
+      <UniqueIdentifier>{08d18467-6810-42a7-9576-0b2c49000fc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,6 +58,51 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Constans.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
+    <ClCompile Include="SQLConstructor.cpp">
+      <Filter>SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Entity.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Entity.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>SQL\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Product.cpp">
+      <Filter>SQL\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Product.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Product.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Recept.cpp">
+      <Filter>SQL\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Instruction.cpp">
+      <Filter>SQL\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Recept.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Instruction.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Recept.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Instruction.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="HWManager.cpp">
+      <Filter>Administration</Filter>
+    </ClCompile>
+    <ClCompile Include="FlashManager.cpp">
+      <Filter>Administration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Unit.h">
@@ -57,5 +111,28 @@
     <CustomBuild Include="Constans.h">
       <Filter>Header Dateien</Filter>
     </CustomBuild>
+    <CustomBuild Include="Entity.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Product.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Recept.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Instruction.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SQLConstructor.h">
+      <Filter>SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="HWManager.h">
+      <Filter>Administration</Filter>
+    </ClInclude>
+    <ClInclude Include="FlashManager.h">
+      <Filter>Administration</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
