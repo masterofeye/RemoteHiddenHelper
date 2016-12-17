@@ -1,10 +1,8 @@
 
 #include <QApplication>
 #include <qlocalsocket.h>
-#include <qdatastream.h>
 #include "Unit.h"
 #include "Constans.h"
-#include <qregexp.h>
 #include "SQLConstructor.h"
 
 

@@ -60,8 +60,6 @@ namespace RW{
 				PortalInfoSoftwareById,
 				PortalInfoShowDialog,
 				PortalInfoCloseDialog,
-				ToogleCl30Long,
-				ToogleCl30Short,
 				FileUtilUnZip,
 				FileUtilDelete,
 				UsbHidLoaderFlashFile,
