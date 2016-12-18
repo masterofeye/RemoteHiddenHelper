@@ -15,13 +15,18 @@ public:
 	bool MySQLInitialization();
 
 private:
-	void CreateInstructionTbl(QSqlDatabase& db);
+	void CreateInstructionTbl();
 	void CreateProductTbl();
 	void CreateReceptTbl();
 
 	void InsertInstructionTblTestData();
 	void InsertProductTblTestData();
 	void InsertReceptTblTestData();
+
+	void DropAllTables();
+	void DropProductTbl();
+	void DropReceptTbl();
+	void DropInstructionTbl();
 
 };
 

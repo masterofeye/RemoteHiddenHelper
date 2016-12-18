@@ -5,6 +5,8 @@
 #include "Constans.h"
 #include "SQLConstructor.h"
 
+#include "InstructionFactory.h"
+#include "DataMapper.h"
 
 int main(int argc, char *argv[])
 {

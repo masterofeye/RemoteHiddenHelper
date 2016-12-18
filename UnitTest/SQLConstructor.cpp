@@ -29,20 +29,25 @@ bool SQLConstructor::MySQLInitialization()
 	if (!db.open())
 		return false;
 
-	CreateInstructionTbl(db);
-	CreateProductTbl();
-	CreateReceptTbl();
+	DropAllTables();
 
+	CreateInstructionTbl();
+	CreateReceptTbl();
+	CreateProductTbl();
+
+	InsertInstructionTblTestData();
+	InsertReceptTblTestData();
+	InsertProductTblTestData();
 	db.close();
 	return true;
 }
 
 
-void SQLConstructor::CreateInstructionTbl(QSqlDatabase &db)
+void SQLConstructor::CreateInstructionTbl()
 {
-
+	QSqlDatabase db = QSqlDatabase::database();
 	QSqlQuery query(db);
-	const QString cmd = "CREATE TABLE IF NOT EXISTS instruction (idInstruction INTEGER UNIQUE PRIMARY KEY, step VARCHAR(255))";
+	const QString cmd = "CREATE TABLE IF NOT EXISTS instruction (idInstruction INTEGER UNIQUE PRIMARY KEY AUTO_INCREMENT, step VARCHAR(255))";
 	bool res = query.prepare(cmd);
 	if (res)
 	{
@@ -63,7 +68,7 @@ void SQLConstructor::CreateReceptTbl()
 
 	QSqlDatabase db = QSqlDatabase::database();
 	QSqlQuery query(db);
-	bool res = query.prepare("CREATE TABLE IF NOT EXISTS recept (idRecept INTEGER UNIQUE PRIMARY KEY, orderNumber SMALLINT UNSIGNED, receptName VARCHAR(255), ingredientID INT, FOREIGN KEY (ingredientID) REFERENCES instruction(ingredientID))");
+	bool res = query.prepare("CREATE TABLE IF NOT EXISTS recept (idRecept INTEGER UNIQUE PRIMARY KEY AUTO_INCREMENT, orderNumber SMALLINT UNSIGNED, receptName VARCHAR(255), instructionID INT, FOREIGN KEY (instructionID) REFERENCES instruction(idInstruction))");
 	if (res)
 	{
 		if (query.exec())
@@ -81,7 +86,7 @@ void SQLConstructor::CreateProductTbl()
 {
 	QSqlDatabase db = QSqlDatabase::database();
 	QSqlQuery query(db);
-	bool res = query.prepare("CREATE TABLE IF NOT EXISTS production (idProduction INTEGER UNIQUE PRIMARY KEY, productName VARCHAR(255), part VARCHAR(255), receptID INT, FOREIGN KEY (receptID) REFERENCES recept(receptID))");
+	bool res = query.prepare("CREATE TABLE IF NOT EXISTS product (idProduction INTEGER UNIQUE PRIMARY KEY AUTO_INCREMENT, productName VARCHAR(255), part VARCHAR(255), receptName VARCHAR(255))");
 	if (res)
 	{
 		if (query.exec())
@@ -104,20 +109,17 @@ void SQLConstructor::InsertInstructionTblTestData()
 	int index = mo.indexOfEnumerator("Functions");
 	QMetaEnum metaEnum = mo.enumerator(index);
 
-	query.prepare("INSERT INTO instruction (step) VALUES(:step)");
+	query.prepare("INSERT INTO instruction (step) VALUES(?)");
+	QVariantList values;
 	for (int i = 0; i < metaEnum.keyCount(); i++)
 	{
 		const char* s = metaEnum.key(i); // enum name as string
-		query.bindValue(":step", s);
-		if(query.exec())
-		{
-			qDebug() << "InstructionTbl created succesfully";
-		}
-		else
-		{
-			qDebug() << "Error " << "MySQl Error " << query.lastError().text();
-		}
+		
+		values << s;
 	}
+	query.addBindValue(values);
+	if (!query.execBatch())
+		qDebug() << query.lastError();
 }
 
 #define BOOTLOADER "Bootloader"
@@ -162,15 +164,19 @@ void SQLConstructor::InsertProductTblTestData()
 
 
 	query.prepare("INSERT INTO product (productName, part, receptName) VALUES(?, ?, ?)");
-	QMap<QString, QPair<QString, QString>>::const_iterator i = projectNameList.constBegin();
-	while (i != projectNameList.constEnd()) {
-		 
-		QList<QPair<QString, QString>> values = projectNameList.values(i.key());
+	for each (auto key in projectNameList.uniqueKeys())
+	{
+		QList<QPair<QString, QString>> values = projectNameList.values(key);
 		for each (auto var in values)
 		{
-			QVariantList values;
-			values << i.key() << var.first << var.second;
-			query.execBatch(QSqlQuery::BatchExecutionMode::ValuesAsColumns);
+			query.addBindValue(key);
+			query.addBindValue(var.first);
+			query.addBindValue(var.second);
+			if (!query.exec())
+			{
+				qDebug() << query.lastError().text();
+				qDebug() << query.lastError().number();
+			}
 		}
 	}
 }
@@ -259,17 +265,66 @@ void SQLConstructor::InsertReceptTblTestData()
 	receptList.insertMulti(FHOST_EL_GC, QPair<QString, int>(QVariant::fromValue(RW::CORE::Util::Functions::PortalInfoCloseDialog).toString(), i++));
 
 
-	query.prepare("INSERT INTO recept (order, instructionID, receptName) VALUES(?, (SELECT idInstruction from instruction WHERE step = ?) , ?)");
+	query.prepare("INSERT INTO recept (receptName, orderNumber, instructionID) VALUES(?, ?, (SELECT idInstruction FROM instruction WHERE step=?))");
 	
-	QMap<QString, QPair<QString,quint8>>::const_iterator ii = receptList.constBegin();
-	while (ii != receptList.constEnd()) {
-
-		QList<QPair<QString, quint8>> values = receptList.values(ii.key());
+	for each (auto key in receptList.uniqueKeys())
+	{
+		QList<QPair<QString, quint8>> values = receptList.values(key);
 		for each (auto var in values)
 		{
 			QVariantList values;
-			values << ii.key() << var.first << var.second;
-			query.execBatch(QSqlQuery::BatchExecutionMode::ValuesAsColumns);
+			values << key;
+
+			QVariantList values2;
+			values2 << var.second;
+
+			QVariantList values3;
+			values3 << var.first;
+			query.addBindValue(values);
+			query.addBindValue(values2);
+			query.addBindValue(values3);
+			if (!query.execBatch())
+			{
+				qDebug() << query.lastError().text();
+				qDebug() << query.lastError().number();
+			}
 		}
+	}
+}
+
+void SQLConstructor::DropAllTables()
+{
+	DropProductTbl();
+	DropReceptTbl();
+	DropInstructionTbl();
+}
+
+void SQLConstructor::DropProductTbl()
+{
+	QSqlDatabase db = QSqlDatabase::database();
+	QSqlQuery query(db);
+	if (!query.exec("DROP TABLE IF EXISTS product"))
+	{
+		qDebug() << "Table product wasn't droped correctly.";
+	}
+}
+
+void SQLConstructor::DropReceptTbl()
+{
+	QSqlDatabase db = QSqlDatabase::database();
+	QSqlQuery query(db);
+	if (!query.exec("DROP TABLE IF EXISTS recept"))
+	{
+		qDebug() << "Table recept wasn't droped correctly.";
+	}
+}
+
+void SQLConstructor::DropInstructionTbl()
+{
+	QSqlDatabase db = QSqlDatabase::database();
+	QSqlQuery query(db);
+	if (!query.exec("DROP TABLE IF EXISTS instruction"))
+	{
+		qDebug() << "Table instruction wasn't droped correctly.";
 	}
 }
