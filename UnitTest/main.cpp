@@ -5,12 +5,14 @@
 #include "Constans.h"
 #include "SQLConstructor.h"
 
-#include "InstructionFactory.h"
-#include "DataMapper.h"
+#include "spdlog\spdlog.h"
+#include "MySqlDbSink.h"
 
 int main(int argc, char *argv[])
 {
 	QCoreApplication a(argc, argv);
+	std::shared_ptr<spdlog::logger> m_logger = spdlog::create<spdlog::sinks::MySqlSink>("file_logger");
+	m_logger->error("test");
 
 	SQLConstructor sql;
 	sql.MySQLInitialization();

@@ -3,6 +3,10 @@
 #include <qobject.h>
 namespace RW{
     namespace CORE{
+
+
+
+
 #ifdef QT
 		class Util
 		{

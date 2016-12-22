@@ -170,7 +170,9 @@ namespace RW{
                 long sequencevalue = 0;
                 long totalvalue = 0;
                 HRESULT  hr = m_Process->GetProgress(_bstr_t(m_WorkspacePath.c_str()), &stepvalue, &sequencevalue, &totalvalue);
-                if (stepvalue == 0 && sequencevalue == 0 && totalvalue == 0)
+				if (stepvalue == 0 && sequencevalue == 0 && totalvalue == 0)
+				{
+				}
             }
 
 			QString status = ReadStatusText();

@@ -3,25 +3,24 @@
 namespace RW{
 	namespace SQL{
 
+		class InstructionPrivate;
 		class Instruction :
 			public Entity
 		{
 			Q_OBJECT
-
 			Q_PROPERTY(QString Step MEMBER m_Step READ Step WRITE SetStep NOTIFY StepChanged)
 			Q_CLASSINFO("Version", "0.0.1")
 		private:
-			QString m_Step;
+			InstructionPrivate* d_ptr;
+			Q_DECLARE_PRIVATE(Instruction);
 
-		
 		public:
 			Instruction(Entity *Parent = nullptr);
 			~Instruction();
 
-			QString Step(){ return m_Step; }
-			void SetStep(QString Step){ m_Step = Step; emit StepChanged(); }
+			QString Step();
+			void SetStep(QString Step);
 			
-
 		signals:
 			void StepChanged();
 		};
