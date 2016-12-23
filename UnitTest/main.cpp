@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	QCoreApplication a(argc, argv);
 	std::shared_ptr<spdlog::logger> m_logger = spdlog::create<spdlog::sinks::MySqlSink>("file_logger");
 
-	RW::SQL::Repository r;
+	RW::SQL::Repository r(RW::SourceType::SQL);
 	RW::SQL::RemoteWorkstation R;
 	r.GetRemoteWorkstationByID(1,R);
 

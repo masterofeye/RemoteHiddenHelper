@@ -3,13 +3,13 @@
 namespace RW{
 	namespace CORE{
 
-		class CommuncationManager :
+		class CommunicationManager :
 			public QObject
 		{
 			Q_OBJECT
 		public:
-			CommuncationManager(QObject *Parent = nullptr);
-			~CommuncationManager();
+			CommunicationManager(QObject *Parent = nullptr);
+			~CommunicationManager();
 		};
 	}
 }

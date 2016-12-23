@@ -87,7 +87,7 @@ namespace spdlog
 				// \!todo hier kann es sein das wir gerade rausschreiben und jemand anderes reinschreibt !? 
 				for each(RW::SQL::LogEntry var in m_Buffer)
 				{
-					RW::SQL::Repository repo;
+					RW::SQL::Repository repo(RW::SourceType::SQL);
 					repo.InsertLogEntry(var);
 				}
 				//Buffer leeren nachdem alles wegeschrieben wurde

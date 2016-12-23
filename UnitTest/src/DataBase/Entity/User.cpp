@@ -9,47 +9,101 @@ namespace RW{
 			//QObject(Parent),
 			q_ptr(Parent)
 		{
-			qDebug() << "ctor UserPrivate";
 		}
 
 		UserPrivate::~UserPrivate()
 		{
-			qDebug() << "~ctor UserPrivate";
 		}
 
 
 		User::User(const User& other)
 		{
-			qDebug() << "copy User";
 		}
 		User& User::operator=(User& other)
 		{
-			qDebug() << "copy operator User";
 			return *this;
 		}
 
 
 		User::User(User&& other)
 		{
-			qDebug() << "move User";
 		}
 
 		User& User::operator=(User&& other)
 		{
-			qDebug() << "move operator User";
 			return *this;
 		}
 
 		User::User(Entity *Parent) : Entity(Parent),
 		d_ptr(new UserPrivate(this))
 		{
-			qDebug() << "ctor User";
 		}
 
 
 		User::~User()
 		{
-			qDebug() << "~ctor User";
+		}
+
+
+		QString User::UserName() const
+		{
+			Q_D(const User);
+			return d->m_UserName;
+		}
+
+		void User::SetUserName(QString Username)
+		{
+			Q_D(User);
+			d->m_UserName = Username;
+		}
+
+		QString User::Initials() const
+		{
+			Q_D(const User);
+			return d->m_Initials;
+		}
+
+		void User::SetInitials(QString Initials)
+		{
+			Q_D(User);
+			d->m_Initials = Initials;
+		}
+
+		QString User::MKSUsername() const
+		{
+			Q_D(const User);
+			return d->m_MKSUsername;
+		}
+
+
+		void User::SetMKSUsername(QString Username)
+		{
+			Q_D(User);
+			d->m_MKSUsername = Username;
+		}
+
+		QString User::MKSPassword() const
+		{
+			Q_D(const User);
+			return d->m_MKSPassword;
+		}
+
+		void User::SetMKSPassword(QString Password)
+		{
+			Q_D(User);
+			d->m_MKSPassword = Password;
+		}
+
+		QString User::Password() const
+		{
+			Q_D(const User);
+			return d->m_Password;
+		}
+
+		void User::SetPassword(QString Password)
+		{
+			Q_D(User);
+			d->m_Password = Password;
 		}
 	}
 }

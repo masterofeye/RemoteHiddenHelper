@@ -58,6 +58,9 @@
     <Filter Include="SQL\Repositories">
       <UniqueIdentifier>{4c1c8f0f-14ba-4d6b-b310-6c9311692411}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Administration\Hardware">
+      <UniqueIdentifier>{140c3c47-b832-43bc-9eb3-f6016d184c0b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_Unit.cpp">
@@ -74,9 +77,6 @@
     </ClCompile>
     <ClCompile Include="SQLConstructor.cpp">
       <Filter>SQL</Filter>
-    </ClCompile>
-    <ClCompile Include="HWManager.cpp">
-      <Filter>Administration</Filter>
     </ClCompile>
     <ClCompile Include="FlashManager.cpp">
       <Filter>Administration</Filter>
@@ -101,18 +101,6 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_ConfigurationFacade.cpp">
       <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="CommuncationManager.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CommuncationManager.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CommuncationManager.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Factory\DataFactory.cpp">
-      <Filter>SQL\Factories</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_DataFactory.cpp">
       <Filter>Generierte Dateien\Debug</Filter>
@@ -261,6 +249,21 @@
     <ClCompile Include="GeneratedFiles\Release\moc_LogEntry_p.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
+    <ClCompile Include="HWManager.cpp">
+      <Filter>Administration\Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationServer.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="CommunicationManager.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="ConfigurationService.h">
@@ -274,9 +277,6 @@
     </CustomBuild>
     <CustomBuild Include="ConfigurationFacade.h">
       <Filter>Configuration</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CommuncationManager.h">
-      <Filter>Communication</Filter>
     </CustomBuild>
     <CustomBuild Include="src\DataBase\Factory\DataFactory.h">
       <Filter>SQL\Factories</Filter>
@@ -341,13 +341,13 @@
     <CustomBuild Include="src\DataBase\Entity\LogEntry_p.h">
       <Filter>SQL\Entities</Filter>
     </CustomBuild>
+    <CustomBuild Include="CommunicationManager.h">
+      <Filter>Communication</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SQLConstructor.h">
       <Filter>SQL</Filter>
-    </ClInclude>
-    <ClInclude Include="HWManager.h">
-      <Filter>Administration</Filter>
     </ClInclude>
     <ClInclude Include="FlashManager.h">
       <Filter>Administration</Filter>
@@ -369,6 +369,12 @@
     </ClInclude>
     <ClInclude Include="AllEntities.h">
       <Filter>SQL\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="HWManager.h">
+      <Filter>Administration\Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="CommunicationServer.h">
+      <Filter>Communication</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

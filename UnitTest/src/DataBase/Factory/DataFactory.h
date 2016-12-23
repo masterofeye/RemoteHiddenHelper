@@ -14,8 +14,8 @@ namespace RW{
 		private: 
 			std::shared_ptr<spdlog::logger> m_logger;
 		public:
-			DataFactory(QObject* Parent = nullptr);
-			~DataFactory();
+			DataFactory(QObject* Parent = nullptr) : QObject(Parent){}
+			~DataFactory(){}
 
 			template<class T> DataMapper<T>* GetMapper(SourceType Source);
 		signals :

@@ -1,7 +1,7 @@
 #include "ConfigurationFacade.h"
 #include "Repository.h"
 
-#include "RemoteWorkstation.h"
+#include "AllEntities.h"
 
 Q_DECLARE_METATYPE(RW::SQL::RemoteWorkstation);
 Q_DECLARE_METATYPE(QList<RW::SQL::RemoteWorkstation>);
@@ -18,7 +18,7 @@ namespace RW{
 
 		void ConfigurationFacade::OnReadOrUpdateAppSettings(QMap<ConfigurationKey, QVariant> *ApplicationSettings)
 		{
-			SQL::Repository repository;
+			SQL::Repository repository(SourceType::SQL);
 			qRegisterMetaType<QList<RW::SQL::RemoteWorkstation>>("QList<RW::SQL::RemoteWorkstation>");
 			//qRegisterMetaTypeStreamOperators<QList<RW::SQL::RemoteWorkstation>>("QList<RW::SQL::RemoteWorkstation>");
 
@@ -26,12 +26,17 @@ namespace RW{
 			repository.GetAllRemoteWorkstation(remoteWorkstationList);
 
 			ApplicationSettings->insert(ConfigurationKey::RemoteWorkstations, QVariant::fromValue(remoteWorkstationList));
+
+
 			
 		}
 
 		void ConfigurationFacade::OnReadOrUpdateUserSettings(QMap<ConfigurationKey, QVariant> *UserSettings)
 		{
-
+			SQL::Repository repository(SourceType::SQL);
+			QString Username;
+			SQL::User user;
+			repository.GetUserByName(Username, user);
 
 		}
 	}

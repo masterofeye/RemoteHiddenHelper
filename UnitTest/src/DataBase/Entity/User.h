@@ -24,6 +24,22 @@ namespace RW{
 
 			User(User&& other);
 			User& User::operator=(User&& other);
+
+			QString UserName() const;
+			void SetUserName(QString UserName);
+
+			QString Initials() const;
+			void SetInitials(QString Initials);
+
+			QString MKSUsername() const;
+			void SetMKSUsername(QString Username);
+
+			QString MKSPassword() const;
+			void SetMKSPassword(QString Password);
+
+			QString Password() const;
+			void SetPassword(QString Password);
+
 		signals:
 			//void TypeChanged();
 		};
