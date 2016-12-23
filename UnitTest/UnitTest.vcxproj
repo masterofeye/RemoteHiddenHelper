@@ -283,7 +283,6 @@
     <ClCompile Include="HWManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SQLConstructor.cpp" />
-    <ClCompile Include="src\DataBase\DataMapper\MySQL\MySqlMapper.cpp" />
     <ClCompile Include="src\DataBase\Entity\Entity.cpp" />
     <ClCompile Include="src\DataBase\Entity\ElementConfiguration.cpp" />
     <ClCompile Include="src\DataBase\Entity\ElementType.cpp" />
@@ -332,6 +331,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_NETWORK_LIB "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\RemoteUtil\thirdparty"</Command>
     </CustomBuild>
+    <ClInclude Include="AllEntities.h" />
+    <ClInclude Include="ConfigurationGlobal.h" />
     <ClInclude Include="src\DataBase\DataMapper\MySQL\MySqlMapper.h" />
     <CustomBuild Include="src\DataBase\Entity\LogEntry.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

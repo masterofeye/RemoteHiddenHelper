@@ -15,6 +15,7 @@ namespace RW{
 		public:
 			UserPrivate(User *Parent);
 			~UserPrivate();
+
 		};
 	}
 }

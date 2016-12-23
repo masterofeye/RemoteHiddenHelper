@@ -10,11 +10,12 @@
 #define REGISTER_SLOT "OnConfiguration"
 #define REGISTER_SIGNAL "ConfigurationChanged"
 
+
 namespace RW{
 	namespace CORE{
 		ConfigurationService::ConfigurationService(QObject *Parent) : QObject(Parent),
-			m_UserSettings(new QMap<QString, QVariant>()),
-			m_ApplicationSettings(new QMap<QString, QVariant>()),
+			m_UserSettings(new QMap<ConfigurationKey, QVariant>()),
+			m_ApplicationSettings(new QMap<ConfigurationKey, QVariant>()),
 			m_NotificationList(new QMultiMap<QObject*, QString>())
 		{
 			m_ServiceLayer = new ConfigurationFacade(this);

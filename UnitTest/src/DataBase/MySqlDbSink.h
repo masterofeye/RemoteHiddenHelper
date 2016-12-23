@@ -52,6 +52,7 @@ namespace spdlog
 
 			void log(const details::log_msg& msg) override
 			{
+				
 				RW::SQL::LogEntry obj;
 				//std::time_t t = std::chrono::system_clock::to_time_t();
 				//

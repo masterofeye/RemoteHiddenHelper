@@ -1,5 +1,6 @@
 #include "LogEntry.h"
 #include "LogEntry_p.h"
+#include "qdebug.h"
 
 namespace RW{
 	namespace SQL{
@@ -19,7 +20,8 @@ namespace RW{
 		}
 
 		LogEntryPrivate::~LogEntryPrivate()
-		{}
+		{
+		}
 
 		LogEntry::LogEntry(Entity *Parent) : Entity(Parent),
 			d_ptr(new LogEntryPrivate(this))
@@ -29,8 +31,6 @@ namespace RW{
 
 		LogEntry::~LogEntry()
 		{
-			if (d_ptr != nullptr)
-				delete d_ptr;
 		}
 
 		QDateTime LogEntry::Date()

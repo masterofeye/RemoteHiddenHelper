@@ -1,7 +1,7 @@
 #pragma once
 #include "qobject.h"
 #include <qvariant.h>
-
+#include "ConfigurationGlobal.h"
 
 
 namespace RW{
@@ -25,8 +25,9 @@ namespace RW{
 
 			};
 		private:
-			QMap<QString, QVariant> *m_UserSettings;
-			QMap<QString, QVariant> *m_ApplicationSettings;
+			QMap<ConfigurationKey, QVariant> *m_UserSettings;
+			QMap<ConfigurationKey, QVariant> *m_ApplicationSettings;
+			
 			/**
 			@brief Enthält eine Liste an Clienten und deren Konfigurationselementen. Es ist möglich das ein Client mehrere Konfigurationselemente abboniert hat.
 			*/
@@ -65,8 +66,9 @@ namespace RW{
 			*/
 			void ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data);
 
-			void ReadOrUpdateAppSettings(QMap<QString, QVariant> *ApplicationSettings);
-			void ReadOrUpdateUserSettings(QMap<QString, QVariant> *UserSettings);
+			void ReadOrUpdateAppSettings(QMap<ConfigurationKey, QVariant> *ApplicationSettings);
+			void ReadOrUpdateUserSettings(QMap<ConfigurationKey, QVariant> *UserSettings);
 		};
+
 	}
 }

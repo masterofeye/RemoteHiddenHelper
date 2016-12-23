@@ -18,7 +18,7 @@ namespace RW{
 			ElementType m_Type;
 			QString m_DisplayName;
 			QString m_Name;
-			QString m_Group;
+			QString m_GroupName;
 			QString m_Function;
 		public:
 			ElementConfigurationPrivate(ElementConfiguration* QPointer);

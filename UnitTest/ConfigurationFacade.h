@@ -1,5 +1,6 @@
 #pragma once
 #include "qobject.h"
+#include "ConfigurationGlobal.h"
 
 namespace RW{
 	namespace CORE{
@@ -11,8 +12,8 @@ namespace RW{
 			ConfigurationFacade(QObject *Parent = nullptr);
 			~ConfigurationFacade();
 		public slots: 
-		void OnReadOrUpdateAppSettings(QMap<QString, QVariant> *ApplicationSettings);
-		void OnReadOrUpdateUserSettings(QMap<QString, QVariant> *UserSettings);
+		void OnReadOrUpdateAppSettings(QMap<ConfigurationKey, QVariant> *ApplicationSettings);
+		void OnReadOrUpdateUserSettings(QMap<ConfigurationKey, QVariant> *UserSettings);
 		};
 	}
 }

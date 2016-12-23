@@ -1,34 +1,66 @@
 #include "ElementConfiguration.h"
 #include "ElementConfiguration_p.h"
 #include "ElementType.h"
+#include "qdebug.h"
 
 namespace RW{
 	namespace SQL{
 
 		ElementConfigurationPrivate::ElementConfigurationPrivate(ElementConfiguration* Parent) :
-			QObject(Parent),
+			//QObject(Parent),
 			q_ptr(Parent),
 			m_DisplayName(""),
 			m_Function(""),
-			m_Group(""),
+			m_GroupName(""),
 			m_Type(),
 			m_Name("")
 		{
+			qDebug() << "ctor ElementConfigurationPrivate";
 		}
 
 		ElementConfigurationPrivate::~ElementConfigurationPrivate()
 		{
+			qDebug() << "~ctor ElementConfigurationPrivate";
 		}
 
 
 		ElementConfiguration::ElementConfiguration(Entity *Parent) : Entity(Parent),
 			d_ptr(new ElementConfigurationPrivate(this))
 		{
+			qDebug() << "ctor ElementConfiguration ";
 		}
 
 		ElementConfiguration::~ElementConfiguration()
 		{
-			delete d_ptr;
+			qDebug() << "delete ElementConfiguration";
+		}
+
+		ElementConfiguration::ElementConfiguration(const ElementConfiguration& other) : d_ptr(other.d_ptr)
+		{
+			qDebug() << "copy ElementConfiguration";
+		}
+		ElementConfiguration& ElementConfiguration::operator=(ElementConfiguration& other)
+		{
+			qDebug() << "Copy Operator RemoteWorkstation";
+			std::swap(d_ptr, const_cast<ElementConfigurationPrivate*>(other.d_ptr));
+			qDebug() << "copy operator ElementConfiguration";
+			return *this;
+		}
+
+
+		ElementConfiguration::ElementConfiguration(ElementConfiguration&& other) : d_ptr(other.d_ptr)
+		{
+			qDebug() << "move ElementConfiguration";
+			other.d_ptr = nullptr;
+			
+		}
+		ElementConfiguration& ElementConfiguration::operator=(ElementConfiguration&& other)
+		{
+			qDebug() << "move operator ElementConfiguration";
+			std::swap(d_ptr, other.d_ptr);
+			delete other.d_ptr;
+			other.d_ptr = nullptr;
+			return *this;
 		}
 
 
@@ -69,16 +101,16 @@ namespace RW{
 			emit NameChanged();
 		}
 
-		QString ElementConfiguration::Group()
+		QString ElementConfiguration::GroupName()
 		{
 			Q_D(ElementConfiguration);
-			return d_ptr->m_Group;
+			return d_ptr->m_GroupName;
 		}
-		void ElementConfiguration::SetGroup(QString Group)
+		void ElementConfiguration::SetGroupName(QString GroupName)
 		{
 			Q_D(ElementConfiguration);
-			d->m_Group = Group;
-			emit GroupChanged();
+			d->m_GroupName = GroupName;
+			emit GroupNameChanged();
 		}
 
 		QString ElementConfiguration::Function()

@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-
+#include "qdebug.h"
 
 namespace RW{
 	namespace SQL{
@@ -25,19 +25,25 @@ namespace RW{
 			RemoteWorkstation(Entity *Parent = nullptr);
 			~RemoteWorkstation();
 
-			ElementConfiguration& ElementCfg();
+			RemoteWorkstation(const RemoteWorkstation &R);
+			RemoteWorkstation& operator=(const RemoteWorkstation &R);
+
+			RemoteWorkstation(RemoteWorkstation &&R);
+			RemoteWorkstation& operator=( RemoteWorkstation &&R);
+
+			ElementConfiguration& ElementCfg() const;
 			void SetElementCfg(ElementConfiguration &ElementCfg);
 			
-			User& CurrentUser();
+			User& CurrentUser() const;
 			void SetCurrentUser(User &CurrentUser);
 
-			QString Hostname();
+			QString Hostname() const;
 			void SetHostname(QString Hostname);
 
-			QString Mac();
+			QString Mac() const;
 			void SetMac(QString Mac);
 
-			QString Ip();
+			QString Ip() const;
 			void SetIp(QString Ip);
 
 		signals:

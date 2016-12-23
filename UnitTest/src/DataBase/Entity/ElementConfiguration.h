@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 
+
 namespace RW{
 	namespace SQL{
 		class ElementType;
@@ -13,7 +14,7 @@ namespace RW{
 			Q_PROPERTY(ElementType Type NOTIFY TypeChanged)
 			Q_PROPERTY(QString DisplayName  READ DisplayName WRITE SetDisplayName NOTIFY DisplayNameChanged)
 			Q_PROPERTY(QString Name READ Name WRITE SetName NOTIFY NameChanged)
-			Q_PROPERTY(QString Group READ Group WRITE SetGroup NOTIFY GroupChanged)
+			Q_PROPERTY(QString groupName READ GroupName WRITE SetGroupName NOTIFY GroupNameChanged)
 			Q_PROPERTY(QString Function READ Function WRITE SetFunction NOTIFY FunctionChanged)
 			Q_CLASSINFO("Version", "0.0.1")
 		private:
@@ -21,8 +22,15 @@ namespace RW{
 			Q_DECLARE_PRIVATE(ElementConfiguration);
 
 		public:
-			ElementConfiguration(Entity *Parent = nullptr);
+			explicit ElementConfiguration(Entity *Parent = nullptr);
 			~ElementConfiguration();
+
+
+			ElementConfiguration(const ElementConfiguration& other);
+			ElementConfiguration& ElementConfiguration::operator=(ElementConfiguration& other);
+
+			ElementConfiguration(ElementConfiguration&& other);
+			ElementConfiguration& ElementConfiguration::operator=(ElementConfiguration&& other);
 
 			ElementType& Type();
 			void SetType(ElementType &Type);
@@ -33,8 +41,8 @@ namespace RW{
 			QString Name();
 			void SetName(QString Name);
 
-			QString Group();
-			void SetGroup(QString Group);
+			QString GroupName();
+			void SetGroupName(QString GroupName);
 
 			QString Function();
 			void SetFunction(QString Function);
@@ -43,7 +51,7 @@ namespace RW{
 			void TypeChanged();
 			void DisplayNameChanged();
 			void NameChanged();
-			void GroupChanged();
+			void GroupNameChanged();
 			void FunctionChanged();
 		};
 	}

@@ -243,9 +243,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Instruction_p.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="src\DataBase\DataMapper\MySQL\MySqlMapper.cpp">
-      <Filter>SQL\DataMapper\MySQL</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>main</Filter>
     </ClCompile>
@@ -366,6 +363,12 @@
     </ClInclude>
     <ClInclude Include="src\DataBase\MySqlDbSink.h">
       <Filter>SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigurationGlobal.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="AllEntities.h">
+      <Filter>SQL\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

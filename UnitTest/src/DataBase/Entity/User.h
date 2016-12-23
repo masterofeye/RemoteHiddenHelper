@@ -19,6 +19,11 @@ namespace RW{
 			User(Entity *Parent = nullptr);
 			~User();
 
+			User(const User& other);
+			User& User::operator=(User& other);
+
+			User(User&& other);
+			User& User::operator=(User&& other);
 		signals:
 			//void TypeChanged();
 		};

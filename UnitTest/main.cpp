@@ -7,24 +7,41 @@
 
 #include "spdlog\spdlog.h"
 #include "MySqlDbSink.h"
+#include "Repository.h"
+#include "RemoteWorkstation.h"
+#include "ElementConfiguration.h"
+
+#include <vector>  
+
+using namespace std;
+
 
 int main(int argc, char *argv[])
 {
+
+
 	QCoreApplication a(argc, argv);
 	std::shared_ptr<spdlog::logger> m_logger = spdlog::create<spdlog::sinks::MySqlSink>("file_logger");
+
+	RW::SQL::Repository r;
+	RW::SQL::RemoteWorkstation R;
+	r.GetRemoteWorkstationByID(1,R);
+
+	qDebug() << R.ID();
+	qDebug() << R.Hostname();
 	m_logger->error("test");
 
-	SQLConstructor sql;
-	sql.MySQLInitialization();
+	//SQLConstructor sql;
+	//sql.MySQLInitialization();
 
 
 
-	QLocalSocket socket;
-	socket.connectToServer("server");
-	while (!socket.isOpen());
+	//QLocalSocket socket;
+	//socket.connectToServer("server");
+	//while (!socket.isOpen());
 
-    RW::CORE::Unit u(&socket);
-    u.StartTest(RW::CORE::Util::Functions::PortalInfoShowDialog);
+ //   RW::CORE::Unit u(&socket);
+ //   u.StartTest(RW::CORE::Util::Functions::PortalInfoShowDialog);
 	return a.exec();
 }
 

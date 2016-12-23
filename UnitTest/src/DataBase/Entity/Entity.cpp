@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "Entity_p.h"
+#include "qdebug.h"
 
 namespace RW{
 	namespace SQL{
@@ -10,20 +11,24 @@ namespace RW{
 			m_ID(0),
 			q_ptr(Parent)
 		{
+			qDebug() << "CTor EntityPrivate";
 		}
 
 		EntityPrivate::~EntityPrivate()
-		{}
+		{
+			qDebug() << "~CTor EntityPrivate";
+		}
 
 		Entity::Entity(QObject *Parent) : QObject(Parent),
 			d_ptr(new EntityPrivate(this))
 		{
+			qDebug() << "CTor Entity";
 		}
 
 
 		Entity::~Entity()
 		{
-			delete d_ptr;
+			qDebug() << "~CTor Entity";
 		}
 
 		Entity::Entity(const Entity &obj) : d_ptr(new EntityPrivate(this))
@@ -45,25 +50,16 @@ namespace RW{
 			return *this;
 		}
 
-		Entity::Entity(Entity &&rvalue)
+		Entity::Entity(Entity &&other) : d_ptr(other.d_ptr)
 		{
-			Q_D(Entity);
-			SetID(0);
-			d->m_ID = rvalue.ID();
-			rvalue.SetID(0);
+			other.d_ptr = nullptr;
 		}
 
 		Entity& Entity::operator=(Entity&& other)
 		{
-			Q_D(Entity);
-			if (this != &other)
-			{
-				d->m_ID = 0;
-
-				d->m_ID = other.ID();
-
-				other.SetID(0);
-			}
+			std::swap(d_ptr, other.d_ptr);
+			delete other.d_ptr;
+			other.d_ptr = nullptr;
 			return *this;
 		}
 

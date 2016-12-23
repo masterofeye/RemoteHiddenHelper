@@ -21,6 +21,12 @@ namespace RW{
 			TypeOfElement Type();
 			void SetType(TypeOfElement Type);
 
+			ElementType(const ElementType& other);
+			ElementType& ElementType::operator=(ElementType& other);
+
+			ElementType(ElementType&& other);
+			ElementType& ElementType::operator=(ElementType&& other);
+
 		};
 	}
 }
