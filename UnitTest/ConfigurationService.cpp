@@ -68,6 +68,11 @@ namespace RW{
 			}
 		}
 
+		void ConfigurationService::UnregisterAll()
+		{
+			
+		}
+
 		void ConfigurationService::OnProcessMessage(QVariant Data)
 		{
 		

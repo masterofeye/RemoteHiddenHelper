@@ -21,6 +21,11 @@ namespace spdlog
 			{
 			}
 
+			/*
+			@brief Gibt das LogLevel as Stringliteral zurück.
+			@param [in] Level Level welches als String von der Funktion zurückgeliefert werden soll.
+			@return QString String repräsentation des LogLevels.
+			*/
 			QString toString(level::level_enum Level)
 			{
 				switch (Level)
@@ -49,7 +54,10 @@ namespace spdlog
 				return "";
 			}
 
-
+			/*
+			@brief Speichert eine Logmeldung im Zielmedium. Dies ist im Formalfall die Datenbank, kann aber auch ein Logfile haben.
+			@param [in] msg Logeintrag der im Target gespeichert werden soll. 
+ 			*/
 			void log(const details::log_msg& msg) override
 			{
 				

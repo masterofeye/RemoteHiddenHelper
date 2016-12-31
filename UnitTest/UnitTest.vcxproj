@@ -57,7 +57,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>src\DataBase;src\DataBase\Factory;src\DataBase\Entity;src\DataBase\DataMapper;src\DataBase\DataMapper\MySQL;src\DataBase\DataMapper\UnitTest;src\DataBase\DataMapper\XML;src\DataBase\Repository;$(IncludePath)</IncludePath>
+    <IncludePath>src\DataBase;src\DataBase\Factory;src\DataBase\Entity;src\DataBase\DataMapper;src\DataBase\DataMapper\MySQL;src\DataBase\DataMapper\UnitTest;src\DataBase\DataMapper\XML;src\DataBase\Repository;src\HW;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
@@ -136,7 +136,9 @@
     <ClCompile Include="CommunicationServer.cpp" />
     <ClCompile Include="ConfigurationFacade.cpp" />
     <ClCompile Include="ConfigurationService.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="FlashManager.cpp" />
+    <ClCompile Include="GeneralSettings.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -281,7 +283,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_User_p.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="HWManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SQLConstructor.cpp" />
     <ClCompile Include="src\DataBase\Entity\Entity.cpp" />
@@ -294,6 +295,13 @@
     <ClCompile Include="src\DataBase\Entity\RemoteWorkstation.cpp" />
     <ClCompile Include="src\DataBase\Entity\User.cpp" />
     <ClCompile Include="src\DataBase\Repository\Repository.cpp" />
+    <ClCompile Include="src\HW\AbstractDevice.cpp" />
+    <ClCompile Include="src\HW\AnelHome.cpp" />
+    <ClCompile Include="src\HW\DeviceManager.cpp" />
+    <ClCompile Include="src\HW\PowerStripeDevice.cpp" />
+    <ClCompile Include="src\HW\PowerSupplyDevice.cpp" />
+    <ClCompile Include="src\HW\RemoteBoxDevice.cpp" />
+    <ClCompile Include="src\HW\VoltCraft.cpp" />
     <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +329,17 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="ControllerPrivate_p.h" />
+    <ClInclude Include="GeneralSettings.h" />
+    <ClInclude Include="GeneralSettings_p.h" />
+    <ClInclude Include="src\HW\AbstractDevice.h" />
+    <ClInclude Include="src\HW\AnelHome.h" />
+    <ClInclude Include="src\HW\DeviceManager.h" />
+    <ClInclude Include="src\HW\PowerStripeDevice.h" />
+    <ClInclude Include="src\HW\PowerSupplyDevice.h" />
+    <ClInclude Include="src\HW\RemoteBoxDevice.h" />
+    <ClInclude Include="src\HW\VoltCraft.h" />
     <CustomBuild Include="src\DataBase\Entity\Instruction_p.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing Instruction_p.h...</Message>
@@ -563,7 +582,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_NETWORK_LIB "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtNetwork" "-I.\..\..\RemoteUtil\thirdparty"</Command>
     </CustomBuild>
     <ClInclude Include="FlashManager.h" />
-    <ClInclude Include="HWManager.h" />
     <ClInclude Include="SQLConstructor.h" />
   </ItemGroup>
   <ItemGroup>

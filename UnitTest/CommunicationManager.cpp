@@ -12,7 +12,7 @@ namespace RW{
 		{
 		}
 
-		void CommunicationManager::OnProcessMessage()
+		void CommunicationManager::OnProcessMessage(QVariant Data)
 		{
 		}
 	}

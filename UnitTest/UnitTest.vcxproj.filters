@@ -33,18 +33,6 @@
     <Filter Include="Configuration">
       <UniqueIdentifier>{89bbe24a-292b-4eb6-855a-371c7f1a132d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SQL\DataMapper">
-      <UniqueIdentifier>{4af0d6d5-4b74-4f1e-990c-270d1d4aacb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\XML">
-      <UniqueIdentifier>{79d77b7a-284e-49bb-8340-cf66ab13e9dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\MySQL">
-      <UniqueIdentifier>{99b38c7f-5b00-4431-b183-1ccfc87705fe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\UnitTest">
-      <UniqueIdentifier>{1d596f9d-aa3a-47f4-993b-3ab6faba62c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="main">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;cxx;c;def</Extensions>
@@ -58,8 +46,20 @@
     <Filter Include="SQL\Repositories">
       <UniqueIdentifier>{4c1c8f0f-14ba-4d6b-b310-6c9311692411}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Administration\Hardware">
+    <Filter Include="Hardware">
       <UniqueIdentifier>{140c3c47-b832-43bc-9eb3-f6016d184c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQL\DataMapper">
+      <UniqueIdentifier>{4af0d6d5-4b74-4f1e-990c-270d1d4aacb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQL\DataMapper\XML">
+      <UniqueIdentifier>{79d77b7a-284e-49bb-8340-cf66ab13e9dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQL\DataMapper\UnitTest">
+      <UniqueIdentifier>{1d596f9d-aa3a-47f4-993b-3ab6faba62c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SQL\DataMapper\MySQL">
+      <UniqueIdentifier>{99b38c7f-5b00-4431-b183-1ccfc87705fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -249,9 +249,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_LogEntry_p.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="HWManager.cpp">
-      <Filter>Administration\Hardware</Filter>
-    </ClCompile>
     <ClCompile Include="CommunicationServer.cpp">
       <Filter>Communication</Filter>
     </ClCompile>
@@ -263,6 +260,33 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
       <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\AbstractDevice.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\AnelHome.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\DeviceManager.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\PowerStripeDevice.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\PowerSupplyDevice.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\RemoteBoxDevice.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\VoltCraft.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Administration</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralSettings.cpp">
+      <Filter>SQL\Entities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -370,11 +394,41 @@
     <ClInclude Include="AllEntities.h">
       <Filter>SQL\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="HWManager.h">
-      <Filter>Administration\Hardware</Filter>
-    </ClInclude>
     <ClInclude Include="CommunicationServer.h">
       <Filter>Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\AbstractDevice.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\AnelHome.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\DeviceManager.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\PowerStripeDevice.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\PowerSupplyDevice.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\RemoteBoxDevice.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HW\VoltCraft.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Administration</Filter>
+    </ClInclude>
+    <ClInclude Include="ControllerPrivate_p.h">
+      <Filter>Administration</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralSettings.h">
+      <Filter>SQL\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralSettings_p.h">
+      <Filter>SQL\Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

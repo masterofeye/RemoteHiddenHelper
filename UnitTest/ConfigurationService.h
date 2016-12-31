@@ -22,6 +22,9 @@ namespace RW{
 			enum class ConfigurationReceiver
 			{
 				FlashManager,
+				PowerStripe,
+				PowerSupply,
+				RemoteBox
 
 			};
 		private:
@@ -44,6 +47,7 @@ namespace RW{
 			@param Key Das Konfigurationselement für das sich der Client interesiert.
 			*/
 			void Register(QObject *Receiver, QString Key);
+			void UnregisterAll();
 		public slots:
 			void OnProcessMessage(QVariant Data);
 
@@ -60,9 +64,9 @@ namespace RW{
 		signals: 
 			/*
 			@brief Diese Signal wird jedes mal dann ausgelöst wenn sich ein Setting geändert hat
-			@param Type Der Typ gibt an, ob die Settings initial geladen wurden oder ob es sich um ein Update handelt
-			@param Receiver 
-			@param Data Settings die sich geändert haben
+			@param [in] Type Der Typ gibt an, ob die Settings initial geladen wurden oder ob es sich um ein Update handelt
+			@param [in] Receiver 
+			@param [in] Data Settings die sich geändert haben
 			*/
 			void ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data);
 
