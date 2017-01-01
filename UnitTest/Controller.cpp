@@ -2,15 +2,28 @@
 #include "ControllerPrivate_p.h"
 
 #include "spdlog\spdlog.h"
-#include "AbstractDevive.h"
+#include "ControllerPrivate_p.h"
+#include "MySqlDbSink.h"
+#include "AbstractDevice.h"
 
 
 namespace RW
 {
 	namespace CORE
 	{
+		ControllerPrivate::ControllerPrivate(Controller *Parent) : QObject(Parent),
+			q_ptr(Parent)
+		{
 
-		Controller::Controller(QObject *Parent) :QObject(Parent)
+		}
+		
+		ControllerPrivate::~ControllerPrivate()
+		{
+		}
+
+
+		Controller::Controller(QObject *Parent) :QObject(Parent),
+			d_ptr(new ControllerPrivate(this))
 		{
 			connect(this, &Controller::StateChanged, this, &Controller::On);
 			connect(this, &Controller::StateChanged, this, &Controller::Off);
@@ -22,18 +35,19 @@ namespace RW
 		{
 		}
 
-		void Controller::On(State Source, State Target)
+		void Controller::On(State Source)
 		{
-			if (Target != State::ON)
-			{
-				return;
-			}
-
+			m_CurrentState = State::ON;
 			//Datenbank Zugriff prüfen
-
 
 			//Logger initialisieren
 			std::shared_ptr<spdlog::logger> m_logger = spdlog::create<spdlog::sinks::MySqlSink>("file_logger");
+
+			if (d_ptr == nullptr)
+			{
+				m_logger->emerg("Controller isn't initialized.");
+				return;
+			}
 
 			//Configuration Servive initialisieren
 			d_ptr->m_CfgService = new ConfigurationService();
@@ -51,15 +65,14 @@ namespace RW
 			d_ptr->m_CfgService->Register(d_ptr->m_DeviceMananger->GetDevice(DeviceType::PowerStripe), "");
 			d_ptr->m_CfgService->Register(d_ptr->m_CommManager, "");
 
+
+			d_ptr->m_CfgService->ReadApplicationSettings();
+			d_ptr->m_CfgService->ReadUsersettings();
 		}
 
-		void Controller::Off(State Source, State Target)
+		void Controller::Off(State Source)
 		{
-			if (Target != State::OFF)
-			{
-				return;
-			}
-
+			m_CurrentState = State::OFF;
 			//HW Manager deinitialisieren
 			d_ptr->m_DeviceMananger->Shutdown();
 			//
@@ -67,23 +80,14 @@ namespace RW
 
 		}
 
-		void Controller::Active(State Source, State Target)
+		void Controller::Active(State Source)
 		{
-			if (Target != State::ACTIVE)
-			{
-				return;
-			}
-
-
+			m_CurrentState = State::ACTIVE;
 		}
 
-		void Controller::Passive(State Source, State Target)
+		void Controller::Passive(State Source)
 		{
-			if (Target != State::PASSIVE)
-			{
-				return;
-			}
-
+			m_CurrentState = State::PASSIVE;
 			d_ptr->m_DeviceMananger->Shutdown();
 		}
 

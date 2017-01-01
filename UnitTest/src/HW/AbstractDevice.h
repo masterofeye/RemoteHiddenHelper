@@ -1,14 +1,11 @@
 #pragma once
 #include <QtCore>
+#include "ConfigurationGlobal.h"
+#include "HWGlobal.h"
 
 namespace RW{
 	namespace HW{
 
-		enum class State
-		{
-			ON,
-			OFF
-		};
 
 
 		class AbstractDevice : public QObject
@@ -26,7 +23,7 @@ namespace RW{
 			virtual bool Reset() = 0;
 			virtual bool Shutdown() = 0;
 		public slots:
-		 virtual void ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data) = 0;
+		 virtual void OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data) = 0;
 	 signals:
 		 /*
 		 @brief Diese Signal wird jedes mal dann ausgelöst wenn sich ein Setting geändert hat

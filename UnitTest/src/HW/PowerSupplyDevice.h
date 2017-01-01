@@ -7,6 +7,7 @@ namespace RW{
 		class PowerSupplyDevice :
 			public AbstractDevice
 		{
+			Q_OBJECT
 		public:
 			PowerSupplyDevice(QObject *parent = 0);
 			virtual ~PowerSupplyDevice();

@@ -1,5 +1,6 @@
 #include "CommunicationManager.h"
 
+
 namespace RW{
 	namespace CORE{
 

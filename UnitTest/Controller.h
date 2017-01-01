@@ -1,4 +1,6 @@
 #pragma once
+#include "qobject.h"
+#include "HWGlobal.h"
 
 namespace RW
 {
@@ -13,27 +15,24 @@ namespace RW
 
 		};
 
-		enum class DeviceType
-		{
-			RemoteBox,
-			PowerStripe,
-			PowerSupply,
-		};
-
+		class ControllerPrivate;
 		class Controller :
 			public QObject
 		{
+			Q_OBJECT
 		private:
 			ControllerPrivate *d_ptr;
-			Q_DECLARE_PRIVATE(RemoteWorkstation);
+			Q_DECLARE_PRIVATE(Controller);
+
+			State m_CurrentState;
 		public:
 			Controller(QObject *Parent = nullptr);
 			~Controller();
 
-			void On(State Source, State Target);
-			void Off(State Source, State Target);
-			void Passive(State Source, State Target);
-			void Active(State Source, State Target);
+			void On(State Source);
+			void Off(State Source);
+			void Passive(State Source);
+			void Active(State Source);
 
 		signals:
 			void StateChanged(State Source, State Target);

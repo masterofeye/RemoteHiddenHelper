@@ -8,14 +8,7 @@ namespace RW
 {
 	namespace CORE
 	{
-		enum class State
-		{
-			ON,
-			OFF,
-			PASSIVE,
-			ACTIVE
 
-		};
 
 		class Controller;
 
@@ -32,7 +25,7 @@ namespace RW
 			CommunicationManager* m_CommManager;
 			HW::DeviceManager* m_DeviceMananger;
 		public:
-			ControllerPrivate(QObject *Parent = nullptr);
+			ControllerPrivate(Controller *Parent = nullptr);
 			~ControllerPrivate();
 
 		};

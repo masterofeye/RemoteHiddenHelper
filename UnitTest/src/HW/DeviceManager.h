@@ -1,6 +1,7 @@
 #pragma once
 #include <QtCore>
 #include "spdlog\spdlog.h"
+#include "HWGlobal.h"
 
 namespace RW{
 	namespace HW{
@@ -11,12 +12,6 @@ namespace RW{
 		{
 			Q_OBJECT
 		public:
-			enum class DeviceType
-			{
-				RemoteBox,
-				PowerStripe,
-				PowerSupply,
-			};
  
 		private:
 			std::shared_ptr<spdlog::logger> m_logger;

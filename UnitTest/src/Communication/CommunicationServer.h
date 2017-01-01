@@ -3,8 +3,9 @@
 class CommunicationServer :
 	public QObject
 {
+	Q_OBJECT
 public:
-	CommunicationServer();
+	CommunicationServer(QObject *Parent = nullptr);
 	~CommunicationServer();
 };
 

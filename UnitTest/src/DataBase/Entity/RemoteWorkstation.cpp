@@ -19,18 +19,15 @@ namespace RW{
 		RemoteWorkstation::RemoteWorkstation(Entity *Parent) : Entity(Parent),
 			d_ptr(new RemoteWorkstationPrivate(this))
 		{
-			qDebug() << "CTor RemoteWorkstation";
 		}
 
 		RemoteWorkstation::RemoteWorkstation(RemoteWorkstation &&R) : d_ptr(R.d_ptr)
 		{
-			qDebug() << "Move CTor RemoteWorkstation";
 			R.d_ptr = nullptr;
 		}
 
 		RemoteWorkstation& RemoteWorkstation::operator=(RemoteWorkstation &&R)
 		{
-			qDebug() << "Move Operator RemoteWorkstation";
 			std::swap(d_ptr, R.d_ptr);
 			delete R.d_ptr;
 			R.d_ptr = nullptr;
@@ -41,19 +38,16 @@ namespace RW{
 		RemoteWorkstation::RemoteWorkstation(const RemoteWorkstation &R) :
 			d_ptr(const_cast<RemoteWorkstationPrivate*>(R.d_ptr))
 		{
-			qDebug() << "Copy CTor RemoteWorkstation";
 		}
 
 		RemoteWorkstation& RemoteWorkstation::operator=(const RemoteWorkstation &R)
 		{
-			qDebug() << "Copy Operator RemoteWorkstation";
 			std::swap(d_ptr, const_cast<RemoteWorkstationPrivate*>(R.d_ptr));
 			return *this;
 		}
 
 		RemoteWorkstation::~RemoteWorkstation()
 		{
-			qDebug() << "Destructor RemoteWorkstation";
 		}
 
 		ElementConfiguration& RemoteWorkstation::ElementCfg() const

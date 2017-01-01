@@ -48,17 +48,17 @@ namespace RW{
 		}
 
 
-		QString AnelHome::MapState(State Command)
+		QString AnelHome::MapState(SwitchState Command)
 		{
-			if (Command == State::ON)
+			if (Command == SwitchState::ON)
 				return "Sw_on";
-			else if (Command == State::OFF)
+			else if (Command == SwitchState::OFF)
 				return "Sw_off";
 			else
 				return  "";
 		}
 
-		void AnelHome::Switch(State Command, int Socket)
+		void AnelHome::Switch(SwitchState Command, int Socket)
 		{
 			m_SendSocket->open(QIODevice::OpenModeFlag::WriteOnly);
 			QString cmd = MapState(Command) + QString(Socket) + m_User + m_Password;
@@ -66,7 +66,7 @@ namespace RW{
 			m_SendSocket->close();
 		}
 
-		void AnelHome::SwitchAll(State Command, int Sockets)
+		void AnelHome::SwitchAll(SwitchState Command, int Sockets)
 		{
 			m_SendSocket->open(QIODevice::OpenModeFlag::WriteOnly);
 			QString cmd = MapState(Command) + QString(Sockets) + m_User + m_Password;
@@ -134,27 +134,27 @@ namespace RW{
 			return true;
 		}
 
-		bool AnelHome::SwitchPort(quint8 Port, State St)
+		bool AnelHome::SwitchPort(quint8 Port, SwitchState St)
 		{
 			Switch(St, Port);
 			//TODO Auswertung fehlt
 			return true;
 		}
 
-		bool AnelHome::SwitchAll(State St)
+		bool AnelHome::SwitchAll(SwitchState St)
 		{
 			SwitchAll(St,3);
 			//TODO Auswertung fehlt
 			return true;
 		}
 
-		bool AnelHome::GetPortState(quint8 Port, State &St)
+		bool AnelHome::GetPortState(quint8 Port, SwitchState &St)
 		{
-			St = m_Sockets[Port].Socket_State == true ? State::ON : State::OFF;
+			St = m_Sockets[Port].Socket_State == true ? SwitchState::ON : SwitchState::OFF;
 			return true;
 		}
 
-		void AnelHome::ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
+		void AnelHome::OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
 		{
 			if (ConfigurationReceiver::PowerSupply == Receiver)
 			{

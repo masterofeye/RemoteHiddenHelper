@@ -19,7 +19,11 @@ namespace RW{
 			return m_Wrapper;
 		}
 
-		void RemoteBoxWrapper::ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
+		bool RemoteBoxDevice::Initialize(){ return m_Wrapper->Init(); }
+		bool RemoteBoxDevice::Reset(){ m_Wrapper->DeInit(); return m_Wrapper->Init(); }
+		bool RemoteBoxDevice::Shutdown(){ m_Wrapper->DeInit(); return true; }
+
+		void RemoteBoxDevice::OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
 		{
 			if (ConfigurationReceiver::RemoteBox == Receiver)
 			{

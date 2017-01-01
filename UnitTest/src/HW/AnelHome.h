@@ -1,6 +1,7 @@
 #pragma once
 #include "PowerStripeDevice.h"
 #include <QUdpSocket>
+#include "HWGlobal.h"
 
 namespace RW{
 	namespace HW{
@@ -45,6 +46,7 @@ const int PORT_RECEIVE = 77;
 class AnelHome :
 	public PowerStripeDevice
 {
+	Q_OBJECT
 private:
 	QHostAddress m_IpAddress;
 	QString m_Password;
@@ -63,18 +65,19 @@ public:
 	bool Reset();
 	bool Shutdown();
 
-	virtual bool SwitchPort(quint8 Port, State St);
-	virtual bool SwitchAll(State St);
-	virtual bool GetPortState(quint8 Port, State &St);
+	virtual bool SwitchPort(quint8 Port, SwitchState St);
+	virtual bool SwitchAll(SwitchState St);
+	virtual bool GetPortState(quint8 Port, SwitchState &St);
 private:
-	void Switch(State Command, int Socket);
-	void SwitchAll(State Command, int Sockets);
+	void Switch(SwitchState Command, int Socket);
+	void SwitchAll(SwitchState Command, int Sockets);
 	void Parse(QByteArray Message);
 	void SendAsk(int SenderPort, QString Command);
 	void ReceiveAsk();
 private: 
-	QString AnelHome::MapState(State Command);
-
+	QString AnelHome::MapState(SwitchState Command);
+public slots:
+	void OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data);
 };
 
 

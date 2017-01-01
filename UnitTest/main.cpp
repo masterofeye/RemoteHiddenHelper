@@ -6,30 +6,27 @@
 #include "SQLConstructor.h"
 
 #include "spdlog\spdlog.h"
-#include "MySqlDbSink.h"
-#include "Repository.h"
-#include "RemoteWorkstation.h"
-#include "ElementConfiguration.h"
 
-#include <vector>  
+//#include "Repository.h"
+//#include "RemoteWorkstation.h"
+//#include "ElementConfiguration.h"
 
-using namespace std;
+#include "Controller.h"
 
 
 int main(int argc, char *argv[])
 {
-
-
 	QCoreApplication a(argc, argv);
 
+	RW::CORE::Controller m;
+	m.On(RW::CORE::State::OFF);
 
-	RW::SQL::Repository r(RW::SourceType::SQL);
-	RW::SQL::RemoteWorkstation R;
-	r.GetRemoteWorkstationByID(1,R);
 
-	qDebug() << R.ID();
-	qDebug() << R.Hostname();
-	m_logger->error("test");
+
+	//RW::SQL::Repository r(RW::SourceType::SQL);
+	//RW::SQL::RemoteWorkstation R;
+	//r.GetRemoteWorkstationByID(1,R);
+
 
 	//SQLConstructor sql;
 	//sql.MySQLInitialization();

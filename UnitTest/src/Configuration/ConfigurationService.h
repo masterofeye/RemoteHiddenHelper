@@ -12,21 +12,6 @@ namespace RW{
 			public QObject
 		{
 			Q_OBJECT
-		public: 
-			enum class TypeOfCfgChange
-			{
-				Loaded,
-				Updated
-			};
-
-			enum class ConfigurationReceiver
-			{
-				FlashManager,
-				PowerStripe,
-				PowerSupply,
-				RemoteBox
-
-			};
 		private:
 			QMap<ConfigurationKey, QVariant> *m_UserSettings;
 			QMap<ConfigurationKey, QVariant> *m_ApplicationSettings;

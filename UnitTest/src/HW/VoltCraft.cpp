@@ -12,9 +12,9 @@ namespace RW{
 		{
 		}
 
-		void VoltCraft::ConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
+		void VoltCraft::OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data)
 		{
-			if (ConfigurationReceiver::PowerSupply)
+			if (ConfigurationReceiver::PowerSupply == Receiver)
 			{
 
 			}

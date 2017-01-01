@@ -7,6 +7,7 @@ namespace RW{
 		class VoltCraft :
 			public PowerSupplyDevice
 		{
+			Q_OBJECT
 		public:
 			VoltCraft(QObject *parent = 0);
 			~VoltCraft();
@@ -20,6 +21,8 @@ namespace RW{
 			bool GetCurrentLimit(double &Value){ return true; }
 			bool SetCurrentLimit(double Value){ return true; }
 			bool SetVoltage(double Value){ return true; }
+		public slots:
+			void OnConfigurationChanged(TypeOfCfgChange Type, ConfigurationReceiver Receiver, QVariant Data);
 		};
 
 	}

@@ -69,38 +69,14 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Unit.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Constans.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Constans.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="SQLConstructor.cpp">
       <Filter>SQL</Filter>
     </ClCompile>
     <ClCompile Include="FlashManager.cpp">
       <Filter>Administration</Filter>
     </ClCompile>
-    <ClCompile Include="ConfigurationService.cpp">
-      <Filter>Configuration</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigurationService.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ConfigurationService.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="ConfigurationFacade.cpp">
-      <Filter>Configuration</Filter>
-    </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Administration</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigurationFacade.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ConfigurationFacade.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_DataFactory.cpp">
       <Filter>Generierte Dateien\Debug</Filter>
@@ -180,12 +156,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_User.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_RemoteWorkstation_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_RemoteWorkstation_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_ElementType_p.cpp">
       <Filter>Generierte Dateien\Debug</Filter>
     </ClCompile>
@@ -249,22 +219,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_LogEntry_p.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="CommunicationServer.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
-    <ClCompile Include="CommunicationManager.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="src\HW\AbstractDevice.cpp">
-      <Filter>Hardware</Filter>
-    </ClCompile>
-    <ClCompile Include="src\HW\AnelHome.cpp">
       <Filter>Hardware</Filter>
     </ClCompile>
     <ClCompile Include="src\HW\DeviceManager.cpp">
@@ -288,19 +243,121 @@
     <ClCompile Include="GeneralSettings.cpp">
       <Filter>SQL\Entities</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AbstractDevice.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AbstractDevice.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_GeneralSettings.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_GeneralSettings.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Controller.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HW\AnelHome.cpp">
+      <Filter>Hardware</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AnelHome.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AnelHome.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Controller.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RemoteWorkstation_p.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RemoteWorkstation_p.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Communication\CommunicationManager.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Communication\CommunicationServer.cpp">
+      <Filter>Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationServer.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationServer.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Constans.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Constans.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration\ConfigurationFacade.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigurationFacade.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ConfigurationFacade.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Configuration\ConfigurationService.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ConfigurationService.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ConfigurationService.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_DeviceManager.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_DeviceManager.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_PowerStripeDevice.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PowerStripeDevice.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_PowerSupplyDevice.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_PowerSupplyDevice.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_RemoteBoxDevice.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_RemoteBoxDevice.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_VoltCraft.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_VoltCraft.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ControllerPrivate_p.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ControllerPrivate_p.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="ConfigurationService.h">
-      <Filter>Configuration</Filter>
-    </CustomBuild>
     <CustomBuild Include="Unit.h">
       <Filter>Administration</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Constans.h">
-      <Filter>Administration</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ConfigurationFacade.h">
-      <Filter>Configuration</Filter>
     </CustomBuild>
     <CustomBuild Include="src\DataBase\Factory\DataFactory.h">
       <Filter>SQL\Factories</Filter>
@@ -335,9 +392,6 @@
     <CustomBuild Include="GeneratedFiles\Debug\ElementConfiguration.moc">
       <Filter>Generierte Dateien\Debug</Filter>
     </CustomBuild>
-    <CustomBuild Include="RemoteWorkstation_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
     <CustomBuild Include="src\DataBase\Entity\ElementConfiguration_p.h">
       <Filter>SQL\Entities</Filter>
     </CustomBuild>
@@ -365,8 +419,53 @@
     <CustomBuild Include="src\DataBase\Entity\LogEntry_p.h">
       <Filter>SQL\Entities</Filter>
     </CustomBuild>
-    <CustomBuild Include="CommunicationManager.h">
+    <CustomBuild Include="src\HW\AbstractDevice.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GeneralSettings.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Controller.h">
+      <Filter>Administration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\AnelHome.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\DataBase\Entity\RemoteWorkstation_p.h">
+      <Filter>SQL\Entities</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Communication\CommunicationManager.h">
       <Filter>Communication</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Communication\CommunicationServer.h">
+      <Filter>Communication</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Constans.h">
+      <Filter>Administration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Configuration\ConfigurationFacade.h">
+      <Filter>Configuration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\Configuration\ConfigurationService.h">
+      <Filter>Configuration</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\DeviceManager.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\PowerStripeDevice.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\PowerSupplyDevice.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\RemoteBoxDevice.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="src\HW\VoltCraft.h">
+      <Filter>Hardware</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ControllerPrivate_p.h">
+      <Filter>Administration</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -375,9 +474,6 @@
     </ClInclude>
     <ClInclude Include="FlashManager.h">
       <Filter>Administration</Filter>
-    </ClInclude>
-    <ClInclude Include="SQLGlobal.h">
-      <Filter>SQL</Filter>
     </ClInclude>
     <ClInclude Include="src\DataBase\Repository\Repository.h">
       <Filter>SQL\Repositories</Filter>
@@ -388,47 +484,20 @@
     <ClInclude Include="src\DataBase\MySqlDbSink.h">
       <Filter>SQL</Filter>
     </ClInclude>
-    <ClInclude Include="ConfigurationGlobal.h">
-      <Filter>Configuration</Filter>
-    </ClInclude>
-    <ClInclude Include="AllEntities.h">
-      <Filter>SQL\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="CommunicationServer.h">
-      <Filter>Communication</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\AbstractDevice.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\AnelHome.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\DeviceManager.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\PowerStripeDevice.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\PowerSupplyDevice.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\RemoteBoxDevice.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\HW\VoltCraft.h">
-      <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>Administration</Filter>
-    </ClInclude>
-    <ClInclude Include="ControllerPrivate_p.h">
-      <Filter>Administration</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneralSettings.h">
-      <Filter>SQL\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="GeneralSettings_p.h">
       <Filter>SQL\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="HWGlobal.h">
+      <Filter>Hardware</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\Entity\AllEntities.h">
+      <Filter>SQL\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataBase\SQLGlobal.h">
+      <Filter>SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Configuration\ConfigurationGlobal.h">
+      <Filter>Configuration</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

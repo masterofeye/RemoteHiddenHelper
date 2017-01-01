@@ -9,7 +9,8 @@
 namespace RW{
 	namespace HW{
 		DeviceManager::DeviceManager(QObject *Parent) : QObject(Parent),
-			m_DeviceList(new QMap<DeviceType, AbstractDevice*>())
+			m_DeviceList(new QMap<DeviceType, AbstractDevice*>()),
+			m_logger(spdlog::get("file_logger"))
 		{
 
 		}
@@ -22,9 +23,9 @@ namespace RW{
 		bool DeviceManager::Init()
 		{
 			//TODO dies muss durch config gesetzt werden
-			m_DeviceList->insert(RW::HW::DeviceManager::DeviceType::PowerSupply, new VoltCraft(this));
-			m_DeviceList->insert(RW::HW::DeviceManager::DeviceType::RemoteBox, new RemoteBoxDevice(this));
-			m_DeviceList->insert(RW::HW::DeviceManager::DeviceType::PowerStripe, new AnelHome(this));
+			m_DeviceList->insert(DeviceType::PowerSupply, new VoltCraft(this));
+			m_DeviceList->insert(DeviceType::RemoteBox, new RemoteBoxDevice(this));
+			m_DeviceList->insert(DeviceType::PowerStripe, new AnelHome(this));
 
 			QMapIterator<DeviceType, AbstractDevice*> i(*m_DeviceList);
 			while (i.hasNext()) {
@@ -32,13 +33,13 @@ namespace RW{
 				{
 					switch (i.key())
 					{
-					case RW::HW::DeviceManager::DeviceType::PowerSupply:
+					case DeviceType::PowerSupply:
 						m_logger->error("PowerSupply initialisation failed.");
 						break;
-					case RW::HW::DeviceManager::DeviceType::RemoteBox:
+					case DeviceType::RemoteBox:
 						m_logger->error("RemoteBox initialisation failed.");
 						break;
-					case RW::HW::DeviceManager::DeviceType::PowerStripe:
+					case DeviceType::PowerStripe:
 						m_logger->error("PowerStripe initialisation failed.");
 						break;
 					}				

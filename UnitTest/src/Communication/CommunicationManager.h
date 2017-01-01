@@ -1,5 +1,7 @@
 #pragma once
 #include "qobject.h"
+#include "qvariant.h"
+
 namespace RW{
 	namespace CORE{
 
@@ -10,6 +12,9 @@ namespace RW{
 		public:
 			CommunicationManager(QObject *Parent = nullptr);
 			~CommunicationManager();
+
+		public slots: 
+			void OnProcessMessage(QVariant Data);
 		};
 	}
 }
