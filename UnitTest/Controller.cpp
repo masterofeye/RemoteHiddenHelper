@@ -3,7 +3,7 @@
 
 #include "spdlog\spdlog.h"
 #include "ControllerPrivate_p.h"
-#include "MySqlDbSink.h"
+#include <RemoteDataConnectLibrary.h>
 #include "AbstractDevice.h"
 
 
@@ -45,7 +45,7 @@ namespace RW
 
 			if (d_ptr == nullptr)
 			{
-				m_logger->emerg("Controller isn't initialized.");
+				m_logger->error("Controller isn't initialized.");
 				return;
 			}
 

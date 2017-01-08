@@ -9,6 +9,8 @@ namespace RW{
 			m_ReceiveSocket(new QUdpSocket(this))
 		{
 			m_Sockets = new Device_Socket[8];
+
+			m_IpAddress = QHostAddress::Any;
 		}
 
 		AnelHome::~AnelHome()
@@ -18,12 +20,14 @@ namespace RW{
 
 		bool AnelHome::Initialize()
 		{
-			if (m_ReceiveSocket->bind(m_IpAddress, PORT_RECEIVE))
+			if (m_ReceiveSocket->bind(PORT_RECEIVE, QUdpSocket::ShareAddress))
 			{
-				connect(m_ReceiveSocket, SIGNAL(readyRead()), this, SLOT(ReceiveAsk()));
+
+				connect(m_ReceiveSocket, &QUdpSocket::readyRead, this, &AnelHome::ReceiveAsk);
 				if (m_ReceiveSocket->open(QIODevice::OpenModeFlag::ReadOnly))
 				{
-					if (m_SendSocket->bind(m_IpAddress, PORT_SEND))
+					
+					if (m_SendSocket->bind(QHostAddress::Any, PORT_SEND, QUdpSocket::ShareAddress))
 					{
 
 					}
@@ -107,6 +111,9 @@ namespace RW{
 
 		void AnelHome::SendAsk(int SenderPort, QString Command)
 		{
+			
+			m_SendSocket->connectToHost("192.168.0.25", SenderPort);
+
 			m_SendSocket->open(QIODevice::OpenModeFlag::WriteOnly);
 			m_SendSocket->write(QByteArray(Command.toUtf8()));
 			m_SendSocket->close();

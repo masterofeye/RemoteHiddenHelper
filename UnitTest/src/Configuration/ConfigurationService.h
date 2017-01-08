@@ -2,7 +2,7 @@
 #include "qobject.h"
 #include <qvariant.h>
 #include "ConfigurationGlobal.h"
-
+#include "spdlog\spdlog.h"
 
 namespace RW{
 	namespace CORE{
@@ -22,6 +22,11 @@ namespace RW{
 			QMultiMap<QObject*, QString> *m_NotificationList;
 
 			ConfigurationFacade *m_ServiceLayer;
+
+			/*
+			@brief Instanz des Loggers
+			*/
+			std::shared_ptr<spdlog::logger> m_logger;
 		public:
 			ConfigurationService(QObject *Parent = nullptr);
 			~ConfigurationService();

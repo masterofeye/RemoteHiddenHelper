@@ -1,6 +1,0 @@
-namespace RW
-{
-	namespace SQL
-	{
-	}
-}

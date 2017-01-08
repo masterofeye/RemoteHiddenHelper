@@ -1,6 +1,7 @@
 #pragma once
 #include "qobject.h"
 #include "HWGlobal.h"
+#include "spdlog\spdlog.h"
 
 namespace RW
 {
@@ -25,6 +26,11 @@ namespace RW
 			Q_DECLARE_PRIVATE(Controller);
 
 			State m_CurrentState;
+
+			/*
+			@brief Instanz des Loggers
+			*/
+			std::shared_ptr<spdlog::logger> m_logger;
 		public:
 			Controller(QObject *Parent = nullptr);
 			~Controller();

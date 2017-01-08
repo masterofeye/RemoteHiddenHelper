@@ -1,11 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Dateien">
-      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
-      <Extensions>qrc;*</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
     <Filter Include="Generierte Dateien">
       <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
       <Extensions>moc;h;cpp</Extensions>
@@ -21,12 +16,6 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="SQL">
-      <UniqueIdentifier>{9c01d43a-3d84-4162-bb9f-bfc4dfecc7fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\Entities">
-      <UniqueIdentifier>{4d06d16a-ce33-4536-9949-9b1a89005426}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Administration">
       <UniqueIdentifier>{08d18467-6810-42a7-9576-0b2c49000fc6}</UniqueIdentifier>
     </Filter>
@@ -40,26 +29,8 @@
     <Filter Include="Communication">
       <UniqueIdentifier>{1c87f94d-f20c-4043-976b-91c67c839dec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SQL\Factories">
-      <UniqueIdentifier>{134e3f85-6e13-41fe-9466-8b7f8163e73b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\Repositories">
-      <UniqueIdentifier>{4c1c8f0f-14ba-4d6b-b310-6c9311692411}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Hardware">
       <UniqueIdentifier>{140c3c47-b832-43bc-9eb3-f6016d184c0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper">
-      <UniqueIdentifier>{4af0d6d5-4b74-4f1e-990c-270d1d4aacb1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\XML">
-      <UniqueIdentifier>{79d77b7a-284e-49bb-8340-cf66ab13e9dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\UnitTest">
-      <UniqueIdentifier>{1d596f9d-aa3a-47f4-993b-3ab6faba62c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SQL\DataMapper\MySQL">
-      <UniqueIdentifier>{99b38c7f-5b00-4431-b183-1ccfc87705fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -69,155 +40,14 @@
     <ClCompile Include="GeneratedFiles\Release\moc_Unit.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="SQLConstructor.cpp">
-      <Filter>SQL</Filter>
-    </ClCompile>
     <ClCompile Include="FlashManager.cpp">
       <Filter>Administration</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Administration</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_DataFactory.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_DataFactory.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\Entity.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Entity.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Entity.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\Instruction.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Instruction.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Instruction.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\Product.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Product.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Product.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\Recept.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Recept.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Recept.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\RemoteWorkstation.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_RemoteWorkstation.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_RemoteWorkstation.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ElementType.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ElementType.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\ElementType.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\ElementConfiguration.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ElementConfiguration.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ElementConfiguration.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\User.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_User.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_User.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ElementType_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ElementType_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ElementConfiguration_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ElementConfiguration_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_User_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_User_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Recept_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Recept_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Entity_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Entity_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Product_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Product_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Repository\Repository.cpp">
-      <Filter>SQL\Repositories</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Instruction_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Instruction_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>main</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DataBase\Entity\LogEntry.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_LogEntry.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_LogEntry.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_LogEntry_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_LogEntry_p.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
     <ClCompile Include="src\HW\AbstractDevice.cpp">
       <Filter>Hardware</Filter>
@@ -240,19 +70,10 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Administration</Filter>
     </ClCompile>
-    <ClCompile Include="GeneralSettings.cpp">
-      <Filter>SQL\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_AbstractDevice.cpp">
       <Filter>Generierte Dateien\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_AbstractDevice.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_GeneralSettings.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_GeneralSettings.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_Controller.cpp">
@@ -268,12 +89,6 @@
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_Controller.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_RemoteWorkstation_p.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_RemoteWorkstation_p.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
     <ClCompile Include="src\Communication\CommunicationManager.cpp">
@@ -359,80 +174,14 @@
     <CustomBuild Include="Unit.h">
       <Filter>Administration</Filter>
     </CustomBuild>
-    <CustomBuild Include="src\DataBase\Factory\DataFactory.h">
-      <Filter>SQL\Factories</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Entity.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Instruction.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Product.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Recept.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\RemoteWorkstation.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\ElementType.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\ElementConfiguration.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\User.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\DataMapper\DataMapper.h">
-      <Filter>SQL\DataMapper</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneratedFiles\Debug\ElementConfiguration.moc">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\ElementConfiguration_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\ElementType_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\User_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Recept_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Entity_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Product_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\Instruction_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\LogEntry.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\LogEntry_p.h">
-      <Filter>SQL\Entities</Filter>
-    </CustomBuild>
     <CustomBuild Include="src\HW\AbstractDevice.h">
       <Filter>Hardware</Filter>
-    </CustomBuild>
-    <CustomBuild Include="GeneralSettings.h">
-      <Filter>SQL\Entities</Filter>
     </CustomBuild>
     <CustomBuild Include="Controller.h">
       <Filter>Administration</Filter>
     </CustomBuild>
     <CustomBuild Include="src\HW\AnelHome.h">
       <Filter>Hardware</Filter>
-    </CustomBuild>
-    <CustomBuild Include="src\DataBase\Entity\RemoteWorkstation_p.h">
-      <Filter>SQL\Entities</Filter>
     </CustomBuild>
     <CustomBuild Include="src\Communication\CommunicationManager.h">
       <Filter>Communication</Filter>
@@ -469,32 +218,11 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SQLConstructor.h">
-      <Filter>SQL</Filter>
-    </ClInclude>
     <ClInclude Include="FlashManager.h">
       <Filter>Administration</Filter>
     </ClInclude>
-    <ClInclude Include="src\DataBase\Repository\Repository.h">
-      <Filter>SQL\Repositories</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DataBase\DataMapper\MySQL\MySqlMapper.h">
-      <Filter>SQL\DataMapper\MySQL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DataBase\MySqlDbSink.h">
-      <Filter>SQL</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneralSettings_p.h">
-      <Filter>SQL\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="HWGlobal.h">
       <Filter>Hardware</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DataBase\Entity\AllEntities.h">
-      <Filter>SQL\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DataBase\SQLGlobal.h">
-      <Filter>SQL</Filter>
     </ClInclude>
     <ClInclude Include="src\Configuration\ConfigurationGlobal.h">
       <Filter>Configuration</Filter>
