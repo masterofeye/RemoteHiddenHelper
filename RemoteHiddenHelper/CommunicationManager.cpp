@@ -133,6 +133,18 @@ namespace RW{
             case Util::Functions::UsbHidLoaderFlashFile:
                 emit NewMessage(Util::MessageReceiver::UsbHidLoader, MessageType, Message);
                 break;
+			case Util::Functions::StartShutdownTimer:
+				emit NewMessage(Util::MessageReceiver::ShutdownHandler, MessageType, Message);
+				break;
+			case Util::Functions::StopShutdownTimer:
+				emit NewMessage(Util::MessageReceiver::ShutdownHandler, MessageType, Message);
+				break;
+			case Util::Functions::StartInactivityTimer:
+				emit NewMessage(Util::MessageReceiver::InactivityWatcher, MessageType, Message);
+				break;
+			case Util::Functions::StopInactivityTimer:
+				emit NewMessage(Util::MessageReceiver::InactivityWatcher, MessageType, Message);
+				break;
 			default:
 				break;
 			}

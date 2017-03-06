@@ -178,6 +178,24 @@
     <ClCompile Include="GeneratedFiles\Release\moc_UsbHidLoader.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Inactivitywatcher.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Inactivitywatcher.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Intactivitywatcher.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="ShutdownHandler.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ShutdownHandler.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ShutdownHandler.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
@@ -229,6 +247,12 @@
       <Filter>General</Filter>
     </CustomBuild>
     <CustomBuild Include="UsbHidLoader.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Inactivitywatcher.hpp">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ShutdownHandler.hpp">
       <Filter>General</Filter>
     </CustomBuild>
   </ItemGroup>

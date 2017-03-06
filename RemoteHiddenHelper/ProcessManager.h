@@ -11,6 +11,8 @@ namespace RW{
         class ErrorHandler;
         class FileUtils;
         class UsbHidLoader;
+		class ShutdownHandler;
+		class InactivityWatcher;
 		
 
 		class ProcessManager :
@@ -26,6 +28,8 @@ namespace RW{
             ErrorHandler* m_ErrorHandler;
             FileUtils* m_FileUtils;
             UsbHidLoader* m_UsbHidLoader;
+			InactivityWatcher* m_InactivityWatcher;
+			ShutdownHandler* m_ShutdownHandler;
 		public:
 			ProcessManager(QObject* Parent = nullptr);
 			~ProcessManager();

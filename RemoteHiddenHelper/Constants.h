@@ -30,6 +30,8 @@ namespace RW{
                 MKSWrapper,
                 FileUtil,
                 UsbHidLoader,
+				ShutdownHandler,
+				InactivityWatcher
             };
 #ifdef QT
             Q_ENUM(MessageReceiver)
@@ -66,6 +68,10 @@ namespace RW{
                 PrintDebugInformation,
 				ToggleCl30Fast,
 				ToggleCl30Slow,
+				StartShutdownTimer,
+				StopShutdownTimer,
+				StartInactivityTimer,
+				StopInactivityTimer,
                 Amount
             };
 #ifdef QT

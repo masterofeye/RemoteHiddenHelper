@@ -1,6 +1,5 @@
 #pragma once
-#include <QLocalServer>
-#include <QLocalSocket>
+#include <qlocalsocket.h>
 #include <qdatastream.h>
 
 #include "Constants.h"
@@ -10,7 +9,7 @@ namespace RW{
 		const QString SocketName = "remotehiddenhelper";
 
 		class CommunicationServer :
-			public QLocalServer
+			public QObject
 		{
 			Q_OBJECT
 		private: 
@@ -22,9 +21,8 @@ namespace RW{
 			bool Init();
 			bool DeInit();
 		public slots:
-		void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Message);
+			void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Message);
 		private: 
-			void OnNewConnection();
 			void OnClientDisconnected();
 			void OnClientSocketError(QLocalSocket::LocalSocketError socketError);
 			void OnDataAvailable();

@@ -7,7 +7,8 @@ namespace RW{
 	namespace CORE{
 
 
-		CommunicationServer::CommunicationServer(QObject* Parent) : QLocalServer(Parent)
+		CommunicationServer::CommunicationServer(QObject* Parent) : QObject(Parent),
+			m_Client(new QLocalSocket(this))
 		{
 		}
 
@@ -18,23 +19,11 @@ namespace RW{
 
 		bool CommunicationServer::Init()
 		{
-			//Jeder hat Zugriff auf den Server.
-			this->setSocketOptions(QLocalServer::WorldAccessOption);
-			//Der Server akzeptiert nur eine Verbindung, das ist der RemoteService
-			this->setMaxPendingConnections(1);
-
-			//Überprüfen ob schon auf Verbindungen gewartet wird.
-			if(!this->isListening())
-			{
-				if (!this->listen("server"))
-				{
-					//Loggen
-					return false;
-				}
-
-				//Neue Verbindungsversuche werden an diese Methode weitergeleitet.
-				connect(this, &CommunicationServer::newConnection, this, &CommunicationServer::OnNewConnection);
-			}
+			m_Client->abort();
+			m_Client->connectToServer("Server");
+			connect(m_Client, &QLocalSocket::readyRead, this, &CommunicationServer::OnDataAvailable);
+			connect(m_Client, &QLocalSocket::disconnected, this, &CommunicationServer::OnClientDisconnected);
+			connect(m_Client, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, &CommunicationServer::OnClientSocketError);
 			return true;
 		}
 
@@ -43,14 +32,6 @@ namespace RW{
 			return true;
 		}
 
-		void CommunicationServer::OnNewConnection()
-		{
- 			m_Client = nextPendingConnection();
-
-			connect(m_Client, &QLocalSocket::readyRead, this, &CommunicationServer::OnDataAvailable);
-			connect(m_Client, &QLocalSocket::disconnected, this, &CommunicationServer::OnClientDisconnected);
-			connect(m_Client, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, &CommunicationServer::OnClientSocketError);
-		}
 
 		void CommunicationServer::OnClientSocketError(QLocalSocket::LocalSocketError socketError)
 		{
