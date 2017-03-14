@@ -5,17 +5,11 @@
 #include <Wtsapi32.h>
 #include <userenv.h>
 #include <windows.h> 
+#include <qdatastream.h>
 
 #pragma comment(lib, "wtsapi32.lib")
 #pragma comment(lib, "userenv.lib")
 
-#if defined(DEBUG) && defined(DEBUG_WITHOUT_LOGOUT)
-	#define DEFAULT_TIMEOUT 60*60
-#elif defined(DEBUG)
-	#define DEFAULT_TIMEOUT 60*60*1000
-#else
-	#define DEFAULT_TIMEOUT 1000*60*180
-#endif
 
 namespace RW{
 	namespace CORE{
@@ -39,7 +33,10 @@ namespace RW{
 				{
 				case RW::CORE::Util::Functions::StartInactivityTimer:
 				{
-					StartInactivityObservation(Report.toLong());
+                    quint64 timeout;
+                    QDataStream dataStream(Report);
+                    dataStream >> timeout;
+                    StartInactivityObservation(timeout);
 				}
 				break;
 				case RW::CORE::Util::Functions::StopInactivityTimer:
@@ -73,11 +70,12 @@ namespace RW{
 				m_TimerLogout = new QTimer(this);
 			}
 			connect(m_TimerLogout, &QTimer::timeout, this, &InactivityWatcher::LogOutUser);
+
 			//m_TimerLogout->setSingleShot(true);
 			m_TimerLogout->start(5000);
 			Sleep(100);
 			//qApp->processEvents();
-			
+            emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::Success, QByteArray());
 		}
 
 		void InactivityWatcher::StopInactivityObservation()
@@ -85,7 +83,7 @@ namespace RW{
 			if (m_TimerLogout != nullptr && m_TimerLogout->isActive())
 			{
 				m_TimerLogout->stop();
-				//m_logger->debug("Inactivitity Timer stopped.");
+                emit NewMessage(RW::CORE::Util::Functions::StopInactivityTimer, Util::ErrorID::Success, QByteArray());
 			}
 #ifdef DEBUG
 			m_logger->flush();
@@ -93,43 +91,29 @@ namespace RW{
 		}
 
 		
-		void InactivityWatcher::LogOutUser()
-		{
-			//m_logger->debug("LogoutUser was called.");
-			if (GetLastInputTime() >= m_Timeout)
-			{
-#ifdef DEBUG_WITHOUT_LOGOUT
-				m_TimerLogout->stop();
-				m_logger->debug("User is logged out now.");
-				m_logger->flush();
-
-				emit UserInactive();
-#else
-				quint64 sessionId = 0;
-				if (!QueryActiveSession(sessionId))
-				{
-					//m_logger->error("Log-off of user failed.");
-
-				}
-				else
-				{
-					if (LogOff(sessionId))
-					{
-						m_TimerLogout->stop();
-						//m_logger->info("User is logged out now.");
-						//m_logger->flush();
-						emit UserInactive();
-					}
-					else
-					{
-						//m_logger->error("Log-off of user failed.");
-					}
-				}
-#endif // DEBUG
-			}
-#ifdef DEBUG
-			m_logger->flush();
-#endif // DEBUG
+        void InactivityWatcher::LogOutUser()
+        {
+            //m_logger->debug("LogoutUser was called.");
+            if (GetLastInputTime() >= m_Timeout)
+            {
+                quint64 sessionId = 0;
+                if (!QueryActiveSession(sessionId))
+                {
+                    emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::ErrorLogOutQuerySessionFailed, QByteArray());
+                }
+                else
+                {
+                    if (LogOff(sessionId))
+                    {
+                        m_TimerLogout->stop();
+                        emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::Success, QByteArray("LogOFF"));
+                    }
+                    else
+                    {
+                        emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::ErrorLogOutNotPossible, QByteArray());
+                    }
+                }
+            }
 		}
 
 		/*
@@ -140,17 +124,16 @@ namespace RW{
 		*/
 		bool InactivityWatcher::LogOff(quint64 SessioNumber)
 		{
-			if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
-			{
-				DWORD err = GetLastError();
-				//m_logger->error("WTSLogoffSession failed. GetLastError: ");// << err;
-				return false;
-			}
-			else
-			{
-				//This will be logged by the service. No logging needed here.
+			//if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
+			//{
+			//	DWORD err = GetLastError();
+			//	return false;
+			//}
+			//else
+			//{
+			//	//This will be logged by the service. No logging needed here.
 				return true;
-			}
+			//}
 		}
 
 		/*

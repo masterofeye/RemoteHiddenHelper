@@ -20,12 +20,26 @@ namespace RW{
 		bool CommunicationServer::Init()
 		{
 			m_Client->abort();
+
+            connect(m_Client, &QLocalSocket::connected, this, &CommunicationServer::SendIdentifier);
+            connect(m_Client, &QLocalSocket::readyRead, this, &CommunicationServer::OnDataAvailable);
+            connect(m_Client, &QLocalSocket::disconnected, this, &CommunicationServer::OnClientDisconnected);
+            connect(m_Client, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, &CommunicationServer::OnClientSocketError);
+
 			m_Client->connectToServer("Server");
-			connect(m_Client, &QLocalSocket::readyRead, this, &CommunicationServer::OnDataAvailable);
-			connect(m_Client, &QLocalSocket::disconnected, this, &CommunicationServer::OnClientDisconnected);
-			connect(m_Client, static_cast<void(QLocalSocket::*)(QLocalSocket::LocalSocketError)>(&QLocalSocket::error), this, &CommunicationServer::OnClientSocketError);
 			return true;
 		}
+
+        void CommunicationServer::SendIdentifier()
+        {
+            if (m_Client->isValid() && m_Client->isOpen())
+            {
+                QByteArray m;
+                m.append("identifier=remotehiddenhelper");
+                quint64 written = m_Client->write(m);
+                bool flush = m_Client->flush();
+            }
+        }
 
 		bool CommunicationServer::DeInit()
 		{
@@ -35,6 +49,7 @@ namespace RW{
 
 		void CommunicationServer::OnClientSocketError(QLocalSocket::LocalSocketError socketError)
 		{
+
 		}
 		void CommunicationServer::OnClientDisconnected()
 		{
@@ -50,7 +65,7 @@ namespace RW{
                 Message m;
                 QDataStream dataStream(m_Client);
                 dataStream >> m;
-                emit NewMessage(m.MessageType, m.Message);
+                emit NewMessage(m.MessageFunc, m.Message);
             }
 		}
 

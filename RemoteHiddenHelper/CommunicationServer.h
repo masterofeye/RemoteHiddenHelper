@@ -22,6 +22,7 @@ namespace RW{
 			bool DeInit();
 		public slots:
 			void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Message);
+            void SendIdentifier();
 		private: 
 			void OnClientDisconnected();
 			void OnClientSocketError(QLocalSocket::LocalSocketError socketError);

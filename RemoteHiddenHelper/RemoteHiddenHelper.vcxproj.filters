@@ -148,9 +148,6 @@
     <ClCompile Include="FlashInformations.cpp">
       <Filter>Adminstration</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_DragWidget.cpp">
       <Filter>Generierte Dateien\Debug</Filter>
     </ClCompile>
@@ -187,15 +184,7 @@
     <ClCompile Include="Intactivitywatcher.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="ShutdownHandler.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_ShutdownHandler.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_ShutdownHandler.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
@@ -250,9 +239,6 @@
       <Filter>General</Filter>
     </CustomBuild>
     <CustomBuild Include="Inactivitywatcher.hpp">
-      <Filter>General</Filter>
-    </CustomBuild>
-    <CustomBuild Include="ShutdownHandler.hpp">
       <Filter>General</Filter>
     </CustomBuild>
   </ItemGroup>

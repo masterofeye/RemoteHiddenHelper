@@ -10,7 +10,7 @@
 
 inline QDataStream &operator <<(QDataStream &out, const RW::CORE::Message &dataStruct)
 {
-    out << (quint16)dataStruct.MessageType;
+    out << (quint16)dataStruct.MessageFunc;
     out << dataStruct.MessageSize;
     out.writeRawData(dataStruct.Message, dataStruct.MessageSize);
     out << (quint16)dataStruct.Error;
@@ -19,16 +19,16 @@ inline QDataStream &operator <<(QDataStream &out, const RW::CORE::Message &dataS
 
 inline QDataStream &operator >>(QDataStream &in, RW::CORE::Message &dataStruct)
 {
-    quint16 messageType = 0;
+    quint16 MessageFunc = 0;
     quint16 errorId = 0;
     dataStruct = RW::CORE::Message();
-    in >> messageType;
+    in >> MessageFunc;
     in >> dataStruct.MessageSize;
     dataStruct.Message.resize(dataStruct.MessageSize);
     in.readRawData(dataStruct.Message.data(), dataStruct.MessageSize);
     in >> errorId;
 
-    dataStruct.MessageType = static_cast<RW::CORE::Util::Functions>(messageType);
+    dataStruct.MessageFunc = static_cast<RW::CORE::Util::Functions>(MessageFunc);
 	dataStruct.Error = static_cast<RW::CORE::Util::ErrorID>(errorId);
     return in;
 }
