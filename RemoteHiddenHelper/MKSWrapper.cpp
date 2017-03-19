@@ -85,46 +85,40 @@ namespace RW{
 		{
 		}
 
-		void MKSWrapper::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void MKSWrapper::OnProcessMessage(COM::Message Msg)
 		{
-			if (Util::MessageReceiver::MKSWrapper == Type)
+			switch (Msg.MessageID())
 			{
-				switch (Func)
-				{
-                case RW::CORE::Util::Functions::MKSLogin:
-                {
-                    QString location = "";
-                    QString username = "";
-                    QString password = "";
-                    QDataStream data(Report);
-                    data >> location;
-                    data >> username;
-                    data >> password;
+			case COM::MessageDescription::EX_MKSLogin:
+            {
+                QString location = "";
+                QString username = "";
+                QString password = "";
+				location = Msg.ParameterList()[0].toString();
+				username = Msg.ParameterList()[1].toString();
+				password = Msg.ParameterList()[2].toString();
 
-                    StartMKS(location, username, password);
-                    break;
-                }
-				case RW::CORE::Util::Functions::MKSCreateSandBox:
-				{
-					QString MKSUrl = "";
-					QString Destination = "";
-					QDataStream data(Report);
-					data >> MKSUrl;
-					data >> Destination;
+                StartMKS(location, username, password);
+                break;
+            }
+			case COM::MessageDescription::EX_MKSCreateSandBox:
+			{
+				QString MKSUrl = "";
+				QString Destination = "";
+				MKSUrl = Msg.ParameterList()[0].toString();
+				Destination = Msg.ParameterList()[1].toString();
 
-                    CreateSandBox(MKSUrl, Destination);
-					break;
-				}
-				case RW::CORE::Util::Functions::MKSDropSandbox:
-					DropSandBox();
-					break;
-				case RW::CORE::Util::Functions::MKSClose:
-					CloseMKS();
-					break;
-				default:
-					break;
-				}
-
+                CreateSandBox(MKSUrl, Destination);
+				break;
+			}
+			case COM::MessageDescription::EX_MKSDropSandbox:
+				DropSandBox();
+				break;
+			case COM::MessageDescription::EX_MKSClose:
+				CloseMKS();
+				break;
+			default:
+				break;
 			}
 		}
 

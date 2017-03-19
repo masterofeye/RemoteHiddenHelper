@@ -1,9 +1,10 @@
 #pragma once
 #include "qobject.h"
+#include "RemoteUtil\RemoteCommunicationLibrary\Include\RemoteCommunicationLibrary.h"
+
 
 namespace RW{
 	namespace CORE{
-		class CommunicationManager;
 		class CanEasyWrapper;
 		class MKSWrapper;
 		class FHostSpWrapper;
@@ -20,7 +21,7 @@ namespace RW{
 		{
 			Q_OBJECT
 		private:
-			CommunicationManager* m_CommManager;
+			std::shared_ptr<spdlog::logger> m_logger;
 			CanEasyWrapper* m_CanEasy;
 			MKSWrapper* m_MKS;
 			FHostSpWrapper* m_FHostSP;
@@ -29,7 +30,7 @@ namespace RW{
             FileUtils* m_FileUtils;
             UsbHidLoader* m_UsbHidLoader;
 			InactivityWatcher* m_InactivityWatcher;
-			ShutdownHandler* m_ShutdownHandler;
+			COM::CommunicatonServer* m_CommunicationServer;
 		public:
 			ProcessManager(QObject* Parent = nullptr);
 			~ProcessManager();

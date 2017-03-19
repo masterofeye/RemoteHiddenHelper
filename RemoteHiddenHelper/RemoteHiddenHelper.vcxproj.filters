@@ -46,24 +46,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_remotehiddenhelper.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="CommunicationManager.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationServer.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_CommunicationManager.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="CommunicationServer.cpp">
-      <Filter>Communication</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationServer.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_CommunicationManager.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="CanEasyWrapper.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -189,12 +171,6 @@
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
       <Filter>Form Dateien</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CommunicationManager.h">
-      <Filter>Communication</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CommunicationServer.h">
-      <Filter>Communication</Filter>
     </CustomBuild>
     <CustomBuild Include="BasicWrapper.h">
       <Filter>General</Filter>

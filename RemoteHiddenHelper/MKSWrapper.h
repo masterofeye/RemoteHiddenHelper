@@ -33,7 +33,7 @@ namespace RW{
 			QDataStream in die Nachricht geschrieben.
 			@return void
 			********************************************************************************************************************/
-			virtual void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
+			virtual void OnProcessMessage(COM::Message Msg);
 		private: 
 			/*****************************************************************************************************************//*
 			@autor Ivo Kunadt
@@ -66,7 +66,6 @@ namespace RW{
 			void MKSWrapper::CloseMKS();
 
 			void PrepareMKSLoginForm();
-
 
 		};
 

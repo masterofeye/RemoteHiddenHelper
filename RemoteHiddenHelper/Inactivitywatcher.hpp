@@ -19,7 +19,7 @@ namespace RW{
 		public:
 			explicit InactivityWatcher(QObject *parent = 0);
 
-			void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
+			void OnProcessMessage(COM::Message msg);
 		private: 
 			bool LogOff(quint64 SessioNumber);
 			bool QueryActiveSession(quint64 &SessioNumber);

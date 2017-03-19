@@ -33,34 +33,32 @@ namespace RW{
             delete m_Dialog;
         }
 
-        void PortalInfo::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void PortalInfo::OnProcessMessage(COM::Message Msg)
         {
-            if (Type == Util::MessageReceiver::PortalInfo)
+			switch (Msg.MessageID())
             {
-                switch (Func)
-                {
-                case Util::Functions::PortalInfoShowDialog:
-                    ShowDialog();
-                    break;
-                case Util::Functions::PortalInfoCloseDialog:
-                    CloseDialog();
-                    break;
-                    //case Util::Functions::PortalInfoFittingAC:
-                    //    GetFittingAcByGitHash(Report);
-                    //    break;
-                    //case Util::Functions::PortalInfoAcByIcom:
-                    //    GetAcByIcom(Report.toInt());
-                    //    break;
-                    //case Util::Functions::PortalInfoReleases:
-                    //    GetReleases();
-                    //    break;
-                    //case Util::Functions::PortalInfoSoftwareById:
-                    //    GetSoftwareById(0, "", "");
-                    //    break;
-                default:
-                    break;
-                }
+			case COM::MessageDescription::EX_PortalInfoShowDialog :
+                ShowDialog();
+                break;
+			case COM::MessageDescription::EX_PortalInfoCloseDialog :
+                CloseDialog();
+                break;
+                //case Util::Functions::PortalInfoFittingAC:
+                //    GetFittingAcByGitHash(Report);
+                //    break;
+                //case Util::Functions::PortalInfoAcByIcom:
+                //    GetAcByIcom(Report.toInt());
+                //    break;
+                //case Util::Functions::PortalInfoReleases:
+                //    GetReleases();
+                //    break;
+                //case Util::Functions::PortalInfoSoftwareById:
+                //    GetSoftwareById(0, "", "");
+                //    break;
+            default:
+                break;
             }
+            
         }
 
         // not all hashes have been build by the server ....

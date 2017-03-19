@@ -149,28 +149,7 @@ namespace RW{
         };
 #endif
 
-        typedef struct _Message
-        {
-            Util::Functions MessageFunc;
-            quint16 MessageSize;
-            QByteArray Message;
-			Util::ErrorID Error;
 
-            _Message()
-            {
-                Util::Functions MessageFunc = Util::Functions::Amount;
-                quint16 MessageSize = 0;
-                QByteArray Message = QByteArray();
-				Error = Util::ErrorID::Success;
-            }
-            _Message(Util::Functions MessageFunc, quint16 MessageSize, QByteArray Message, Util::ErrorID Error)
-            {
-                this->MessageFunc = MessageFunc;
-                this->MessageSize = MessageSize;
-                this->Message = Message;
-                this->Error = Error;
-            }
-        } Message;
 
 
         typedef struct _FlashInfo

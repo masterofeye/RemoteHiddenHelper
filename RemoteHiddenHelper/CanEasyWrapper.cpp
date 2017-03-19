@@ -18,30 +18,27 @@ namespace RW{
 		{
 		}
 
-		void CanEasyWrapper::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void CanEasyWrapper::OnProcessMessage(COM::Message Msg)
 		{
-			if (Type == Util::MessageReceiver::CanEasyWrapper)
+			switch (Msg.MessageID())
 			{
-				switch (Func)
-				{
-				case RW::CORE::Util::Functions::CanEasyStartApplication:
-					StartCanEasy(QFile(Report));
-					break;
-				case RW::CORE::Util::Functions::CanEasyLoadWorkspace:
-					LoadWorkspace(QFile(Report));
-					break;
-				case RW::CORE::Util::Functions::CanEasyStartSimulation:
-					StartSimulation();
-					break;
-				case RW::CORE::Util::Functions::CanEasyStopSimulation:
-					StopSimulation();
-					break;
-				case RW::CORE::Util::Functions::CanEasyCloseApplication:
-					StopCanEasy();
-					break;
-				default:
-					break;
-				}
+			case COM::MessageDescription::EX_CanEasyStartApplication:
+				StartCanEasy(QFile(Msg.ParameterList()[0].toString()));
+				break;
+			case COM::MessageDescription::EX_CanEasyLoadWorkspace:
+				LoadWorkspace(QFile(Msg.ParameterList()[0].toString()));
+				break;
+			case COM::MessageDescription::EX_CanEasyStartSimulation:
+				StartSimulation();
+				break;
+			case COM::MessageDescription::EX_CanEasyStopSimulation:
+				StopSimulation();
+				break;
+			case COM::MessageDescription::EX_CanEasyCloseApplication:
+				StopCanEasy();
+				break;
+			default:
+				break;
 			}
 		}
 
@@ -50,7 +47,13 @@ namespace RW{
             //Wenn ein CanEasy noch offen ist, wird es zunächst geschlossen
             if (GetProcessByName("CanEasy.exe", true))
             {
-                emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyApplicationError, "Can't create CanEasy Instance");
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create CanEasy Instance");
+				emit NewMessage(msg);
                 return;
             }
 
@@ -59,7 +62,13 @@ namespace RW{
 			HRESULT hr = CoCreateInstance(__uuidof(CanEasyProcess), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(ICanEasyProcess), (void**)&m_Process);
 			if (FAILED(hr))
 			{
-				emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyComServerMissing, "Can't create CanEasy Instance");
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create CanEasy Instance");
+				emit NewMessage(msg);
 			    return;
 			}
 			
@@ -68,7 +77,13 @@ namespace RW{
             hr = m_Process->GetApplication(&appDisp);
 			if (FAILED(hr))
 			{       
-				emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyApplicationError, "Can't create CanEasy Instance");
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create CanEasy Instance");
+				emit NewMessage(msg);
 			    return;
 			}
 
@@ -79,7 +94,13 @@ namespace RW{
 			hr = m_App->get_AppWindow(&appWindow);
 			if (FAILED(hr))
 			{
-				emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::ErrorCanEasyApplicationError, "Can't create CanEasy Instance");
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create CanEasy Instance");
+				emit NewMessage(msg);
 			    return;
 			}
 			
@@ -99,7 +120,13 @@ namespace RW{
             appWindow.Release();
 
             m_IsRunning = true;
-			emit NewMessage(Util::Functions::CanEasyStartApplication, Util::ErrorID::Success, nullptr);
+
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
 		void CanEasyWrapper::LoadWorkspace(const QFile &File)
@@ -108,28 +135,59 @@ namespace RW{
 
 			if (!File.exists())
 			{
-				emit NewMessage(Util::Functions::CanEasyLoadWorkspace, Util::ErrorID::ErrorCanEasyWorkspaceNotFound, nullptr);
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("CanEasy Workspace doesn't exists.");
+				emit NewMessage(msg);
                 return;
 			}
 
 			HRESULT hr = m_App->LoadWorkspace(_bstr_t(QFileInfo(File).absoluteFilePath().toStdString().c_str()));
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::CanEasyLoadWorkspace, Util::ErrorID::ErrorCanEasyWorkspaceNotLoaded, nullptr);
+				COM::Message msg;
+				msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
+				msg.SetIsExternal(true);
+				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+				msg.SetSuccess(false);
+				msg.SetResult("Failed to load CanEasy Workspace.");
+				emit NewMessage(msg);
                 return;
             }
-			emit NewMessage(Util::Functions::CanEasyLoadWorkspace, Util::ErrorID::Success, nullptr);
+
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
 		void CanEasyWrapper::StopCanEasy()
 		{
  			HRESULT hr = m_App->StopSimulation();
-            if (FAILED(hr))
-				emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::ErrorCanEasyStopSimulation, nullptr);
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyCloseApplication);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+			if (FAILED(hr))
+			{
+				msg.SetSuccess(false);
+				msg.SetResult("Can't stop CanEasy Simulation.");
+				emit NewMessage(msg);
+			}
 
             hr = m_App->DeInit();
-            if (FAILED(hr))
-				emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::ErrorCanEasyDeInitError, nullptr);
+			if (FAILED(hr))
+			{
+				msg.SetSuccess(false);
+				msg.SetResult("Can't deinitilize the CanEasy Applikation.");
+				emit NewMessage(msg);
+			}
             //Warten bis CanEasy wirklich beendet ist
             QThread::msleep(2000);
             //! \todo hier könnte man nochmal abfragen ob CanEasy wirklich tot ist 
@@ -142,14 +200,23 @@ namespace RW{
             m_Process.Release();
 
 			CoUninitialize();
-			emit NewMessage(Util::Functions::CanEasyCloseApplication, Util::ErrorID::Success, nullptr);
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
 		void CanEasyWrapper::StartSimulation()
 		{
 			HRESULT hr = m_App->StartSimulation();
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartSimulation);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 			if (FAILED(hr))
-				emit NewMessage(Util::Functions::CanEasyStartSimulation, Util::ErrorID::ErrorCanEasyStartSimulation, nullptr);
+			{
+				msg.SetSuccess(false);
+				msg.SetResult("Can't start CanEasy simulation.");
+				emit NewMessage(msg);
+			}
             
             VARIANT_BOOL isRunning = false;
 
@@ -158,17 +225,30 @@ namespace RW{
                 Sleep(100);
                 hr = m_App->get_SimulationIsRunning(&isRunning);
                 if (FAILED(hr))
-					emit NewMessage(Util::Functions::CanEasyStartSimulation, Util::ErrorID::ErrorCanEasySimulationIsRunningFailed, nullptr);
+				{
+					msg.SetSuccess(false);
+					msg.SetResult("Can't start CanEasy simulation.");
+					emit NewMessage(msg);
+				}
             } while (!isRunning);
 
-			emit NewMessage(Util::Functions::CanEasyStartSimulation, Util::ErrorID::Success, nullptr);
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
 		void CanEasyWrapper::StopSimulation()
 		{
 			HRESULT hr = m_App->StopSimulation();
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyStopSimulation);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 			if (FAILED(hr))
-				emit NewMessage(Util::Functions::CanEasyStopSimulation, Util::ErrorID::ErrorCanEasyStartSimulation, nullptr);
+			{
+				msg.SetSuccess(false);
+				msg.SetResult("Can't stop CanEasy simulation.");
+				emit NewMessage(msg);
+			}
 
             VARIANT_BOOL isRunning = false;
 
@@ -176,18 +256,31 @@ namespace RW{
             {
                 Sleep(100);
                 hr = m_App->get_SimulationIsRunning(&isRunning);
-                if (FAILED(hr))
-					emit NewMessage(Util::Functions::CanEasyStartSimulation, Util::ErrorID::ErrorCanEasySimulationIsRunningFailed, nullptr);
-            } while (isRunning);
-			emit NewMessage(Util::Functions::CanEasyStopSimulation, Util::ErrorID::Success, nullptr);
+				if (FAILED(hr))
+				{
+					msg.SetSuccess(false);
+					msg.SetResult("Can't stop CanEasy simulation.");
+					emit NewMessage(msg);
+				}
+			} while (isRunning);
+
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
         void CanEasyWrapper::CloseExplicit()
         {
-        
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_CanEasyCloseApplication);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             HRESULT hr = m_App->StopSimulation();
             if (FAILED(hr))
             {
+				msg.SetSuccess(false);
+				msg.SetResult("Can't stop CanEasy simulation.");
+				emit NewMessage(msg);
             }
 
             VARIANT_BOOL isRunning = false;
@@ -198,18 +291,24 @@ namespace RW{
                 hr = m_App->get_SimulationIsRunning(&isRunning);
                 if (FAILED(hr))
                 {
-
+					msg.SetSuccess(false);
+					msg.SetResult("Can't stop CanEasy simulation.");
+					emit NewMessage(msg);
                 }
             } while (isRunning);
 
             hr = m_App->DeInit();
             if (FAILED(hr))
             {
-
+				msg.SetSuccess(false);
+				msg.SetResult("Can't deinitilize the CanEasy Applikation.");
+				emit NewMessage(msg);
             }
 
             m_IsRunning = false;
             CoUninitialize();
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
         }
 	}
 }

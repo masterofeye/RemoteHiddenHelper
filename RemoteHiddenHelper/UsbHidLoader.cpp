@@ -40,24 +40,20 @@ namespace RW
         {
         }
 
-        void UsbHidLoader::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+        void UsbHidLoader::OnProcessMessage(COM::Message Msg)
         {
-            if (Type == Util::MessageReceiver::UsbHidLoader)
+			switch (Msg.MessageID())
             {
-                switch (Func)
-                {
-                case RW::CORE::Util::Functions::UsbHidLoaderFlashFile:{
+			case COM::MessageDescription::EX_UsbHidLoaderFlashFile:{
 
-                    QString file;
-                    QDataStream data(Report);
-                    data >> file;
-                    // \!todo Magic Number .. der Pfad wird mehrfach verwendet
-                    FlashOverUsb(QDir(file));
-                }
+                QString file;
+				file = Msg.ParameterList()[0].toString();
+                // \!todo Magic Number .. der Pfad wird mehrfach verwendet
+                FlashOverUsb(QDir(file));
+            }
+            break;
+            default:
                 break;
-                default:
-                    break;
-                }
             }
         }
 

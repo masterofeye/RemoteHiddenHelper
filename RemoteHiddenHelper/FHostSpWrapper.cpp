@@ -45,79 +45,90 @@ namespace RW{
 		{
 		}
 
-		void FHostSpWrapper::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void FHostSpWrapper::OnProcessMessage(COM::Message Msg)
 		{
-			if (Util::MessageReceiver::FHostSPWrapper == Type)
+			switch (Msg.MessageID())
 			{
-				switch (Func)
-				{
-				case RW::CORE::Util::Functions::FHostSPStartFHost:
-					StartFHostSP();
-					break;
-				case RW::CORE::Util::Functions::FHostSPLoadFlashFile:
-                    LoadSequence(QFile(Report));
-					break;
-				case RW::CORE::Util::Functions::FHostSPCloseFHost:
-					CloseApplication();
-					break;
-				case RW::CORE::Util::Functions::FHostSPStartFlash:
-					StartSequence();
-					break;
-                case RW::CORE::Util::Functions::FHostSPCloseSequence:
-                    CloseSequence();
-                    break;
-                case RW::CORE::Util::Functions::FHostSPGetProgress:
-                    GetProgress();
-                    break;
-                case RW::CORE::Util::Functions::FHostSPGetState:
-                    GetState();
-                    break;
-                case RW::CORE::Util::Functions::FHostSPAbortSequence:
-                    AbortSequence();
-                    break;
-				case RW::CORE::Util::Functions::Amount:
-					break;
-				default:
-					break;
-				}
-
+			case COM::MessageDescription::EX_CanEasyStartApplication:
+				StartFHostSP();
+				break;
+			case COM::MessageDescription::EX_FHostSPLoadFlashFile:
+                LoadSequence(QFile(Msg.ParameterList()[0].toString()));
+				break;
+			case COM::MessageDescription::EX_FHostSPCloseFHost:
+				CloseApplication();
+				break;
+			case COM::MessageDescription::EX_FHostSPStartFlash:
+				StartSequence();
+				break;
+			case COM::MessageDescription::EX_FHostSPCloseSequence:
+                CloseSequence();
+                break;
+			case COM::MessageDescription::EX_FHostSPGetProgress:
+                GetProgress();
+                break;
+			case COM::MessageDescription::EX_FHostSPGetState:
+                GetState();
+                break;
+			case COM::MessageDescription::EX_FHostSPAbortSequence:
+                AbortSequence();
+                break;
+			case COM::MessageDescription::Amount:
+				break;
+			default:
+				break;
 			}
+
+			
 		}
 
 		void FHostSpWrapper::StartFHostSP()
 		{
 			CoInitialize(NULL);
 
-            //! \todo MagicNumber und implementierung
-            //if (GetProcessByName("FHostSp.exe"))
-            //{
-
-            //}
-
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFlash);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
 			HRESULT hr = CoCreateInstance(__uuidof(FHostSP_RemoteInterface), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(IFHostSP_RemoteInterface), (void**)&m_Process);
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPStartFHost, Util::ErrorID::ErrorFHostSPStartApplication, "");
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create an instance of FHostSP.");
+				emit NewMessage(msg);
                 return;
             }
             Sleep(100);
 
-			emit NewMessage(Util::Functions::FHostSPStartFHost, Util::ErrorID::Success, "");
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 
 		void FHostSpWrapper::CloseSequence()
 		{
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFHost);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
 			HRESULT  hr = m_Process->CloseSequence(_bstr_t(m_WorkspacePath.c_str()));
 			if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPStartFHost, Util::ErrorID::ErrorFHostSPSequenceStop, "");
+				msg.SetSuccess(false);
+				msg.SetResult("Can't create an instance of FHostSP.");
+				emit NewMessage(msg);
                 return;
             }
 			Sleep(500);
-			emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::Success, "");
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 		void FHostSpWrapper::GetProgress(){
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFHost);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
 			long stepvalue = 0;
 			long sequencevalue = 0;
@@ -125,18 +136,28 @@ namespace RW{
 			HRESULT  hr = m_Process->GetProgress(_bstr_t(m_WorkspacePath.c_str()), &stepvalue, &sequencevalue, &totalvalue);
 			if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPGetProgress, Util::ErrorID::ErrorFHostSPGetProgress, "");
+				msg.SetSuccess(false);
+				msg.SetResult("Get FHostSP progress failed.");
+				emit NewMessage(msg);
                 return;
             }
             Sleep(100);
-			emit NewMessage(Util::Functions::FHostSPGetProgress, Util::ErrorID::Success, "");
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 		void FHostSpWrapper::CloseApplication()
 		{
+			COM::Message msg;
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPCloseFHost);
+			msg.SetIsExternal(true);
+			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             HRESULT  hr = m_Process->CloseApplication();
 			if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::ErrorFHostSPCloseApplication, "");
+				msg.SetSuccess(false);
+				msg.SetResult("Get FHostSP progress failed.");
+				emit NewMessage(msg);
                 return;
             }
             m_Process.Detach();
@@ -146,11 +167,14 @@ namespace RW{
 
             if (GetProcessByName("FHostSp.exe", true))
             {
-                emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::ErrorFHostSPCloseApplication, "");
+				msg.SetSuccess(false);
+				msg.SetResult("Get FHostSP progress failed.");
+				emit NewMessage(msg);
             }
 
             Sleep(100);
-			emit NewMessage(Util::Functions::FHostSPCloseFHost, Util::ErrorID::Success, "");
+			msg.SetSuccess(true);
+			emit NewMessage(msg);
 		}
 		void FHostSpWrapper::GetState()
 		{

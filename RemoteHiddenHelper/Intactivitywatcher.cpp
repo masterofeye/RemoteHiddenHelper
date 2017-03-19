@@ -25,28 +25,24 @@ namespace RW{
 		{
 		}
 
-		void InactivityWatcher::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void InactivityWatcher::OnProcessMessage(COM::Message Msg)
 		{
-			if (Type == Util::MessageReceiver::InactivityWatcher)
+			switch (Msg.MessageID())
 			{
-				switch (Func)
-				{
-				case RW::CORE::Util::Functions::StartInactivityTimer:
-				{
-                    quint64 timeout;
-                    QDataStream dataStream(Report);
-                    dataStream >> timeout;
-                    StartInactivityObservation(timeout);
-				}
+			case COM::MessageDescription::EX_StartInactivityTimer:
+			{
+				quint64 timeout;
+				timeout = Msg.ParameterList()[0].toLongLong();
+                StartInactivityObservation(timeout);
+			}
+			break;
+			case COM::MessageDescription::EX_StopInactivityTimer:
+			{
+				StopInactivityObservation();
+			}
+			break;
+			default:
 				break;
-				case RW::CORE::Util::Functions::StopInactivityTimer:
-				{
-					StopInactivityObservation();
-				}
-				break;
-				default:
-					break;
-				}
 			}
 		}
 

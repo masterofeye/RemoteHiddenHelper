@@ -35,7 +35,7 @@ namespace RW{
 			QDataStream in die Nachricht geschrieben.
 			@return void
 			********************************************************************************************************************/
-			void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
+			void OnProcessMessage(COM::Message Msg);
 		public:
 			FHostSpWrapper(QObject* Parent = nullptr);
 			~FHostSpWrapper();
@@ -50,6 +50,7 @@ namespace RW{
 			void StartSequence();
 		private: 
 			QString FHostSpWrapper::ReadStatusText();
+
 		};
 
 	}

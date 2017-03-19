@@ -30,7 +30,7 @@ namespace RW
             ~UsbHidLoader();
             
         public slots:
-        virtual void OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report);
+        virtual void OnProcessMessage(COM::Message Msg);
 
         private: 
             void FlashOverUsb(QDir &BatFile);

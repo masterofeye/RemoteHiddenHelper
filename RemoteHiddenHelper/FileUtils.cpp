@@ -22,31 +22,27 @@ namespace RW
         {
         }
 
-        void FileUtils::OnProcessMessage(Util::MessageReceiver Type, Util::Functions Func, QByteArray Report)
+		void FileUtils::OnProcessMessage(COM::Message Msg)
         {
-            if (Type == Util::MessageReceiver::FileUtil)
+			switch (Msg.MessageID())
             {
-                switch (Func)
-                {
-                case RW::CORE::Util::Functions::FileUtilUnZip:{
-                    QString file;
-                    QDataStream data(Report);
-                    data >> file;
-                    // \!todo Magic Number .. der Pfad wird mehrfach verwendet
-                    Unzip(QDir("C:\\Temp\\" + file));
-                }
-                    break;
-                case RW::CORE::Util::Functions::FileUtilDelete:
-                {
-                    QString dir;
-                    QDataStream data(Report);
-                    data >> dir;
-                    Delete(QDir(dir));
-                }
-                    break;
-                default:
-                    break;
-                }
+			case COM::MessageDescription::EX_FileUtilUnZip:{
+				QString file;
+
+				file = Msg.ParameterList()[0].toString();
+                // \!todo Magic Number .. der Pfad wird mehrfach verwendet
+                Unzip(QDir("C:\\Temp\\" + file));
+            }
+                break;
+			case COM::MessageDescription::EX_FileUtilDelete:
+            {
+                QString dir;
+				dir = Msg.ParameterList()[0].toString();
+                Delete(QDir(dir));
+            }
+                break;
+            default:
+                break;
             }
         }
 

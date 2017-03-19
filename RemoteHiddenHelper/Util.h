@@ -2,36 +2,14 @@
 
 #include "qdatastream.h"
 #include "Constants.h"
+#include <RemoteCommunicationLibrary.h>
 
 #include <Windows.h>
 #include <Psapi.h>
 #include <tchar.h>
 #include "BasicWrapper.h"
 
-inline QDataStream &operator <<(QDataStream &out, const RW::CORE::Message &dataStruct)
-{
-    out << (quint16)dataStruct.MessageFunc;
-    out << dataStruct.MessageSize;
-    out.writeRawData(dataStruct.Message, dataStruct.MessageSize);
-    out << (quint16)dataStruct.Error;
-    return out;
-}
 
-inline QDataStream &operator >>(QDataStream &in, RW::CORE::Message &dataStruct)
-{
-    quint16 MessageFunc = 0;
-    quint16 errorId = 0;
-    dataStruct = RW::CORE::Message();
-    in >> MessageFunc;
-    in >> dataStruct.MessageSize;
-    dataStruct.Message.resize(dataStruct.MessageSize);
-    in.readRawData(dataStruct.Message.data(), dataStruct.MessageSize);
-    in >> errorId;
-
-    dataStruct.MessageFunc = static_cast<RW::CORE::Util::Functions>(MessageFunc);
-	dataStruct.Error = static_cast<RW::CORE::Util::ErrorID>(errorId);
-    return in;
-}
 
 inline QString GetMKSLink(QString Destination, QString MksLink)
 {
