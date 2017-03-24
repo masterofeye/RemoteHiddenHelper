@@ -44,13 +44,14 @@ namespace RW{
 
 		void CanEasyWrapper::StartCanEasy(const QFile &File)
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             //Wenn ein CanEasy noch offen ist, wird es zunächst geschlossen
             if (GetProcessByName("CanEasy.exe", true))
             {
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
-				msg.SetIsExternal(true);
-				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 				msg.SetSuccess(false);
 				msg.SetResult("Can't create CanEasy Instance");
 				emit NewMessage(msg);
@@ -62,10 +63,6 @@ namespace RW{
 			HRESULT hr = CoCreateInstance(__uuidof(CanEasyProcess), NULL, CLSCTX_LOCAL_SERVER/*CLSCTX_ALL*/, __uuidof(ICanEasyProcess), (void**)&m_Process);
 			if (FAILED(hr))
 			{
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
-				msg.SetIsExternal(true);
-				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 				msg.SetSuccess(false);
 				msg.SetResult("Can't create CanEasy Instance");
 				emit NewMessage(msg);
@@ -76,11 +73,7 @@ namespace RW{
 			
             hr = m_Process->GetApplication(&appDisp);
 			if (FAILED(hr))
-			{       
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
-				msg.SetIsExternal(true);
-				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+			{    
 				msg.SetSuccess(false);
 				msg.SetResult("Can't create CanEasy Instance");
 				emit NewMessage(msg);
@@ -94,10 +87,6 @@ namespace RW{
 			hr = m_App->get_AppWindow(&appWindow);
 			if (FAILED(hr))
 			{
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
-				msg.SetIsExternal(true);
-				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 				msg.SetSuccess(false);
 				msg.SetResult("Can't create CanEasy Instance");
 				emit NewMessage(msg);
@@ -121,10 +110,6 @@ namespace RW{
 
             m_IsRunning = true;
 
-			COM::Message msg;
-			msg.SetMessageID(COM::MessageDescription::EX_CanEasyStartApplication);
-			msg.SetIsExternal(true);
-			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -216,6 +201,7 @@ namespace RW{
 				msg.SetSuccess(false);
 				msg.SetResult("Can't start CanEasy simulation.");
 				emit NewMessage(msg);
+                return;
 			}
             
             VARIANT_BOOL isRunning = false;
@@ -229,6 +215,7 @@ namespace RW{
 					msg.SetSuccess(false);
 					msg.SetResult("Can't start CanEasy simulation.");
 					emit NewMessage(msg);
+                    return;
 				}
             } while (!isRunning);
 
@@ -248,6 +235,7 @@ namespace RW{
 				msg.SetSuccess(false);
 				msg.SetResult("Can't stop CanEasy simulation.");
 				emit NewMessage(msg);
+                return;
 			}
 
             VARIANT_BOOL isRunning = false;
@@ -261,6 +249,7 @@ namespace RW{
 					msg.SetSuccess(false);
 					msg.SetResult("Can't stop CanEasy simulation.");
 					emit NewMessage(msg);
+                    return;
 				}
 			} while (isRunning);
 

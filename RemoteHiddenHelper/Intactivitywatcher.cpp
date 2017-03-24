@@ -60,7 +60,11 @@ namespace RW{
 
 		void InactivityWatcher::StartInactivityObservation(quint64 Time)
 		{
-			
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
 			if (m_TimerLogout == nullptr)
 			{
 				m_TimerLogout = new QTimer(this);
@@ -71,15 +75,22 @@ namespace RW{
 			m_TimerLogout->start(5000);
 			Sleep(100);
 			//qApp->processEvents();
-            emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::Success, QByteArray());
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 		void InactivityWatcher::StopInactivityObservation()
-		{
+        {
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
 			if (m_TimerLogout != nullptr && m_TimerLogout->isActive())
 			{
 				m_TimerLogout->stop();
-                emit NewMessage(RW::CORE::Util::Functions::StopInactivityTimer, Util::ErrorID::Success, QByteArray());
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
 			}
 #ifdef DEBUG
 			m_logger->flush();
@@ -89,24 +100,32 @@ namespace RW{
 		
         void InactivityWatcher::LogOutUser()
         {
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             //m_logger->debug("LogoutUser was called.");
             if (GetLastInputTime() >= m_Timeout)
             {
                 quint64 sessionId = 0;
                 if (!QueryActiveSession(sessionId))
                 {
-                    emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::ErrorLogOutQuerySessionFailed, QByteArray());
+                    msg.SetSuccess(false);
+                    emit NewMessage(msg);
                 }
                 else
                 {
                     if (LogOff(sessionId))
                     {
                         m_TimerLogout->stop();
-                        emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::Success, QByteArray("LogOFF"));
+                        msg.SetSuccess(false);
+                        emit NewMessage(msg);
                     }
                     else
                     {
-                        emit NewMessage(RW::CORE::Util::Functions::StartInactivityTimer, Util::ErrorID::ErrorLogOutNotPossible, QByteArray());
+                        msg.SetSuccess(false);
+                        emit NewMessage(msg);
                     }
                 }
             }

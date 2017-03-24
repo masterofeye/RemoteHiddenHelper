@@ -87,7 +87,7 @@ namespace RW{
 			CoInitialize(NULL);
 
 			COM::Message msg;
-			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFlash);
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFHost);
 			msg.SetIsExternal(true);
 			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
@@ -108,7 +108,7 @@ namespace RW{
 		void FHostSpWrapper::CloseSequence()
 		{
 			COM::Message msg;
-			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFHost);
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPCloseSequence);
 			msg.SetIsExternal(true);
 			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
@@ -126,7 +126,7 @@ namespace RW{
 		}
 		void FHostSpWrapper::GetProgress(){
 			COM::Message msg;
-			msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFHost);
+			msg.SetMessageID(COM::MessageDescription::EX_FHostSPGetProgress);
 			msg.SetIsExternal(true);
 			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
@@ -176,13 +176,21 @@ namespace RW{
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
+
 		void FHostSpWrapper::GetState()
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_FHostSPGetState);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             long sequencestate;
 			HRESULT  hr = m_Process->GetState(_bstr_t(m_WorkspacePath.c_str()), &sequencestate);
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPGetState, Util::ErrorID::ErrorFHostSPGetStateFailed, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Can't request the current FHostSP state.");
+                emit NewMessage(msg);
                 return;
             }
             Sleep(500);
@@ -194,6 +202,13 @@ namespace RW{
                 long sequencevalue = 0;
                 long totalvalue = 0;
                 HRESULT  hr = m_Process->GetProgress(_bstr_t(m_WorkspacePath.c_str()), &stepvalue, &sequencevalue, &totalvalue);
+                if (FAILED(hr))
+                {
+                    msg.SetSuccess(false);
+                    msg.SetResult("Can't request the current FHostSP progress.");
+                    emit NewMessage(msg);
+                    return;
+                }
 				if (stepvalue == 0 && sequencevalue == 0 && totalvalue == 0)
 				{
 				}
@@ -207,27 +222,44 @@ namespace RW{
             data << qu64sequencestate;
 			data << status;
 
-			emit NewMessage(Util::Functions::FHostSPGetState, Util::ErrorID::Success, arr);
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 		void FHostSpWrapper::AbortSequence()
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_FHostSPAbortSequence);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
 			HRESULT  hr = m_Process->AbortSequence(_bstr_t(m_WorkspacePath.c_str()));
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPAbortSequence, Util::ErrorID::ErrorFHostSPAbortFailed, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Can't abort the current sequence.");
+                emit NewMessage(msg);
                 return;
             }
             Sleep(500);
-			emit NewMessage(Util::Functions::FHostSPAbortSequence, Util::ErrorID::Success, "");
+
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 
 		void FHostSpWrapper::LoadSequence(const QFile &Flashfile)
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_FHostSPLoadFlashFile);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             if (!Flashfile.exists())
             {
-				emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPFlashfileNotExits, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Flashfile don't exists.");
+                emit NewMessage(msg);
                 return;
             }
 
@@ -236,14 +268,18 @@ namespace RW{
             m_WorkspacePath = f.absoluteFilePath().toStdString();
             if (!QFile(filename).exists())
             {
-				emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPFlashfileNotExits, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Flashfile don't exists.");
+                emit NewMessage(msg);
                 return;
             }
 
             HRESULT  hr = m_Process->LoadSequence(_bstr_t(f.absoluteFilePath().toStdString().c_str()), _bstr_t(filename.toStdString().c_str()), _bstr_t("Test"));
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPLoadFlashfileFailed, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Can't load flashfile.");
+                emit NewMessage(msg);
                 return;
             }
 			long status;
@@ -262,11 +298,14 @@ namespace RW{
 			if (status == 5)
 			{
 				Sleep(100);
-				emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::Success, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Can't load flashfile.");
+                emit NewMessage(msg);
                 return;
 			}
             Sleep(100);
-			emit NewMessage(Util::Functions::FHostSPLoadFlashFile, Util::ErrorID::ErrorFHostSPLoadFlashfileStatusFailed, "");
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
         QString FHostSpWrapper::ReadStatusText()
@@ -319,17 +358,25 @@ namespace RW{
 
 		void FHostSpWrapper::StartSequence()
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_FHostSPStartFlash);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
             //Safty Sleep
             QThread::msleep(5000);
 			//! \todo  Hier sollte der Pfad aus der Konfiguration gelesen werden
 			HRESULT  hr = m_Process->StartSequence(_bstr_t(m_WorkspacePath.c_str()), _bstr_t("C:\\Program Files (x86)\\FHostSP\\FHostSP.cfx"));
             if (FAILED(hr))
             {
-				emit NewMessage(Util::Functions::FHostSPStartFlash, Util::ErrorID::ErrorFHostSPSequenceStart, "");
+                msg.SetSuccess(false);
+                msg.SetResult("Can't start sequence.");
+                emit NewMessage(msg);
                 return;
             }
             Sleep(100);
-			emit NewMessage(Util::Functions::FHostSPStartFlash, Util::ErrorID::Success, "");
+
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 	}

@@ -138,6 +138,12 @@ namespace RW{
 		********************************************************************************************************************/
 		void MKSWrapper::StartMKS(QString MKSLocation,QString Username, QString Password, QString Server, quint16 Port, QString Proxy, quint16 ProxyPort)
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_MKSLogin);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+
 			if (Username.isEmpty() ||
 				Password.isEmpty() ||
 				Server.isEmpty() ||
@@ -145,11 +151,10 @@ namespace RW{
 				Proxy.isEmpty() ||
 				ProxyPort == 0)
 			{
-				emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSMissingParameter, nullptr);
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSMissingParameter));
+                emit NewMessage(msg);
 			}
-
-
-
 
 			m_MKSLocation = MKSLocation;
 			m_Port = Port;
@@ -160,7 +165,9 @@ namespace RW{
 			QProcess proc;
 			if (!QFile(m_MKSLocation).exists())
 			{
-				emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSLocationMissing, nullptr);
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSLocationMissing));
+                emit NewMessage(msg);
                 return;
 			}
 
@@ -175,7 +182,9 @@ namespace RW{
 			proc.start(MKSLocation + MKSCLIENT, arguments);
 			if (!proc.waitForFinished(5000))
 			{
-				emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSError, nullptr);
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSError));
+                emit NewMessage(msg);
                 return;
 			}
 
@@ -187,9 +196,15 @@ namespace RW{
 
             PrepareMKSLoginForm();
 
-            if(!procLogin.waitForFinished(60000))
-                emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::ErrorMKSLogin, nullptr);
-			emit NewMessage(Util::Functions::MKSLogin, Util::ErrorID::Success, nullptr);
+            if (!procLogin.waitForFinished(60000))
+            {
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSLogin));
+                emit NewMessage(msg);
+            }
+
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 
@@ -206,13 +221,19 @@ namespace RW{
 			QProcess proc;
 			QStringList arguments;
 
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_MKSCreateSandBox);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             //! \todobrauchen wir das noch hier
             //QString dest = GetMKSLink(m_Destination, MksUrl);
             QString dest = Destination;
             
             if (QFile(m_Destination + dest).exists())
             {
-                emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::Success, nullptr);
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
                 return;
             }
 
@@ -228,7 +249,9 @@ namespace RW{
 
             if (!procStart.waitForFinished(180000))
 			{
-				emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::ErrorMKSSandBoxCreation, nullptr);
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSSandBoxCreation));
+                emit NewMessage(msg);
 			}
 			else
 			{
@@ -237,7 +260,9 @@ namespace RW{
                 arguments << "dropsandbox" << "--yes" << "--delete=""none""" << "--status=""none""" << dest + "/project.pj";
                 procCleanUp.start(m_MKSLocation + MKSCLIENT, arguments);
                 procCleanUp.waitForFinished(10000);
-				emit NewMessage(Util::Functions::MKSCreateSandBox, Util::ErrorID::Success, nullptr);
+
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
 			}
 		}
 
