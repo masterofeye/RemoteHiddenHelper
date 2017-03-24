@@ -1,6 +1,6 @@
 #pragma once
 #include "qobject.h"
-#include "Constants.h"
+#include <RemoteCommunicationLibrary.h>
 
 QT_BEGIN_NAMESPACE
 class QNetworkRequest;
@@ -30,11 +30,11 @@ namespace RW{
 			@autor Ivo Kunadt
 			@brief Übertragt die Releasedaten in eine interne Verwaltungsstruktur.
 			@return Zustand des Ausfühungsschrittes
-			@retval Util::ErrorID::ErrorPortalInfoFinalRegexCheck
-			@retval Util::ErrorID::ErrorPortalInfoProjectnameCount
-			@retval Util::ErrorID::Success
+			@retval COM::ErrorDecscription::ErrorPortalInfoFinalRegexCheck
+			@retval COM::ErrorDecscription::ErrorPortalInfoProjectnameCount
+			@retval COM::ErrorDecscription::Success
 			**********************************************************************/
-			Util::ErrorID FillReleaseMap();
+            COM::ErrorDecscription FillReleaseMap();
 
 			void PrepareProjectInformation();
 
@@ -42,12 +42,12 @@ namespace RW{
 			@autor Ivo Kunadt
 			@brief
 			@return Zustand des Ausfühungsschrittes
-			@retval Util::ErrorID::ErrorPortalInfoSamplePhaseAndReleaseCount
-			@retval Util::ErrorID::ErrorPortalInfoSamplePhaseCount
-			@retval Util::ErrorID::Success
+			@retval COM::ErrorDecscription::ErrorPortalInfoSamplePhaseAndReleaseCount
+			@retval COM::ErrorDecscription::ErrorPortalInfoSamplePhaseCount
+			@retval COM::ErrorDecscription::Success
 			**********************************************************************/
-			Util::ErrorID PrepareSamplePhaseInformation(QString SelectedProject, QList<QString> &UniqueSamplePhase);
-			Util::ErrorID PrepareReleaseInformation(QString SelectedSamplePhase, QString SelectedProject, QList<QString> &UniqueReleaseList);
+            COM::ErrorDecscription PrepareSamplePhaseInformation(QString SelectedProject, QList<QString> &UniqueSamplePhase);
+            COM::ErrorDecscription PrepareReleaseInformation(QString SelectedSamplePhase, QString SelectedProject, QList<QString> &UniqueReleaseList);
 		public:
 			QStringList GetSoftwareById(int systemId, bool AC, bool GC);
 
@@ -56,32 +56,32 @@ namespace RW{
 			@brief Gibt eine Liste an Projekten zurück, die aus dem Portal gelesen wurden.
 			@param[out] UniqueProjects
 			@return Zustand des Ausfühungsschrittes
-			@retval Util::ErrorID::ErrorPortalInfoProjectCount
-			@retval Util::ErrorID::ErrorPortalInfoFinalRegexCheck
-			@retval Util::ErrorID::ErrorPortalInfoProjectnameCount
-			@retval Util::ErrorID::Success
+			@retval COM::ErrorDecscription::ErrorPortalInfoProjectCount
+			@retval COM::ErrorDecscription::ErrorPortalInfoFinalRegexCheck
+			@retval COM::ErrorDecscription::ErrorPortalInfoProjectnameCount
+			@retval COM::ErrorDecscription::Success
 			**********************************************************************/
-			Util::ErrorID GetUniqueKeys(QList<QString> &UniqueProjects);
+            COM::ErrorDecscription GetUniqueKeys(QList<QString> &UniqueProjects);
 
 			/*******************************************************************//**
 			@autor Ivo Kunadt
 			@brief
 			@return Zustand des Ausfühungsschrittes
-			@retval Util::ErrorID::ErrorPortalInfoSamplePhaseAndReleaseCount
-			@retval Util::ErrorID::ErrorPortalInfoSamplePhaseCount
-			@retval Util::ErrorID::Success
+			@retval COM::ErrorDecscription::ErrorPortalInfoSamplePhaseAndReleaseCount
+			@retval COM::ErrorDecscription::ErrorPortalInfoSamplePhaseCount
+			@retval COM::ErrorDecscription::Success
 			**********************************************************************/
-			Util::ErrorID GetSamplePhaseList(QString SelectedProject, QList<QString> &UniqueSamplePhase);
+            COM::ErrorDecscription GetSamplePhaseList(QString SelectedProject, QList<QString> &UniqueSamplePhase);
 
 			/*******************************************************************//**
 			@autor Ivo Kunadt
 			@brief
 			@return Zustand des Ausfühungsschrittes
-			@retval Util::ErrorID::ErrorPortalInfoPrepareReleaseInformation
-			@retval Util::ErrorID::ErrorPortalInfoReleaseCount
-			@retval Util::ErrorID::Success
+			@retval COM::ErrorDecscription::ErrorPortalInfoPrepareReleaseInformation
+			@retval COM::ErrorDecscription::ErrorPortalInfoReleaseCount
+			@retval COM::ErrorDecscription::Success
 			**********************************************************************/
-			Util::ErrorID GetReleaseList(QString SelectedSamplePhase, QString SelectedProjec, QList<QString> &UniqueReleaseList);
+            COM::ErrorDecscription GetReleaseList(QString SelectedSamplePhase, QString SelectedProjec, QList<QString> &UniqueReleaseList);
 			quint16 GetSoftwareID(QString ProjectMain, QString Samplephase, QString Release, QString ProjectConttroller, QString ProjectVariant, QString ProjectModellYear);
 		};
 	}

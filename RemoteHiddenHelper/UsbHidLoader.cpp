@@ -59,9 +59,16 @@ namespace RW
 
         void UsbHidLoader::FlashOverUsb(QDir &BatFile)
         {
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             if (!BatFile.exists())
             {
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderFileDontExists, "");
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLoaderFileDontExists));
+                emit NewMessage(msg);
             }
 
             QStringList files = BatFile.entryList(QStringList(SEARCHPATTERN), QDir::Files);
@@ -82,7 +89,9 @@ namespace RW
             //Aktuell landet hier keiner mehr
             if (!proc.waitForFinished(1800000))
             {
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderFailed, "");
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLoaderFailed));
+                emit NewMessage(msg);
                 return;
             }
 
@@ -94,18 +103,29 @@ namespace RW
                 return;
             }
 
-            emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::Success, "");
+            msg.SetSuccess(false);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+            emit NewMessage(msg);
         }
 
 
         void UsbHidLoader::AnalyseStdOutput()
         {
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
             QProcess* obj = qobject_cast<QProcess*>(sender());
             QString text = obj->readAllStandardOutput();
             QByteArray arr;
             QDataStream data(&arr, QIODevice::WriteOnly);
             data << text;
-            emit NewMessage(Util::Functions::PrintDebugInformation, Util::ErrorID::Success, arr);
+
+            msg.SetSuccess(true);
+            msg.SetMessageID(COM::MessageDescription::EX_PrintDebugInformation);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+            emit NewMessage(msg);
 
             if (text.contains(WAITINGFORHIDPATTERN))
             {
@@ -127,7 +147,10 @@ namespace RW
                 //als nächstes wird die Konsole geschlossen
                 emit KillUsbHidLoader();
                 //zuletzt wird der Status verschickt
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderChecksum, "");
+                msg.SetSuccess(false);
+                msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLoaderChecksum));
+                emit NewMessage(msg);
                 return;
             }
             else if (text.contains(TIMEOUTPATTERN))
@@ -138,7 +161,10 @@ namespace RW
                 //als nächstes wird die Konsole geschlossen
                 emit KillUsbHidLoader();
                 //zuletzt wird der Status verschickt
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderTimeOut, "");
+                msg.SetSuccess(false);
+                msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLoaderTimeOut));
+                emit NewMessage(msg);
                 return;
             }
             else if (text.contains(FLASHFINISHED))
@@ -149,7 +175,10 @@ namespace RW
                 //als nächstes wird die Konsole geschlossen
                 emit KillUsbHidLoader();
                 //zuletzt wird der Status verschickt
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::Success, "");
+                msg.SetSuccess(true);
+                msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+                emit NewMessage(msg);
                 return;
             }
             else if (text.contains(FLASHFINISHED2))
@@ -163,7 +192,10 @@ namespace RW
                     //als nächstes wird die Konsole geschlossen
                     emit KillUsbHidLoader();
                     //zuletzt wird der Status verschickt
-                    emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLiaderUnknownError, "");
+                    msg.SetSuccess(false);
+                    msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+                    msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLiaderUnknownError));
+                    emit NewMessage(msg);
                 }
                 return;
             }
@@ -203,7 +235,13 @@ namespace RW
                 //als nächstes wird die Konsole geschlossen
                 emit KillUsbHidLoader();
                 //zuletzt wird der Status verschickt
-                emit NewMessage(Util::Functions::UsbHidLoaderFlashFile, Util::ErrorID::ErrorFileUsbHidLoaderHIDState, "");
+
+                COM::Message msg;
+                msg.SetIsExternal(true);
+                msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+                msg.SetSuccess(false);
+                msg.SetMessageID(COM::MessageDescription::EX_UsbHidLoaderFlashFile);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFileUsbHidLoaderHIDState));
                 return;
             }
         }

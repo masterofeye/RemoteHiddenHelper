@@ -28,7 +28,7 @@ namespace RW{
             qDebug() << "###################################";
         }
 
-		void ErrorHandler::OnProcessMessageAnswer(Util::Functions Func, Util::ErrorID Id, QByteArray Message)
+		void ErrorHandler::OnProcessMessageAnswer(COM::Message Msg)
         {
    //         //Message Daten in die Message Struktur packen
    //         QByteArray arr;

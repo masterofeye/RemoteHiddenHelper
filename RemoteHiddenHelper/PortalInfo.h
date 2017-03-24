@@ -96,26 +96,26 @@ namespace RW{
 			@autor Ivo Kunadt
 			@brief Füllt die ComboBox, die die Auswahlmöglichkeit für die Projekte liefer. Dabei wird der Name entsprechend der 
 			MR-DB zusammengesetzt. 
-			@return Util::ErrorID Status des Ausführungschrittes
+			@return COM::ErrorDecscription Status des Ausführungschrittes
 			********************************************************************************************************************/
-			Util::ErrorID  FillProjectCombobox();
+			COM::ErrorDecscription  FillProjectCombobox();
 
 			/***************************************************************************************************************//**
 			@autor Ivo Kunadt
 			@brief Füllt die Combobox, die die Auswahlmöglichkeit für die Sample Phase liefert.
 			@param[in] SelectedProject Das zuvor aus der Projekt Combobox ausgewählte Projekt. 
-			@return Util::ErrorID Status des Ausführungschrittes
+			@return COM::ErrorDecscription Status des Ausführungschrittes
 			********************************************************************************************************************/
-			Util::ErrorID  FillSamplePhaseCombobox(const QString &SelectedProject);
+			COM::ErrorDecscription  FillSamplePhaseCombobox(const QString &SelectedProject);
 
 			/***************************************************************************************************************//**
 			@autor Ivo Kunadt
 			@brief Füllt die Combobox, die die Auswahlmöglichkeit für die Release Version liefert. 
 			@param[in] SelectedSamplePhase Die zuvor aus der SamplePhase Combobox ausgewählte Samplephase. 
-			@return Util::ErrorID Status des Ausführungschrittes
+			@return COM::ErrorDecscription Status des Ausführungschrittes
 			
 			********************************************************************************************************************/
-			Util::ErrorID  FillReleaseCombobox(const QString &SelectedSamplePhase);
+			COM::ErrorDecscription  FillReleaseCombobox(const QString &SelectedSamplePhase);
 		public slots:
 			/***************************************************************************************************************//**
 			@autor Ivo Kunadt

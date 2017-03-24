@@ -1,6 +1,6 @@
 #pragma once
 #include "qobject.h"
-#include "Constants.h"
+#include <RemoteCommunicationLibrary.h>
 
 namespace RW{
     namespace CORE
@@ -32,25 +32,25 @@ namespace RW{
             @brief IsBusy zeigt an ob der ErrorHandler noch dabei ist, vorangegange Prozesse zu beenden. Diese Variante 
             fragt explizit nur das Modul ab welches übergeben wurde.
             */
-			inline bool IsBusy(Util::MessageReceiver Receiver){
-                switch (Receiver)
-                {
-				case Util::MessageReceiver::CanEasyWrapper:
-                    return m_IsCanEasyRunning;
-                    break;
-				case Util::MessageReceiver::MKSWrapper:
-                    return m_IsMKSRunning;
-                    break;
-				case Util::MessageReceiver::FHostSPWrapper:
-                    return m_IsFHostSPRunning;
-					break;
-				case Util::MessageReceiver::PortalInfo:
-					return m_IsPortalInfoRunning;
-					break;
-                default:
-					return true; //Als default wird immer Busy zurück gegeben
-                    break;
-                }
+			inline bool IsBusy(COM::MessageDescription Receiver){
+     //           switch (Receiver)
+     //           {
+     //           case COM::MessageDescription:::
+     //               return m_IsCanEasyRunning;
+     //               break;
+     //           case COM::MessageDescription::MKSWrapper:
+     //               return m_IsMKSRunning;
+     //               break;
+     //           case COM::MessageDescription::FHostSPWrapper:
+     //               return m_IsFHostSPRunning;
+					//break;
+     //           case COM::MessageDescription::PortalInfo:
+					//return m_IsPortalInfoRunning;
+					//break;
+     //           default:
+					//return true; //Als default wird immer Busy zurück gegeben
+     //               break;
+     //           }
             }
 
 
@@ -59,10 +59,10 @@ namespace RW{
             inline void SetFHostSpRunning(bool Running){ m_IsFHostSPRunning = Running; }
 
         public slots:
-		void OnProcessMessageAnswer(Util::Functions Func, Util::ErrorID Id, QByteArray Message);
+        void OnProcessMessageAnswer(COM::Message Msg);
 
         signals:
-		void NewMessage(Util::MessageReceiver Receiver, Util::Functions MessageType, QByteArray Message);
+        void NewMessage(COM::Message Msg);
         };
     }
 }

@@ -49,7 +49,7 @@ namespace RW{
 		{
 			switch (Msg.MessageID())
 			{
-			case COM::MessageDescription::EX_CanEasyStartApplication:
+			case COM::MessageDescription::EX_FHostSPStartFHost:
 				StartFHostSP();
 				break;
 			case COM::MessageDescription::EX_FHostSPLoadFlashFile:
@@ -95,12 +95,14 @@ namespace RW{
             if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create an instance of FHostSP.");
+
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPCoCreateInstance));
 				emit NewMessage(msg);
                 return;
             }
             Sleep(100);
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -116,14 +118,17 @@ namespace RW{
 			if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create an instance of FHostSP.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPSequenceClose));
 				emit NewMessage(msg);
                 return;
             }
 			Sleep(500);
+
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
+
 		void FHostSpWrapper::GetProgress(){
 			COM::Message msg;
 			msg.SetMessageID(COM::MessageDescription::EX_FHostSPGetProgress);
@@ -137,14 +142,17 @@ namespace RW{
 			if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Get FHostSP progress failed.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPGetProgress));
 				emit NewMessage(msg);
                 return;
             }
             Sleep(100);
+
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
+
 		void FHostSpWrapper::CloseApplication()
 		{
 			COM::Message msg;
@@ -156,7 +164,7 @@ namespace RW{
 			if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Get FHostSP progress failed.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPCloseApplication));
 				emit NewMessage(msg);
                 return;
             }
@@ -168,11 +176,12 @@ namespace RW{
             if (GetProcessByName("FHostSp.exe", true))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Get FHostSP progress failed.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPStillAlive));
 				emit NewMessage(msg);
             }
 
             Sleep(100);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -217,11 +226,10 @@ namespace RW{
 			QString status = ReadStatusText();
 
             quint64 qu64sequencestate = sequencestate;
-            QByteArray arr;
-            QDataStream data(&arr,QIODevice::WriteOnly);
-            data << qu64sequencestate;
-			data << status;
 
+            msg.ParameterList().append(qu64sequencestate);
+            msg.ParameterList().append(status);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
             msg.SetSuccess(true);
             emit NewMessage(msg);
 		}
@@ -237,12 +245,13 @@ namespace RW{
             if (FAILED(hr))
             {
                 msg.SetSuccess(false);
-                msg.SetResult("Can't abort the current sequence.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPAbortFailed));
                 emit NewMessage(msg);
                 return;
             }
             Sleep(500);
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
             msg.SetSuccess(true);
             emit NewMessage(msg);
 		}
@@ -258,7 +267,7 @@ namespace RW{
             if (!Flashfile.exists())
             {
                 msg.SetSuccess(false);
-                msg.SetResult("Flashfile don't exists.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPFlashfileNotExits));
                 emit NewMessage(msg);
                 return;
             }
@@ -269,7 +278,7 @@ namespace RW{
             if (!QFile(filename).exists())
             {
                 msg.SetSuccess(false);
-                msg.SetResult("Flashfile don't exists.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPFlashfileNotExits));
                 emit NewMessage(msg);
                 return;
             }
@@ -278,7 +287,7 @@ namespace RW{
             if (FAILED(hr))
             {
                 msg.SetSuccess(false);
-                msg.SetResult("Can't load flashfile.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPLoadFlashfileFailed));
                 emit NewMessage(msg);
                 return;
             }
@@ -299,11 +308,13 @@ namespace RW{
 			{
 				Sleep(100);
                 msg.SetSuccess(false);
-                msg.SetResult("Can't load flashfile.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPStateFailed));
                 emit NewMessage(msg);
                 return;
 			}
             Sleep(100);
+
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
             msg.SetSuccess(true);
             emit NewMessage(msg);
 		}
@@ -369,12 +380,13 @@ namespace RW{
             if (FAILED(hr))
             {
                 msg.SetSuccess(false);
-                msg.SetResult("Can't start sequence.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorFHostSPSequenceStart));;
                 emit NewMessage(msg);
                 return;
             }
             Sleep(100);
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
             msg.SetSuccess(true);
             emit NewMessage(msg);
 		}

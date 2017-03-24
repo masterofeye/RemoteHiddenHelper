@@ -53,7 +53,7 @@ namespace RW{
             if (GetProcessByName("CanEasy.exe", true))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create CanEasy Instance");
+				msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyApplication));
 				emit NewMessage(msg);
                 return;
             }
@@ -64,7 +64,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create CanEasy Instance");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyCoCreateInstance));
 				emit NewMessage(msg);
 			    return;
 			}
@@ -75,7 +75,7 @@ namespace RW{
 			if (FAILED(hr))
 			{    
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create CanEasy Instance");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyGetApplication));
 				emit NewMessage(msg);
 			    return;
 			}
@@ -88,7 +88,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't create CanEasy Instance");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyGetAppWindow));
 				emit NewMessage(msg);
 			    return;
 			}
@@ -117,15 +117,15 @@ namespace RW{
 		void CanEasyWrapper::LoadWorkspace(const QFile &File)
 		{
 			//"C:\\Arbeitsbereiche_PF3\\Arbeitsbereich_BR213_V4.50\\W213\\CanEasyBR213_V4.50.csm"
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
 			if (!File.exists())
 			{
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
-				msg.SetIsExternal(true);
-				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 				msg.SetSuccess(false);
-				msg.SetResult("CanEasy Workspace doesn't exists.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyWorkspaceNotFound));
 				emit NewMessage(msg);
                 return;
 			}
@@ -133,19 +133,14 @@ namespace RW{
 			HRESULT hr = m_App->LoadWorkspace(_bstr_t(QFileInfo(File).absoluteFilePath().toStdString().c_str()));
             if (FAILED(hr))
             {
-				COM::Message msg;
-				msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
-				msg.SetIsExternal(true);
 				msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 				msg.SetSuccess(false);
-				msg.SetResult("Failed to load CanEasy Workspace.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyWorkspaceNotLoaded));
 				emit NewMessage(msg);
                 return;
             }
 
-			COM::Message msg;
-			msg.SetMessageID(COM::MessageDescription::EX_CanEasyLoadWorkspace);
-			msg.SetIsExternal(true);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
@@ -162,7 +157,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't stop CanEasy Simulation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStop));
 				emit NewMessage(msg);
 			}
 
@@ -170,7 +165,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't deinitilize the CanEasy Applikation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyDeInit));
 				emit NewMessage(msg);
 			}
             //Warten bis CanEasy wirklich beendet ist
@@ -185,6 +180,8 @@ namespace RW{
             m_Process.Release();
 
 			CoUninitialize();
+
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -199,7 +196,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't start CanEasy simulation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStartSimulation));
 				emit NewMessage(msg);
                 return;
 			}
@@ -213,12 +210,13 @@ namespace RW{
                 if (FAILED(hr))
 				{
 					msg.SetSuccess(false);
-					msg.SetResult("Can't start CanEasy simulation.");
+                    msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStartSimulation));
 					emit NewMessage(msg);
                     return;
 				}
             } while (!isRunning);
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -233,7 +231,7 @@ namespace RW{
 			if (FAILED(hr))
 			{
 				msg.SetSuccess(false);
-				msg.SetResult("Can't stop CanEasy simulation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStopSimulation));
 				emit NewMessage(msg);
                 return;
 			}
@@ -247,12 +245,13 @@ namespace RW{
 				if (FAILED(hr))
 				{
 					msg.SetSuccess(false);
-					msg.SetResult("Can't stop CanEasy simulation.");
+                    msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStopSimulation));
 					emit NewMessage(msg);
                     return;
 				}
 			} while (isRunning);
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
 		}
@@ -268,7 +267,7 @@ namespace RW{
             if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Can't stop CanEasy simulation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStopSimulation));
 				emit NewMessage(msg);
             }
 
@@ -281,7 +280,7 @@ namespace RW{
                 if (FAILED(hr))
                 {
 					msg.SetSuccess(false);
-					msg.SetResult("Can't stop CanEasy simulation.");
+                    msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyStopSimulation));
 					emit NewMessage(msg);
                 }
             } while (isRunning);
@@ -290,12 +289,13 @@ namespace RW{
             if (FAILED(hr))
             {
 				msg.SetSuccess(false);
-				msg.SetResult("Can't deinitilize the CanEasy Applikation.");
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorCanEasyDeInit));
 				emit NewMessage(msg);
             }
 
             m_IsRunning = false;
             CoUninitialize();
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
 			msg.SetSuccess(true);
 			emit NewMessage(msg);
         }

@@ -203,6 +203,7 @@ namespace RW{
                 emit NewMessage(msg);
             }
 
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
             msg.SetSuccess(true);
             emit NewMessage(msg);
 		}
@@ -261,6 +262,7 @@ namespace RW{
                 procCleanUp.start(m_MKSLocation + MKSCLIENT, arguments);
                 procCleanUp.waitForFinished(10000);
 
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
                 msg.SetSuccess(true);
                 emit NewMessage(msg);
 			}
@@ -271,15 +273,26 @@ namespace RW{
 			QProcess proc;
 			QStringList arguments;
 
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_MKSDropSandbox);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+
 			arguments << "dropsandbox" << "--yes" << "--delete=""none""" << "--status=""none""" << "--port=" + QString(m_Port) + "" << m_Destination + "project.pj";
 			
 			proc.start(m_MKSLocation + MKSCLIENT, arguments);
 			if (proc.waitForFinished(10000))
 			{
-				emit NewMessage(Util::Functions::MKSDropSandbox, Util::ErrorID::ErrorMKSSanbBoxDrop, nullptr);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSSanbBoxDrop));
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
+                return;
 			}
 
-			emit NewMessage(Util::Functions::MKSDropSandbox, Util::ErrorID::Success, nullptr);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 		void MKSWrapper::CloseMKS()
@@ -287,17 +300,28 @@ namespace RW{
 			QProcess proc;
 			QStringList arguments;
 
+
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_MKSCreateSandBox);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
 			arguments << "exit";
 
 			proc.start(m_MKSLocation + MKSCLIENT, arguments);
 			if (!proc.waitForFinished(30000))
 			{
-				emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::ErrorMKSCloseFailed, nullptr);
+                msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::ErrorMKSCloseFailed));
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
+                return;
 			}
             //Warten bis MKS wirklich weg ist
             QThread::msleep(1000);
 
-			emit NewMessage(Util::Functions::MKSClose, Util::ErrorID::Success, nullptr);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+            msg.SetSuccess(true);
+            emit NewMessage(msg);
 		}
 
 		void MKSWrapper::PrepareMKSLoginForm()

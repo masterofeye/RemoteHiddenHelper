@@ -113,7 +113,7 @@ namespace RW{
 			qDebug() << m_ReleaseMap->uniqueKeys();
 		}
 
-		Util::ErrorID FlashInformations::FillReleaseMap()
+        COM::ErrorDecscription FlashInformations::FillReleaseMap()
 		{
 			for each (auto line in m_ReleaseBuffer)
 			{
@@ -140,38 +140,38 @@ namespace RW{
 						}
 						else
 						{
-							return Util::ErrorID::ErrorPortalInfoFinalRegexCheck;
+                            return COM::ErrorDecscription::ErrorPortalInfoFinalRegexCheck;
 						}
 					}
 					else
 					{
-						return Util::ErrorID::ErrorPortalInfoProjectnameCount;
+                        return COM::ErrorDecscription::ErrorPortalInfoProjectnameCount;
 					}
 				}
 			}
-			return Util::ErrorID::Success;
+			return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID FlashInformations::GetUniqueKeys(QList<QString> &UniqueProjects)
+        COM::ErrorDecscription FlashInformations::GetUniqueKeys(QList<QString> &UniqueProjects)
 		{
             PrepareProjectInformation();
-			Util::ErrorID id = FillReleaseMap();
-			if (id != Util::ErrorID::Success)
+            COM::ErrorDecscription id = FillReleaseMap();
+            if (id != COM::ErrorDecscription::Success)
 				return id;
 			//Shalow Copy hier, weil ich davon ausgehe, das die ReleaseMap immer besteht und somit der Zugriff 
 			//die Daten über die shalow copy immer möglich ist
 			UniqueProjects = m_ReleaseMap->uniqueKeys();
 			if (UniqueProjects.count() == 0)
-				return  Util::ErrorID::ErrorPortalInfoProjectCount;
-			return Util::ErrorID::Success;
+                return  COM::ErrorDecscription::ErrorPortalInfoProjectCount;
+            return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID FlashInformations::PrepareSamplePhaseInformation(QString SelectedProject, QList<QString> &UniqueSamplePhase)
+		COM::ErrorDecscription FlashInformations::PrepareSamplePhaseInformation(QString SelectedProject, QList<QString> &UniqueSamplePhase)
 		{
 			QList<QString> values = m_ReleaseMap->values(SelectedProject);
 			if (values.count() == 0)
 			{
-				return Util::ErrorID::ErrorPortalInfoSamplePhaseAndReleaseCount;
+				return COM::ErrorDecscription::ErrorPortalInfoSamplePhaseAndReleaseCount;
 			}
 
 			QSet<QString> uniqueSamplePhases;
@@ -185,17 +185,17 @@ namespace RW{
 			UniqueSamplePhase = uniqueSamplePhases.toList();
 			if (UniqueSamplePhase.count() == 0)
 			{
-				return Util::ErrorID::ErrorPortalInfoSamplePhaseCount;
+				return COM::ErrorDecscription::ErrorPortalInfoSamplePhaseCount;
 			}
-			return Util::ErrorID::Success;
+			return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID FlashInformations::GetSamplePhaseList(QString SelectedProject, QList<QString> &UniqueSamplePhaseList)
+		COM::ErrorDecscription FlashInformations::GetSamplePhaseList(QString SelectedProject, QList<QString> &UniqueSamplePhaseList)
 		{
 			return PrepareSamplePhaseInformation(SelectedProject, UniqueSamplePhaseList);
 		}
 
-		Util::ErrorID FlashInformations::PrepareReleaseInformation(QString SelectedSamplePhase, QString SelectedProject, QList<QString> &UniqueReleaseList)
+		COM::ErrorDecscription FlashInformations::PrepareReleaseInformation(QString SelectedSamplePhase, QString SelectedProject, QList<QString> &UniqueReleaseList)
 		{
 			QList<QString> values = m_ReleaseMap->values(SelectedProject);
 			QSet<QString> uniqueSamplePhases;
@@ -213,18 +213,18 @@ namespace RW{
 					UniqueReleaseList.append(regex.capturedTexts().first());
 				}
 			}
-			return Util::ErrorID::Success;
+			return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID FlashInformations::GetReleaseList(QString SelectedSamplePhase, QString SelectedProjec, QList<QString> &UniqueReleaseList)
+		COM::ErrorDecscription FlashInformations::GetReleaseList(QString SelectedSamplePhase, QString SelectedProjec, QList<QString> &UniqueReleaseList)
 		{
-			if (PrepareReleaseInformation(SelectedSamplePhase, SelectedProjec, UniqueReleaseList) != Util::ErrorID::Success)
+			if (PrepareReleaseInformation(SelectedSamplePhase, SelectedProjec, UniqueReleaseList) != COM::ErrorDecscription::Success)
 			{
-				return Util::ErrorID::ErrorPortalInfoPrepareReleaseInformation;
+				return COM::ErrorDecscription::ErrorPortalInfoPrepareReleaseInformation;
 			}
 			if (UniqueReleaseList.count() == 0)
-				return Util::ErrorID::ErrorPortalInfoReleaseCount;
-			return Util::ErrorID::Success;
+				return COM::ErrorDecscription::ErrorPortalInfoReleaseCount;
+			return COM::ErrorDecscription::Success;
 		}
 
 		quint16 FlashInformations::GetSoftwareID(QString ProjectMain,QString Samplephase, QString Release, QString ProjectConttroller, QString ProjectVariant, QString ProjectModellYear)

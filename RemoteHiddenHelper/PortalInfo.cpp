@@ -94,15 +94,23 @@ namespace RW{
         }
 
 
-		Util::ErrorID PortalInfo::FillProjectCombobox()
+        COM::ErrorDecscription PortalInfo::FillProjectCombobox()
 		{
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_PortalInfoShowDialog);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+
 			QComboBox* cbProject = m_ui->cbProject;
 			QList<QString> uniqueProjects;
-			Util::ErrorID result = Util::ErrorID::Success;
+            COM::ErrorDecscription result = COM::ErrorDecscription::Success;
 			result = m_FlashInformationen->GetUniqueKeys(uniqueProjects);
-			if (result != Util::ErrorID::Success)
+            if (result != COM::ErrorDecscription::Success)
 			{
-				emit NewMessage(Util::Functions::PortalInfoShowDialog, result, "");
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(result));
+                emit NewMessage(msg);
 				return result;
 			}
 
@@ -112,45 +120,58 @@ namespace RW{
 			}
 			//QOverload funktioniert hier nicht
 			connect(cbProject, QOverload<const QString &>::of(&QComboBox::activated), this, &PortalInfo::FillSamplePhaseCombobox);
-			return Util::ErrorID::Success;
+            return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID PortalInfo::FillSamplePhaseCombobox(const QString &SelectedProject)
+        COM::ErrorDecscription PortalInfo::FillSamplePhaseCombobox(const QString &SelectedProject)
 		{
-			Util::ErrorID result = Util::ErrorID::Success;
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_PortalInfoShowDialog);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+            COM::ErrorDecscription result = COM::ErrorDecscription::Success;
 			QComboBox* cbSample = m_ui->cbSamplePhase;
 			//Lˆschen der Releases weil dieser vom User neu ausgew‰lt werden m¸ssen
 			QComboBox* cbRelease = m_ui->cbRelease;
 			cbRelease->clear();
 			QList<QString> samplePhaseList;
 			result = m_FlashInformationen->GetSamplePhaseList(SelectedProject, samplePhaseList);
-			if (result != Util::ErrorID::Success)
+			if (result != COM::ErrorDecscription::Success)
 			{
-				emit NewMessage(Util::Functions::PortalInfoShowDialog, result, "");
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(result));
+                emit NewMessage(msg);
 				return result;
 			}
 
 			cbSample->clear();
 			cbSample->insertItems(0, samplePhaseList);
 			connect(cbSample, QOverload<const QString &>::of(&QComboBox::activated), this, &PortalInfo::FillReleaseCombobox);
-			return Util::ErrorID::Success;
+            return COM::ErrorDecscription::Success;
 		}
 
-		Util::ErrorID  PortalInfo::FillReleaseCombobox(const QString &SelectedSamplePhase)
+		COM::ErrorDecscription  PortalInfo::FillReleaseCombobox(const QString &SelectedSamplePhase)
 		{
-			Util::ErrorID result = Util::ErrorID::Success;
+			COM::ErrorDecscription result = COM::ErrorDecscription::Success;
 			QComboBox* cbRelease = m_ui->cbRelease;
 			QComboBox* cbProject = m_ui->cbProject;
 			QString selectedProject = cbProject->currentText();
 			QList<QString> releaseList;
 			result = m_FlashInformationen->GetReleaseList(SelectedSamplePhase, selectedProject, releaseList);
-			if (result != Util::ErrorID::Success)
+			if (result != COM::ErrorDecscription::Success)
 			{
-				emit NewMessage(Util::Functions::PortalInfoShowDialog, result, "");
+                COM::Message msg;
+                msg.SetMessageID(COM::MessageDescription::EX_PortalInfoShowDialog);
+                msg.SetIsExternal(true);
+                msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+                msg.SetSuccess(false);
+                msg.SetResult(QVariant::fromValue(result));
+                emit NewMessage(msg);
 				return result;
 			}
 			cbRelease->addItems(releaseList);
-			return Util::ErrorID::Success;
+			return COM::ErrorDecscription::Success;
 		}
 
         void PortalInfo::Flash()
@@ -255,7 +276,14 @@ namespace RW{
             m_Dialog->hide();
 			//Es muss noch das Signal ermitted werden um den Arbeisschritt abzuschlieﬂen, gleichzeitig werden auch die Informationen an den 
 			//Communikationsmanager geschickt
-            emit NewMessage(Util::Functions::PortalInfoShowDialog, Util::ErrorID::Success, arr);
+
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_PortalInfoShowDialog);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+            msg.SetSuccess(false);
+            msg.SetResult(QVariant::fromValue(COM::ErrorDecscription::Success));
+            emit NewMessage(msg);
         }
 
 
