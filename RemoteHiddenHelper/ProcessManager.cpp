@@ -39,7 +39,7 @@ namespace RW{
 
 
 			m_CommunicationServer = new COM::CommunicatonServer(false, "Server", 1234, m_logger, this);
-
+            
 
 			m_CommunicationServer->Register(m_CanEasy);
 			m_CommunicationServer->Register(m_FHostSP);
@@ -67,6 +67,8 @@ namespace RW{
             connect(m_UsbHidLoader, &UsbHidLoader::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_InactivityWatcher, &InactivityWatcher::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			m_logger->flush();
+
+            m_CommunicationServer->Listen();
 		}
 
 
