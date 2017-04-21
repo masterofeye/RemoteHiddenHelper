@@ -14,6 +14,7 @@ namespace RW{
         class UsbHidLoader;
 		class ShutdownHandler;
 		class InactivityWatcher;
+        class MessageWrapper;
 		
 
 		class ProcessManager :
@@ -31,6 +32,7 @@ namespace RW{
             UsbHidLoader* m_UsbHidLoader;
 			InactivityWatcher* m_InactivityWatcher;
 			COM::CommunicatonServer* m_CommunicationServer;
+            MessageWrapper *m_MessageWrapper;
 		public:
 			ProcessManager(QObject* Parent = nullptr);
 			~ProcessManager();

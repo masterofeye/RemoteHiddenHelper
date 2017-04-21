@@ -8,21 +8,23 @@
 #include "UsbHidLoader.h"
 #include "Inactivitywatcher.hpp"
 #include "RemoteDataConnectLibrary.h"
+#include "MessageWrapper.h"
 
 
 
 namespace RW{
 	namespace CORE{
 
-		ProcessManager::ProcessManager(QObject* Parent) : QObject(Parent),
-			m_CanEasy(new CanEasyWrapper(this)),
-			m_FHostSP(new FHostSpWrapper(this)),
-			m_PortalInfo(new PortalInfo(this)),
-			m_MKS(new MKSWrapper(this)),
+        ProcessManager::ProcessManager(QObject* Parent) : QObject(Parent),
+            m_CanEasy(new CanEasyWrapper(this)),
+            m_FHostSP(new FHostSpWrapper(this)),
+            m_PortalInfo(new PortalInfo(this)),
+            m_MKS(new MKSWrapper(this)),
             m_FileUtils(new FileUtils(this)),
             m_ErrorHandler(new ErrorHandler(this)),
             m_UsbHidLoader(new UsbHidLoader(this)),
-			m_InactivityWatcher(new InactivityWatcher(this))
+            m_InactivityWatcher(new InactivityWatcher(this)),
+            m_MessageWrapper(new MessageWrapper(this))
 		{
 			m_logger = spdlog::get("file_logger");
 			if (m_logger == nullptr)
@@ -38,7 +40,7 @@ namespace RW{
 			m_logger->set_type(1);
 
 
-			m_CommunicationServer = new COM::CommunicatonServer(false, "Server", 1234, m_logger, this);
+			m_CommunicationServer = new COM::CommunicatonServer(false, COM::CommunicatonServer::TypeofServer::RemoteHiddenHelper, "Server", 1234, m_logger, this);
             
 
 			m_CommunicationServer->Register(m_CanEasy);
@@ -48,6 +50,8 @@ namespace RW{
 			m_CommunicationServer->Register(m_FileUtils);
 			m_CommunicationServer->Register(m_UsbHidLoader);
 			m_CommunicationServer->Register(m_InactivityWatcher);
+            m_CommunicationServer->Register(m_MessageWrapper);
+
 
 
 			//...danach erhält der Errorhandler die Informationen (Reihenfolge der Signal/Slot Verbindung)
@@ -58,6 +62,7 @@ namespace RW{
             connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_FileUtils, &FileUtils::OnProcessMessage, Qt::DirectConnection);
             connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_UsbHidLoader, &UsbHidLoader::OnProcessMessage, Qt::DirectConnection);
 			connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_InactivityWatcher, &InactivityWatcher::OnProcessMessage, Qt::DirectConnection);
+            connect(m_ErrorHandler, &ErrorHandler::NewMessage, m_MessageWrapper, &MessageWrapper::OnProcessMessage, Qt::DirectConnection);
 
 			connect(m_CanEasy, &CanEasyWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_FHostSP, &FHostSpWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
@@ -66,6 +71,7 @@ namespace RW{
             connect(m_FileUtils, &FileUtils::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
             connect(m_UsbHidLoader, &UsbHidLoader::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			connect(m_InactivityWatcher, &InactivityWatcher::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
+            connect(m_MessageWrapper, &MessageWrapper::NewMessage, m_ErrorHandler, &ErrorHandler::OnProcessMessageAnswer, Qt::DirectConnection);
 			m_logger->flush();
 
             m_CommunicationServer->Listen();

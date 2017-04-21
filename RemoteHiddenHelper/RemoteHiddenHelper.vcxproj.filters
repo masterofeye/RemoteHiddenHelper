@@ -167,6 +167,24 @@
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_MessageWindow.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageWindow.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MessageWindow.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageWrapper.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MessageWrapper.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MessageWrapper.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
@@ -215,6 +233,12 @@
       <Filter>General</Filter>
     </CustomBuild>
     <CustomBuild Include="Inactivitywatcher.hpp">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MessageWindow.h">
+      <Filter>GUI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="MessageWrapper.h">
       <Filter>General</Filter>
     </CustomBuild>
   </ItemGroup>
