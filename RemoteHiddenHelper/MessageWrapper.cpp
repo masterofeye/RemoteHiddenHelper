@@ -6,6 +6,7 @@ namespace RW{
 
         MessageWrapper::MessageWrapper(QObject* Parent) : BasicWrapper(Parent)
         {
+           m_Window = new MessageWindow();
         }
 
 
@@ -21,9 +22,9 @@ namespace RW{
             {
                 QList<QVariant> paramlist = Msg.ParameterList();
                 QString message = paramlist.at(0).toString();
+                quint8 index = paramlist.at(1).toInt();
 
-                MessageWindow w;
-                w.Ballon(100);
+                m_Window->Ballon(0, message, index );
             }
             break;
             case COM::MessageDescription::EX_ShowPopUpWithTimeout:
@@ -31,9 +32,9 @@ namespace RW{
                 QList<QVariant> paramlist = Msg.ParameterList();
                 QString message = paramlist.at(0).toString();
                 quint64 timeout = paramlist.at(1).toULongLong();
+                quint8 index = paramlist.at(1).toInt();
 
-                MessageWindow w;
-                w.show();
+                m_Window->Ballon(timeout, message, index);
             }
             break;
             default:

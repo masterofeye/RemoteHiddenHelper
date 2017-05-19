@@ -31,15 +31,28 @@ namespace RW{
 			{
 			case COM::MessageDescription::EX_StartInactivityTimer:
 			{
-				quint64 timeout;
-				timeout = Msg.ParameterList()[0].toLongLong();
-                StartInactivityObservation(timeout);
+                if (!Msg.IsProcessed())
+                {
+                    m_Timeout = Msg.ParameterList()[0].toLongLong();
+                    StartInactivityObservation();
+                }
 			}
 			break;
 			case COM::MessageDescription::EX_StopInactivityTimer:
-			{
-				StopInactivityObservation();
+            {                
+                if (!Msg.IsProcessed())
+                {
+                    StopInactivityObservation();
+                }
 			}
+            break;
+            case COM::MessageDescription::EX_LogoutImmediately:
+            {
+                if (!Msg.IsProcessed())
+                {
+                    LogOutUser();
+                }
+            }
 			break;
 			default:
 				break;
@@ -58,7 +71,7 @@ namespace RW{
 			return elapsed;
 		}
 
-		void InactivityWatcher::StartInactivityObservation(quint64 Time)
+		void InactivityWatcher::StartInactivityObservation()
 		{
             COM::Message msg;
             msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
@@ -69,20 +82,21 @@ namespace RW{
 			{
 				m_TimerLogout = new QTimer(this);
 			}
-			connect(m_TimerLogout, &QTimer::timeout, this, &InactivityWatcher::LogOutUser);
+            connect(m_TimerLogout, &QTimer::timeout, this, &InactivityWatcher::LogOutUserByTimer);
 
 			//m_TimerLogout->setSingleShot(true);
 			m_TimerLogout->start(5000);
 			Sleep(100);
 			//qApp->processEvents();
             msg.SetSuccess(true);
+            msg.SetIsProcessed(true);
             emit NewMessage(msg);
 		}
 
 		void InactivityWatcher::StopInactivityObservation()
         {
             COM::Message msg;
-            msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
+            msg.SetMessageID(COM::MessageDescription::EX_StopInactivityTimer);
             msg.SetIsExternal(true);
             msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
@@ -90,6 +104,7 @@ namespace RW{
 			{
 				m_TimerLogout->stop();
                 msg.SetSuccess(true);
+                msg.SetIsProcessed(true);
                 emit NewMessage(msg);
 			}
 #ifdef DEBUG
@@ -98,16 +113,21 @@ namespace RW{
 		}
 
 		
-        void InactivityWatcher::LogOutUser()
+        void InactivityWatcher::LogOutUserByTimer()
         {
             COM::Message msg;
-            msg.SetMessageID(COM::MessageDescription::EX_StartInactivityTimer);
+            msg.SetMessageID(COM::MessageDescription::EX_ProcessLogout);
+            msg.SetIsProcessed(true);
             msg.SetIsExternal(true);
             msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
             //m_logger->debug("LogoutUser was called.");
             if (GetLastInputTime() >= m_Timeout)
             {
+                m_TimerLogout->stop();
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
+
                 quint64 sessionId = 0;
                 if (!QueryActiveSession(sessionId))
                 {
@@ -119,7 +139,7 @@ namespace RW{
                     if (LogOff(sessionId))
                     {
                         m_TimerLogout->stop();
-                        msg.SetSuccess(false);
+                        msg.SetSuccess(true);
                         emit NewMessage(msg);
                     }
                     else
@@ -131,6 +151,36 @@ namespace RW{
             }
 		}
 
+        void InactivityWatcher::LogOutUser()
+        {
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_ProcessLogout);
+            msg.SetIsProcessed(true);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
+
+            quint64 sessionId = 0;
+            if (!QueryActiveSession(sessionId))
+            {
+                msg.SetSuccess(false);
+                emit NewMessage(msg);
+            }
+            else
+            {
+                if (LogOff(sessionId))
+                {
+                    m_TimerLogout->stop();
+                    msg.SetSuccess(true);
+                    emit NewMessage(msg);
+                }
+                else
+                {
+                    msg.SetSuccess(false);
+                    emit NewMessage(msg);
+                }
+            }
+        }
+
 		/*
 		@brief Logs off the current user from the active session. It is irelevant, if it is a console or rdp session.
 		It needs the session number, which can be queried with the QueryActiveSession method.
@@ -139,16 +189,17 @@ namespace RW{
 		*/
 		bool InactivityWatcher::LogOff(quint64 SessioNumber)
 		{
-			//if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
-			//{
-			//	DWORD err = GetLastError();
-			//	return false;
-			//}
-			//else
-			//{
-			//	//This will be logged by the service. No logging needed here.
+			if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
+			{
+				DWORD err = GetLastError();
+				return false;
+			}
+			else
+			{
+				//This will be logged by the service. No logging needed here.
 				return true;
-			//}
+			}
+
 		}
 
 		/*

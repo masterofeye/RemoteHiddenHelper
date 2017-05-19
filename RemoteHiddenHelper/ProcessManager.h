@@ -15,6 +15,7 @@ namespace RW{
 		class ShutdownHandler;
 		class InactivityWatcher;
         class MessageWrapper;
+        class ExitHandler;
 		
 
 		class ProcessManager :
@@ -33,6 +34,7 @@ namespace RW{
 			InactivityWatcher* m_InactivityWatcher;
 			COM::CommunicatonServer* m_CommunicationServer;
             MessageWrapper *m_MessageWrapper;
+            ExitHandler* m_ExitHandler;
 		public:
 			ProcessManager(QObject* Parent = nullptr);
 			~ProcessManager();

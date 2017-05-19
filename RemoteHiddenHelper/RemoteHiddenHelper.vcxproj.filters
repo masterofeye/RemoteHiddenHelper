@@ -185,6 +185,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_MessageWrapper.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
+    <ClCompile Include="ExitHandler.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_ExitHandler.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_ExitHandler.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="remotehiddenhelper.ui">
@@ -239,6 +248,9 @@
       <Filter>GUI</Filter>
     </CustomBuild>
     <CustomBuild Include="MessageWrapper.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="ExitHandler.h">
       <Filter>General</Filter>
     </CustomBuild>
   </ItemGroup>

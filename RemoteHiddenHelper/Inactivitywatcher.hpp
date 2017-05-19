@@ -19,7 +19,7 @@ namespace RW{
 		public:
 			explicit InactivityWatcher(QObject *parent = 0);
 
-			void OnProcessMessage(COM::Message msg);
+			
 		private: 
 			bool LogOff(quint64 SessioNumber);
 			bool QueryActiveSession(quint64 &SessioNumber);
@@ -28,9 +28,11 @@ namespace RW{
 			void UserInactive();
 		private slots:
 			void LogOutUser();
+            void LogOutUserByTimer();
 		public slots:
-			void StartInactivityObservation(quint64 Time);
+			void StartInactivityObservation();
 			void StopInactivityObservation();
+            void OnProcessMessage(COM::Message msg);
 		};
 	}
 }

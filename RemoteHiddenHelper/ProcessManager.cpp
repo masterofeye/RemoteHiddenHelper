@@ -9,7 +9,7 @@
 #include "Inactivitywatcher.hpp"
 #include "RemoteDataConnectLibrary.h"
 #include "MessageWrapper.h"
-
+#include "ExitHandler.h"
 
 
 namespace RW{
@@ -24,7 +24,8 @@ namespace RW{
             m_ErrorHandler(new ErrorHandler(this)),
             m_UsbHidLoader(new UsbHidLoader(this)),
             m_InactivityWatcher(new InactivityWatcher(this)),
-            m_MessageWrapper(new MessageWrapper(this))
+            m_MessageWrapper(new MessageWrapper(this)),
+            m_ExitHandler(new ExitHandler(this))
 		{
 			m_logger = spdlog::get("file_logger");
 			if (m_logger == nullptr)
@@ -37,10 +38,10 @@ namespace RW{
 #else
 			m_logger->set_level(spdlog::level::info);
 #endif 
-			m_logger->set_type(1);
+			m_logger->set_type(4);
 
 
-			m_CommunicationServer = new COM::CommunicatonServer(false, COM::CommunicatonServer::TypeofServer::RemoteHiddenHelper, "Server", 1234, m_logger, this);
+			m_CommunicationServer = new COM::CommunicatonServer(false, COM::TypeofServer::RemoteHiddenHelper, "Server", 1234, m_logger, this);
             
 
 			m_CommunicationServer->Register(m_CanEasy);
@@ -51,7 +52,8 @@ namespace RW{
 			m_CommunicationServer->Register(m_UsbHidLoader);
 			m_CommunicationServer->Register(m_InactivityWatcher);
             m_CommunicationServer->Register(m_MessageWrapper);
-
+            /*Muss nach m_InactivityWatcher registriert werden*/
+            m_CommunicationServer->Register(m_ExitHandler);
 
 
 			//...danach erhält der Errorhandler die Informationen (Reihenfolge der Signal/Slot Verbindung)
@@ -80,6 +82,7 @@ namespace RW{
 
 		ProcessManager::~ProcessManager()
 		{
+            m_logger->flush();
 		}
 	}
 }
