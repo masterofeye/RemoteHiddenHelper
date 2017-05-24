@@ -19,7 +19,7 @@ namespace RW{
                 Msg.MessageID() == COM::MessageDescription::EX_ProcessLogout &&
                 Msg.Success())
             {
-                qApp->exit(0xf291);
+                //qApp->exit(0xf291);
             }
         }
     }

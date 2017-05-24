@@ -12,7 +12,6 @@ namespace RW{
         class ErrorHandler;
         class FileUtils;
         class UsbHidLoader;
-		class ShutdownHandler;
 		class InactivityWatcher;
         class MessageWrapper;
         class ExitHandler;
