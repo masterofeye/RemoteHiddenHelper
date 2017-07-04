@@ -157,12 +157,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_UsbHidLoader.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Inactivitywatcher.cpp">
-      <Filter>Generierte Dateien\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Inactivitywatcher.cpp">
-      <Filter>Generierte Dateien\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Intactivitywatcher.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -192,6 +186,12 @@
       <Filter>Generierte Dateien\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_ExitHandler.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_Inactivitywatcher.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_Inactivitywatcher.cpp">
       <Filter>Generierte Dateien\Release</Filter>
     </ClCompile>
   </ItemGroup>
@@ -241,9 +241,6 @@
     <CustomBuild Include="UsbHidLoader.h">
       <Filter>General</Filter>
     </CustomBuild>
-    <CustomBuild Include="Inactivitywatcher.hpp">
-      <Filter>General</Filter>
-    </CustomBuild>
     <CustomBuild Include="MessageWindow.h">
       <Filter>GUI</Filter>
     </CustomBuild>
@@ -251,6 +248,9 @@
       <Filter>General</Filter>
     </CustomBuild>
     <CustomBuild Include="ExitHandler.h">
+      <Filter>General</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Inactivitywatcher.h">
       <Filter>General</Filter>
     </CustomBuild>
   </ItemGroup>

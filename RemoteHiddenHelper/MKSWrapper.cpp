@@ -1,5 +1,5 @@
 #include "MKSWrapper.h"
-
+#include <QLibrary> 
 #include <qfile.h>
 #include <qprocess.h>
 #include <QDatastream>

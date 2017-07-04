@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'remotehiddenhelper.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.8.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -233,18 +233,18 @@ public:
 
     void retranslateUi(QMainWindow *RemoteHiddenHelperClass)
     {
-        RemoteHiddenHelperClass->setWindowTitle(QApplication::translate("RemoteHiddenHelperClass", "RemoteHiddenHelper", 0));
-        btnFlash->setText(QApplication::translate("RemoteHiddenHelperClass", "PushButton", 0));
-        groupBox->setTitle(QApplication::translate("RemoteHiddenHelperClass", "GroupBox", 0));
-        cbxBootloader->setText(QApplication::translate("RemoteHiddenHelperClass", "BootLoader", 0));
-        cbxAC->setText(QApplication::translate("RemoteHiddenHelperClass", "AC", 0));
-        cbxGC->setText(QApplication::translate("RemoteHiddenHelperClass", "GC", 0));
-        lProject->setText(QApplication::translate("RemoteHiddenHelperClass", "Project", 0));
-        lSamplePhase->setText(QApplication::translate("RemoteHiddenHelperClass", "SamplePhase", 0));
-        lRelease->setText(QApplication::translate("RemoteHiddenHelperClass", "Release", 0));
-        tabWidget->setTabText(tabWidget->indexOf(Integration), QApplication::translate("RemoteHiddenHelperClass", "Integration Portal", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tabDragAndDrop), QApplication::translate("RemoteHiddenHelperClass", "Drag and Drop", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("RemoteHiddenHelperClass", "File", 0));
+        RemoteHiddenHelperClass->setWindowTitle(QApplication::translate("RemoteHiddenHelperClass", "RemoteHiddenHelper", Q_NULLPTR));
+        btnFlash->setText(QApplication::translate("RemoteHiddenHelperClass", "PushButton", Q_NULLPTR));
+        groupBox->setTitle(QApplication::translate("RemoteHiddenHelperClass", "GroupBox", Q_NULLPTR));
+        cbxBootloader->setText(QApplication::translate("RemoteHiddenHelperClass", "BootLoader", Q_NULLPTR));
+        cbxAC->setText(QApplication::translate("RemoteHiddenHelperClass", "AC", Q_NULLPTR));
+        cbxGC->setText(QApplication::translate("RemoteHiddenHelperClass", "GC", Q_NULLPTR));
+        lProject->setText(QApplication::translate("RemoteHiddenHelperClass", "Project", Q_NULLPTR));
+        lSamplePhase->setText(QApplication::translate("RemoteHiddenHelperClass", "SamplePhase", Q_NULLPTR));
+        lRelease->setText(QApplication::translate("RemoteHiddenHelperClass", "Release", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(Integration), QApplication::translate("RemoteHiddenHelperClass", "Integration Portal", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tabDragAndDrop), QApplication::translate("RemoteHiddenHelperClass", "Drag and Drop", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("RemoteHiddenHelperClass", "File", Q_NULLPTR));
     } // retranslateUi
 
 };

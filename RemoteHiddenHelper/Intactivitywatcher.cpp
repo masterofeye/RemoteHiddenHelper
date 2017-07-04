@@ -1,4 +1,4 @@
-#include "inactivitywatcher.hpp"
+#include "inactivitywatcher.h"
 #include <windows.h>
 #include <QLibrary>
 
@@ -67,7 +67,7 @@ namespace RW{
 			::GetLastInputInfo(&li);
 
 			DWORD te = ::GetTickCount();
-			float elapsed = (te - li.dwTime) / 100.0;
+			float elapsed = (te - li.dwTime);
 			return elapsed;
 		}
 

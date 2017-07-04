@@ -7,8 +7,7 @@ class QFile;
 namespace RW{
 	namespace CORE{
 
-		class MKSWrapper :
-			public BasicWrapper
+		class MKSWrapper : public BasicWrapper
 		{
 			Q_OBJECT
 		private:
@@ -19,7 +18,7 @@ namespace RW{
 			quint16 m_Port;
 			QString m_Destination;
 		public:
-			MKSWrapper(QObject* Parent = nullptr);
+			explicit MKSWrapper(QObject* Parent = nullptr);
 			~MKSWrapper();
 		public slots:
 			/**************************************************************************************************************//**

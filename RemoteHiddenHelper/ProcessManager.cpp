@@ -6,7 +6,7 @@
 #include "ErrorHandler.h"
 #include "FileUtils.h"
 #include "UsbHidLoader.h"
-#include "Inactivitywatcher.hpp"
+#include "Inactivitywatcher.h"
 #include "RemoteDataConnectLibrary.h"
 #include "MessageWrapper.h"
 #include "ExitHandler.h"
