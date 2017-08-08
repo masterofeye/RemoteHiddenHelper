@@ -21,7 +21,7 @@ namespace RW{
 
 			
 		private: 
-			bool LogOff(quint64 SessioNumber);
+            bool LogOff(quint64 SessioNumber, quint16 &Error);
 			bool QueryActiveSession(quint64 &SessioNumber);
 			uint GetLastInputTime();
 		signals:

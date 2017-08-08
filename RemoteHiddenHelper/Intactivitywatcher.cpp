@@ -125,8 +125,6 @@ namespace RW{
             if (GetLastInputTime() >= m_Timeout)
             {
                 m_TimerLogout->stop();
-                msg.SetSuccess(true);
-                emit NewMessage(msg);
 
                 quint64 sessionId = 0;
                 if (!QueryActiveSession(sessionId))
@@ -136,7 +134,8 @@ namespace RW{
                 }
                 else
                 {
-                    if (LogOff(sessionId))
+                    quint16 error = 0;
+                    if (LogOff(sessionId, error))
                     {
                         m_TimerLogout->stop();
                         msg.SetSuccess(true);
@@ -145,6 +144,7 @@ namespace RW{
                     else
                     {
                         msg.SetSuccess(false);
+                        msg.SetResult(error);
                         emit NewMessage(msg);
                     }
                 }
@@ -167,7 +167,8 @@ namespace RW{
             }
             else
             {
-                if (LogOff(sessionId))
+                quint16 error = 0;
+                if (LogOff(sessionId, error))
                 {
                     m_TimerLogout->stop();
                     msg.SetSuccess(true);
@@ -176,6 +177,7 @@ namespace RW{
                 else
                 {
                     msg.SetSuccess(false);
+                    msg.SetResult(error);
                     emit NewMessage(msg);
                 }
             }
@@ -187,11 +189,11 @@ namespace RW{
 		@param SessioNumber The session number to the current active session.
 		@return
 		*/
-		bool InactivityWatcher::LogOff(quint64 SessioNumber)
+		bool InactivityWatcher::LogOff(quint64 SessioNumber, quint16 &Error )
 		{
 			if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
 			{
-				DWORD err = GetLastError();
+                Error = GetLastError();
 				return false;
 			}
 			else
@@ -202,39 +204,39 @@ namespace RW{
 
 		}
 
-		/*
-		*@brief Returns the session number, that is currently in state active.
-		*@return True if a session was in the active state
-		*/
-		bool InactivityWatcher::QueryActiveSession(quint64 &SessioNumber)
-		{
-			SessioNumber = 0;
-			PWTS_SESSION_INFO  pSessionsBuffer = NULL;
-			DWORD dwSessionCount = 0;
-			WTS_SESSION_INFO  wts;
+        /*
+        *@brief Returns the session number, that is currently in state active.
+        *@return True if a session was in the active state
+        */
+        bool InactivityWatcher::QueryActiveSession(quint64 &SessioNumber)
+        {
+            SessioNumber = 0;
+            PWTS_SESSION_INFO  pSessionsBuffer = NULL;
+            DWORD dwSessionCount = 0;
+            WTS_SESSION_INFO  wts;
 
-			if (WTSEnumerateSessions(WTS_CURRENT_SERVER_HANDLE, 0, 1, &pSessionsBuffer, &dwSessionCount))
-			{
-				//Loop through all Sessions
-				for (quint8 i = 0; i < dwSessionCount; i++)
-				{
-					wts = pSessionsBuffer[i];
-					//Nur aktive Sessions weden berücksichtigt
-					if (wts.State == WTSActive)
-					{
-						SessioNumber = wts.SessionId;
-						//m_logger->debug("SessionNumber is: ");// << SessioNumber;
-					}
-				}
-				return true;
-			}
-			else
-			{
-				DWORD err = GetLastError();
-				//m_logger->error("WTSEnumerateSessions failed. GetLastError: ");// << err;
-				return false;
-			}
-		}
+            if (WTSEnumerateSessions(WTS_CURRENT_SERVER_HANDLE, 0, 1, &pSessionsBuffer, &dwSessionCount))
+            {
+                //Loop through all Sessions
+                for (quint8 i = 0; i < dwSessionCount; i++)
+                {
+                    wts = pSessionsBuffer[i];
+                    //Nur aktive Sessions weden berücksichtigt
+                    if (wts.State == WTSActive)
+                    {
+                        SessioNumber = wts.SessionId;
+                        m_logger->debug("SessionNumber is: {}", SessioNumber);
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                DWORD err = GetLastError();
+                m_logger->error("WTSEnumerateSessions failed. GetLastError: {}", err);
+                return false;
+            }
+        }
 
-	}
+    }
 }
