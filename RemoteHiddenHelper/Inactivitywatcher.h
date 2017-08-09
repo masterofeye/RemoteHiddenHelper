@@ -16,13 +16,14 @@ namespace RW{
 			std::shared_ptr<spdlog::logger> m_logger;
 			QTimer *m_TimerLogout;
 			long long m_Timeout;
+			QString m_UserName;
 		public:
 			explicit InactivityWatcher(QObject *parent = 0);
 
 			
 		private: 
 
-			bool QueryActiveSession(quint64 &SessioNumber);
+			bool QueryActiveSession(quint64 &SessioNumber, QString Username);
 			uint GetLastInputTime();
 		signals:
 			void UserInactive();

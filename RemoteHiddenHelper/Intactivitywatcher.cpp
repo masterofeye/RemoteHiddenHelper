@@ -35,6 +35,7 @@ namespace RW{
                 if (!Msg.IsProcessed())
                 {
                     m_Timeout = Msg.ParameterList()[0].toLongLong();
+					m_UserName = Msg.ParameterList()[1].toString();
                     StartInactivityObservation();
                 }
 			}
@@ -128,7 +129,7 @@ namespace RW{
                 m_TimerLogout->stop();
 
                 quint64 sessionId = 0;
-                if (!QueryActiveSession(sessionId))
+				if (!QueryActiveSession(sessionId, m_UserName))
                 {
                     msg.SetSuccess(false);
                     emit NewMessage(msg);
@@ -155,7 +156,7 @@ namespace RW{
             msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
             quint64 sessionId = 0;
-            if (!QueryActiveSession(sessionId))
+			if (!QueryActiveSession(sessionId, m_UserName))
             {
                 msg.SetSuccess(false);
                 emit NewMessage(msg);
@@ -206,7 +207,7 @@ namespace RW{
         *@brief Returns the session number, that is currently in state active.
         *@return True if a session was in the active state
         */
-        bool InactivityWatcher::QueryActiveSession(quint64 &SessioNumber)
+        bool InactivityWatcher::QueryActiveSession(quint64 &SessioNumber, QString Username)
         {
             SessioNumber = 0;
             PWTS_SESSION_INFO  pSessionsBuffer = NULL;
@@ -220,32 +221,24 @@ namespace RW{
                 //Loop through all Sessions
                 for (quint8 i = 0; i < dwSessionCount; i++)
                 {
+                    wts = pSessionsBuffer[i];
+					DWORD bufferSize = 0;
+					LPWSTR buffer ;
+					WTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE, wts.SessionId, WTS_INFO_CLASS::WTSUserName, &buffer, &bufferSize);
+					QString username = QString::fromWCharArray(buffer, bufferSize);
 
-                    wts = pSessionsBuffer[i];
-                    //Nur aktive Sessions weden berücksichtigt
-                    if (wts.State == WTSActive)
-                    {
-                        SessioNumber = wts.SessionId;
-                        m_logger->debug("SessionNumber is: {}", SessioNumber);
-                        return true;
-                    }
+					if (m_UserName.isEmpty())
+						m_logger->warn("Username is empty.");
+
+					if (username.toUpper() == m_UserName.toUpper())
+					{
+						SessioNumber = wts.SessionId;
+						m_logger->debug("SessionNumber is: {}", SessioNumber);
+						return true;
+					}
+					WTSFreeMemory(buffer);
                 }
-                
-                //No session is active but maybe someone is connected
-                for (quint8 i = 0; i < dwSessionCount; i++)
-                {
-                    DWORD val = 0;
-                    LPWSTR test;
-                    wts = pSessionsBuffer[i];
-                    WTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE, wts.SessionId, WTS_INFO_CLASS::WTSUserName, &test, &val);
-                    QString username = QString::fromWCharArray(test, val);
-                    if (username.contains("kunadt"))
-                    {
-                        SessioNumber = wts.SessionId;
-                        m_logger->debug("SessionNumber is: {}", SessioNumber);
-                    }
-                }
-                return true;
+				WTSFreeMemory(pSessionsBuffer);
             }
             else
             {
@@ -253,6 +246,7 @@ namespace RW{
                 m_logger->error("WTSEnumerateSessions failed. GetLastError: {}", err);
                 return false;
             }
+			return false;
         }
 
     }
