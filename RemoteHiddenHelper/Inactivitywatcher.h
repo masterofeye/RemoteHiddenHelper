@@ -21,12 +21,14 @@ namespace RW{
 
 			
 		private: 
-            bool LogOff(quint64 SessioNumber, quint16 &Error);
+
 			bool QueryActiveSession(quint64 &SessioNumber);
 			uint GetLastInputTime();
 		signals:
 			void UserInactive();
+            void LogOff(quint64 SessioNumber);
 		private slots:
+            void OnLogOff(quint64 SessioNumber);
 			void LogOutUser();
             void LogOutUserByTimer();
 		public slots:

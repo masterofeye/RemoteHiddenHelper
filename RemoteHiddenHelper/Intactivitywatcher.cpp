@@ -23,6 +23,7 @@ namespace RW{
 			m_TimerLogout(nullptr),
 			m_Timeout(0)
 		{
+            connect(this, &InactivityWatcher::LogOff, this, &InactivityWatcher::OnLogOff);
 		}
 
 		void InactivityWatcher::OnProcessMessage(COM::Message Msg)
@@ -134,19 +135,13 @@ namespace RW{
                 }
                 else
                 {
-                    quint16 error = 0;
-                    if (LogOff(sessionId, error))
-                    {
-                        m_TimerLogout->stop();
-                        msg.SetSuccess(true);
-                        emit NewMessage(msg);
-                    }
-                    else
-                    {
-                        msg.SetSuccess(false);
-                        msg.SetResult(error);
-                        emit NewMessage(msg);
-                    }
+                    /*Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler
+                    kommt wird noch eine Negative message hinterher geschickt.
+                    Hintergrund ist das Logoff sofort dafür sorgt, das der RemoteHiddenhelper geschlossen wird.
+                    */
+                    msg.SetSuccess(true);
+                    emit NewMessage(msg);
+                    emit LogOff(sessionId);
                 }
             }
 		}
@@ -167,19 +162,13 @@ namespace RW{
             }
             else
             {
-                quint16 error = 0;
-                if (LogOff(sessionId, error))
-                {
-                    m_TimerLogout->stop();
-                    msg.SetSuccess(true);
-                    emit NewMessage(msg);
-                }
-                else
-                {
-                    msg.SetSuccess(false);
-                    msg.SetResult(error);
-                    emit NewMessage(msg);
-                }
+                /*Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler 
+                kommt wird noch eine Negative message hinterher geschickt.
+                Hintergrund ist das Logoff sofort dafür sorgt, das der RemoteHiddenhelper geschlossen wird.
+                */
+                msg.SetSuccess(true);
+                emit NewMessage(msg);
+                emit LogOff(sessionId);
             }
         }
 
@@ -189,17 +178,26 @@ namespace RW{
 		@param SessioNumber The session number to the current active session.
 		@return
 		*/
-		bool InactivityWatcher::LogOff(quint64 SessioNumber, quint16 &Error )
-		{
+        void InactivityWatcher::OnLogOff(quint64 SessioNumber)
+        {
+            quint16 error = 0;
+            COM::Message msg;
+            msg.SetMessageID(COM::MessageDescription::EX_ProcessLogout);
+            msg.SetIsProcessed(true);
+            msg.SetIsExternal(true);
+            msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 			if (!WTSLogoffSession(WTS_CURRENT_SERVER_HANDLE, SessioNumber, true))
 			{
-                Error = GetLastError();
-				return false;
+                error = GetLastError();
+                msg.SetSuccess(false);
+                msg.SetResult(error);
+                emit NewMessage(msg);
+				return;
 			}
 			else
 			{
 				//This will be logged by the service. No logging needed here.
-				return true;
+				return;
 			}
 
 		}
@@ -214,15 +212,34 @@ namespace RW{
             PWTS_SESSION_INFO  pSessionsBuffer = NULL;
             DWORD dwSessionCount = 0;
             WTS_SESSION_INFO  wts;
+            WTS_INFO_CLASS wic;
+            m_logger = spdlog::get("file_logger");
 
             if (WTSEnumerateSessions(WTS_CURRENT_SERVER_HANDLE, 0, 1, &pSessionsBuffer, &dwSessionCount))
             {
                 //Loop through all Sessions
                 for (quint8 i = 0; i < dwSessionCount; i++)
                 {
+
                     wts = pSessionsBuffer[i];
                     //Nur aktive Sessions weden berücksichtigt
                     if (wts.State == WTSActive)
+                    {
+                        SessioNumber = wts.SessionId;
+                        m_logger->debug("SessionNumber is: {}", SessioNumber);
+                        return true;
+                    }
+                }
+                
+                //No session is active but maybe someone is connected
+                for (quint8 i = 0; i < dwSessionCount; i++)
+                {
+                    DWORD val = 0;
+                    LPWSTR test;
+                    wts = pSessionsBuffer[i];
+                    WTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE, wts.SessionId, WTS_INFO_CLASS::WTSUserName, &test, &val);
+                    QString username = QString::fromWCharArray(test, val);
+                    if (username.contains("kunadt"))
                     {
                         SessioNumber = wts.SessionId;
                         m_logger->debug("SessionNumber is: {}", SessioNumber);
