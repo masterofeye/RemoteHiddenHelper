@@ -262,4 +262,7 @@
       <Filter>Adminstration</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RemoteHiddenHelper.rc" />
+  </ItemGroup>
 </Project>

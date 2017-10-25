@@ -81,6 +81,9 @@
     <PostBuildEvent>
       <Command>xcopy /y $(SolutionDir)build\$(PlatformTarget)\$(Configuration)\$(ProjectName).exe  ..\..\RemoteService\build\$(Platform)\$(Configuration)</Command>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>python ..\RemoteHiddenHelperInstaller\versionincrement.py</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CanEasyWrapper.cpp" />
@@ -409,6 +412,9 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RemoteHiddenHelper.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

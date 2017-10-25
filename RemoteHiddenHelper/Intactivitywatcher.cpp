@@ -1,11 +1,13 @@
 #include "inactivitywatcher.h"
-#include <windows.h>
 #include <QLibrary>
-
+#include <qdatastream.h>
+#include <windows.h>
 #include <Wtsapi32.h>
 #include <userenv.h>
 #include <windows.h> 
-#include <qdatastream.h>
+
+#include "RemoteDataConnectLibrary.h"
+
 
 #pragma comment(lib, "wtsapi32.lib")
 #pragma comment(lib, "userenv.lib")
@@ -14,16 +16,16 @@
 namespace RW{
 	namespace CORE{
 
-		/*
-		@brief
-		@param Version Specified the configuration version for the DB query.
-		
-		*/
 		InactivityWatcher::InactivityWatcher(QObject *parent) : BasicWrapper(parent),
 			m_TimerLogout(nullptr),
-			m_Timeout(0)
+			m_Timeout(0),
+            m_WorkstationType(WorkstationKind::RemoteWorkstation),
+            m_IsPermanent(false),
+            m_PermamentTimout(false),
+            m_logger(spdlog::get("file_logger"))
 		{
             connect(this, &InactivityWatcher::LogOff, this, &InactivityWatcher::OnLogOff);
+           
 		}
 
 		void InactivityWatcher::OnProcessMessage(COM::Message Msg)
@@ -36,6 +38,11 @@ namespace RW{
                 {
                     m_Timeout = Msg.ParameterList()[0].toLongLong();
 					m_UserName = Msg.ParameterList()[1].toString();
+                    m_LogoutTimeStart = Msg.ParameterList()[2].toTime();
+                    m_LogoutTimeEnd = Msg.ParameterList()[3].toTime();
+                    m_WorkstationType = Msg.ParameterList()[4].value<WorkstationKind>();
+                    m_IsPermanent = Msg.ParameterList()[5].toBool();
+                    m_MaxPermanentLoginTime = Msg.ParameterList()[6].toDateTime();
                     StartInactivityObservation();
                 }
 			}
@@ -55,12 +62,51 @@ namespace RW{
                     LogOutUser();
                 }
             }
+            case COM::MessageDescription::EX_PermanentLogin:
+            {
+                if (!Msg.IsProcessed())
+                {
+                    QList<QVariant> list = Msg.ParameterList();
+                    m_IsPermanent = list.first().toBool();
+                    
+                    if (m_PermamentTimout == nullptr)
+                    {
+                        m_PermamentTimout = new QTimer(this);
+                        connect(m_PermamentTimout, &QTimer::timeout, this, &InactivityWatcher::OnPermanetLoginEnd);
+                        
+                        QDateTime t = QDateTime::currentDateTime();
+                        quint64 timediff = t.msecsTo(m_MaxPermanentLoginTime);
+
+                        m_PermamentTimout->start(timediff);
+                        m_logger->info("Permanent Login activated", (int)spdlog::sinks::FilterType::PermanentLoginState);
+                    }
+                    else
+                    {
+                        m_PermamentTimout->stop();
+                        delete m_PermamentTimout;
+                        m_PermamentTimout = nullptr;
+                        m_logger->info("Permanent Login deactivated", (int)spdlog::sinks::FilterType::PermanentLoginState);
+                    }
+                }
+            }
 			break;
 			default:
 				break;
 			}
 		}
 
+        void InactivityWatcher::OnPermanetLoginEnd()
+        {
+            m_IsPermanent = false;
+            COM::Message m;
+            m.SetMessageID(COM::MessageDescription::EX_PermanentLogin);
+            m.SetIsExternal(true);
+            m.setIdentifier(m.GenUUID(COM::TypeofServer::RemoteHiddenHelper).toString());
+            QList<QVariant> list;
+            list.append(m_IsPermanent);
+            m.SetParameterList(list);
+            emit NewMessage(m);
+        }
 
 		uint InactivityWatcher::GetLastInputTime()
 		{
@@ -123,26 +169,32 @@ namespace RW{
             msg.SetIsExternal(true);
             msg.SetExcVariant(COM::Message::ExecutionVariant::NON);
 
-            //m_logger->debug("LogoutUser was called.");
-            if (GetLastInputTime() >= m_Timeout)
+            QTime currentTime = QTime::currentTime();
+            if (((m_LogoutTimeStart > currentTime || currentTime > m_LogoutTimeEnd) 
+                || m_WorkstationType==WorkstationKind::RemoteWorkstation)
+                && !m_IsPermanent)
             {
-                m_TimerLogout->stop();
+                //m_logger->debug("LogoutUser was called.");
+                if (GetLastInputTime() >= m_Timeout)
+                {
+                    m_TimerLogout->stop();
 
-                quint64 sessionId = 0;
-				if (!QueryActiveSession(sessionId, m_UserName))
-                {
-                    msg.SetSuccess(false);
-                    emit NewMessage(msg);
-                }
-                else
-                {
-                    /*Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler
-                    kommt wird noch eine Negative message hinterher geschickt.
-                    Hintergrund ist das Logoff sofort dafür sorgt, das der RemoteHiddenhelper geschlossen wird.
-                    */
-                    msg.SetSuccess(true);
-                    emit NewMessage(msg);
-                    emit LogOff(sessionId);
+                    quint64 sessionId = 0;
+                    if (!QueryActiveSession(sessionId, m_UserName))
+                    {
+                        msg.SetSuccess(false);
+                        emit NewMessage(msg);
+                    }
+                    else
+                    {
+                        /*!Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler
+                        kommt wird noch eine Negative message hinterher geschickt.
+                        Hintergrund ist das Logoff sofort dafür sorgt, das der RemoteHiddenhelper geschlossen wird.
+                        */
+                        msg.SetSuccess(true);
+                        emit NewMessage(msg);
+                        emit LogOff(sessionId);
+                    }
                 }
             }
 		}
@@ -163,22 +215,18 @@ namespace RW{
             }
             else
             {
-                /*Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler 
+                /*!Wir senden eine Bestätigungsmessage schon hier ab. Wenn es zu einem Fehler 
                 kommt wird noch eine Negative message hinterher geschickt.
                 Hintergrund ist das Logoff sofort dafür sorgt, das der RemoteHiddenhelper geschlossen wird.
                 */
+
                 msg.SetSuccess(true);
                 emit NewMessage(msg);
                 emit LogOff(sessionId);
             }
         }
 
-		/*
-		@brief Logs off the current user from the active session. It is irelevant, if it is a console or rdp session.
-		It needs the session number, which can be queried with the QueryActiveSession method.
-		@param SessioNumber The session number to the current active session.
-		@return
-		*/
+
         void InactivityWatcher::OnLogOff(quint64 SessioNumber)
         {
             quint16 error = 0;
@@ -198,15 +246,11 @@ namespace RW{
 			else
 			{
 				//This will be logged by the service. No logging needed here.
-				return;
+                return;
 			}
 
 		}
 
-        /*
-        *@brief Returns the session number, that is currently in state active.
-        *@return True if a session was in the active state
-        */
         bool InactivityWatcher::QueryActiveSession(quint64 &SessioNumber, QString Username)
         {
             SessioNumber = 0;
@@ -224,21 +268,27 @@ namespace RW{
                     wts = pSessionsBuffer[i];
 					DWORD bufferSize = 0;
 					LPWSTR buffer ;
-					WTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE, wts.SessionId, WTS_INFO_CLASS::WTSUserName, &buffer, &bufferSize);
-					QString username = QString::fromWCharArray(buffer, bufferSize);
+                    if (WTSQuerySessionInformation(WTS_CURRENT_SERVER_HANDLE, wts.SessionId, WTS_INFO_CLASS::WTSUserName, &buffer, &bufferSize))
+                    {
+                        QString username = QString::fromWCharArray(buffer, bufferSize);
+                        WTSFreeMemory(buffer);
+                        if (Username.isEmpty())
+                            m_logger->warn("Username is empty.");
+                        int res = 0;
 
-					if (m_UserName.isEmpty())
-						m_logger->warn("Username is empty.");
+                        QString var1 = username.trimmed().toUtf8().toUpper();
+                        QString var2 = Username.trimmed().toUtf8().toUpper();
 
-					if (username.toUpper() == m_UserName.toUpper())
-					{
-						SessioNumber = wts.SessionId;
-						m_logger->debug("SessionNumber is: {}", SessioNumber);
-						return true;
-					}
-					WTSFreeMemory(buffer);
+                        if ((res = QString::compare(var1, var2, Qt::CaseInsensitive)) == 0)
+                        {
+                            SessioNumber = wts.SessionId;
+                            break;
+                        }
+                        m_logger->flush();
+                    }
                 }
-				WTSFreeMemory(pSessionsBuffer);
+                WTSFreeMemory(pSessionsBuffer);
+                return true;
             }
             else
             {
@@ -246,7 +296,6 @@ namespace RW{
                 m_logger->error("WTSEnumerateSessions failed. GetLastError: {}", err);
                 return false;
             }
-			return false;
         }
 
     }
